@@ -1,0 +1,111 @@
+module.exports = {
+  content: [
+    "./src/**/*.{html,js,ts,jsx,tsx}",
+    "app/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        actionalert: "var(--actionalert)",
+        "actionalert-light": "var(--actionalert-light)",
+        actionsuccess: "var(--actionsuccess)",
+        "actionsuccess-light": "var(--actionsuccess-light)",
+        actionwarning: "var(--actionwarning)",
+        "actionwarning-light": "var(--actionwarning-light)",
+        "blackblack-10": "var(--blackblack-10)",
+        "blackblack-100": "var(--blackblack-100)",
+        "blackblack-20": "var(--blackblack-20)",
+        "blackblack-40": "var(--blackblack-40)",
+        "blackblack-60": "var(--blackblack-60)",
+        "blackblack-80": "var(--blackblack-80)",
+        blackwhite: "var(--blackwhite)",
+        "colors-for-light-themeblack-shadesblack-10":
+          "var(--colors-for-light-themeblack-shadesblack-10)",
+        "colors-for-light-themeprimary-colorswhite":
+          "var(--colors-for-light-themeprimary-colorswhite)",
+        "light-themegraypure-white": "var(--light-themegraypure-white)",
+        "light-themeprimaryblue": "var(--light-themeprimaryblue)",
+        "light-themeprimaryblue-hover": "var(--light-themeprimaryblue-hover)",
+        "light-themeprimarylight-blue": "var(--light-themeprimarylight-blue)",
+        "light-themesecondarylight-purple":
+          "var(--light-themesecondarylight-purple)",
+        "light-themesecondarypurple": "var(--light-themesecondarypurple)",
+        "light-themesecondarypurple-hover":
+          "var(--light-themesecondarypurple-hover)",
+        "surfaceslightborder-color": "var(--surfaceslightborder-color)",
+        "surfaceslightgray-10": "var(--surfaceslightgray-10)",
+        "surfaceslightgray-20": "var(--surfaceslightgray-20)",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      boxShadow: {
+        "light-theme-shadow-medium": "var(--light-theme-shadow-medium)",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: [
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+    container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+  },
+  plugins: [],
+  darkMode: ["class"],
+};
