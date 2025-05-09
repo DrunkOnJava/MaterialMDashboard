@@ -1,12 +1,4 @@
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .all-\[unset\] {
-    all: unset;
-  }
-}
-
+/* Material Dashboard custom variables */
 :root {
   --actionalert: rgba(255, 185, 0, 1);
   --actionalert-light: rgba(255, 241, 204, 1);
@@ -36,9 +28,11 @@
   --surfaceslightgray-20: rgba(239, 244, 250, 1);
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
 
 @layer base {
   :root {
@@ -106,9 +100,7 @@
 
     --radius: 0.5rem;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
