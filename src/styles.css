@@ -1,6 +1,6 @@
+/* Import tailwind variables and customizations */
+@import "../tailwind.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import tailwind variables and customizations */
-@import "../tailwind.css";
