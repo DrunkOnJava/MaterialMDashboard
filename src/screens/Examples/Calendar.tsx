@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
 import { TitlebarByAnima } from "../Buttons/components/Titlebar";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
@@ -251,486 +249,482 @@ export const Calendar = (): JSX.Element => {
   };
   
   return (
-    <div className="flex h-screen bg-surfaceslightgray-10 overflow-hidden">
-      <SidebarByAnima />
-      <div className="flex flex-col flex-1 overflow-hidden">
-        <TopBarByAnima />
-        <TitlebarByAnima title="Calendar" />
-        <main className="flex-1 overflow-auto p-6">
-          <div className="space-y-6">
-            <div className="flex flex-col md:flex-row gap-4 items-start justify-between">
-              <div className="flex-1 w-full">
-                <div className="relative">
-                  <Search className="absolute left-3 top-2.5 h-5 w-5 text-blackblack-60" />
-                  <Input
-                    placeholder="Search events..."
-                    className="pl-10"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                </div>
-              </div>
-              
-              <div className="flex flex-wrap gap-2 w-full md:w-auto">
-                <Select value={filteredType || ""} onValueChange={(value) => setFilteredType(value === "" ? null : value)}>
-                  <SelectTrigger className="w-[150px]">
-                    <Filter className="mr-2 h-4 w-4" />
-                    <SelectValue placeholder="All Types" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="">All Types</SelectItem>
-                    <SelectItem value="meeting">Meetings</SelectItem>
-                    <SelectItem value="task">Tasks</SelectItem>
-                    <SelectItem value="reminder">Reminders</SelectItem>
-                    <SelectItem value="event">Events</SelectItem>
-                  </SelectContent>
-                </Select>
-                
-                <Select value={view} onValueChange={(value: CalendarView) => setView(value)}>
-                  <SelectTrigger className="w-[120px]">
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="month">Month</SelectItem>
-                    <SelectItem value="week">Week</SelectItem>
-                    <SelectItem value="day">Day</SelectItem>
-                  </SelectContent>
-                </Select>
-                
-                <div className="flex">
-                  <Button variant="outline" size="icon" onClick={handlePrevious} className="rounded-r-none">
-                    <ChevronLeft className="h-4 w-4" />
-                  </Button>
-                  <Button variant="outline" onClick={handleToday} className="rounded-none px-2 border-l-0 border-r-0">
-                    Today
-                  </Button>
-                  <Button variant="outline" size="icon" onClick={handleNext} className="rounded-l-none">
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </div>
-                
-                <Button onClick={() => setIsNewEventOpen(true)}>
-                  <Plus className="mr-2 h-4 w-4" />
-                  New Event
-                </Button>
+    <div className="flex flex-col overflow-hidden">
+      <TitlebarByAnima title="Calendar" />
+      <main className="flex-1 overflow-auto p-6">
+        <div className="space-y-6">
+          <div className="flex flex-col md:flex-row gap-4 items-start justify-between">
+            <div className="flex-1 w-full">
+              <div className="relative">
+                <Search className="absolute left-3 top-2.5 h-5 w-5 text-blackblack-60" />
+                <Input
+                  placeholder="Search events..."
+                  className="pl-10"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
               </div>
             </div>
             
-            <Card className="rounded-xl shadow-light-theme-shadow-medium">
-              <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
-                <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100 flex justify-between items-center">
-                  <span>{getDisplayDate()}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-0">
-                {view === "month" && (
-                  <div className="grid grid-cols-7 bg-white">
-                    {/* Days of week header */}
-                    {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, i) => (
-                      <div key={i} className="text-blackblack-60 text-sm text-center py-3 border-b border-[#111c2d1a]">
-                        {day}
-                      </div>
-                    ))}
+            <div className="flex flex-wrap gap-2 w-full md:w-auto">
+              <Select value={filteredType || ""} onValueChange={(value) => setFilteredType(value === "" ? null : value)}>
+                <SelectTrigger className="w-[150px]">
+                  <Filter className="mr-2 h-4 w-4" />
+                  <SelectValue placeholder="All Types" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">All Types</SelectItem>
+                  <SelectItem value="meeting">Meetings</SelectItem>
+                  <SelectItem value="task">Tasks</SelectItem>
+                  <SelectItem value="reminder">Reminders</SelectItem>
+                  <SelectItem value="event">Events</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              <Select value={view} onValueChange={(value: CalendarView) => setView(value)}>
+                <SelectTrigger className="w-[120px]">
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="month">Month</SelectItem>
+                  <SelectItem value="week">Week</SelectItem>
+                  <SelectItem value="day">Day</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              <div className="flex">
+                <Button variant="outline" size="icon" onClick={handlePrevious} className="rounded-r-none">
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" onClick={handleToday} className="rounded-none px-2 border-l-0 border-r-0">
+                  Today
+                </Button>
+                <Button variant="outline" size="icon" onClick={handleNext} className="rounded-l-none">
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+              
+              <Button onClick={() => setIsNewEventOpen(true)}>
+                <Plus className="mr-2 h-4 w-4" />
+                New Event
+              </Button>
+            </div>
+          </div>
+          
+          <Card className="rounded-xl shadow-light-theme-shadow-medium">
+            <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
+              <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100 flex justify-between items-center">
+                <span>{getDisplayDate()}</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              {view === "month" && (
+                <div className="grid grid-cols-7 bg-white">
+                  {/* Days of week header */}
+                  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, i) => (
+                    <div key={i} className="text-blackblack-60 text-sm text-center py-3 border-b border-[#111c2d1a]">
+                      {day}
+                    </div>
+                  ))}
+                  
+                  {/* Calendar days */}
+                  {generateMonthDays().map((day, i) => {
+                    const dayEvents = getEventsForDate(day);
+                    const isToday = isSameDay(day, new Date());
+                    const isCurrentMonth = isSameMonth(day, currentDate);
                     
-                    {/* Calendar days */}
-                    {generateMonthDays().map((day, i) => {
-                      const dayEvents = getEventsForDate(day);
+                    return (
+                      <div 
+                        key={i}
+                        className={`min-h-[120px] p-1 border-b border-r border-[#111c2d1a] ${
+                          !isCurrentMonth ? 'bg-surfaceslightgray-10 text-blackblack-40' : ''
+                        } ${isToday ? 'bg-light-themeprimarylight-blue/20' : ''}`}
+                      >
+                        <div className="flex justify-between items-center p-1">
+                          <span className={`text-sm ${isToday ? 'font-bold text-light-themeprimaryblue' : ''}`}>
+                            {format(day, "d")}
+                          </span>
+                          {dayEvents.length > 0 && (
+                            <Badge className="h-5 w-5 p-0 flex items-center justify-center rounded-full text-xs">
+                              {dayEvents.length}
+                            </Badge>
+                          )}
+                        </div>
+                        <div className="space-y-1 mt-1">
+                          {dayEvents.slice(0, 3).map((event, index) => (
+                            <div 
+                              key={index}
+                              className={`p-1 text-xs rounded cursor-pointer ${getEventTypeColor(event.type)} border-l-2`}
+                              onClick={() => handleViewEvent(event)}
+                            >
+                              {format(event.start, "h:mm a")} - {event.title}
+                            </div>
+                          ))}
+                          {dayEvents.length > 3 && (
+                            <div className="text-xs text-blackblack-60 pl-1">
+                              + {dayEvents.length - 3} more
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+              
+              {view === "week" && (
+                <div className="flex flex-col h-[600px]">
+                  {/* Time headers */}
+                  <div className="flex border-b border-[#111c2d1a]">
+                    <div className="w-16 shrink-0"></div>
+                    {generateWeekDays().map((day, i) => {
                       const isToday = isSameDay(day, new Date());
-                      const isCurrentMonth = isSameMonth(day, currentDate);
-                      
                       return (
-                        <div 
-                          key={i}
-                          className={`min-h-[120px] p-1 border-b border-r border-[#111c2d1a] ${
-                            !isCurrentMonth ? 'bg-surfaceslightgray-10 text-blackblack-40' : ''
-                          } ${isToday ? 'bg-light-themeprimarylight-blue/20' : ''}`}
-                        >
-                          <div className="flex justify-between items-center p-1">
-                            <span className={`text-sm ${isToday ? 'font-bold text-light-themeprimaryblue' : ''}`}>
-                              {format(day, "d")}
-                            </span>
-                            {dayEvents.length > 0 && (
-                              <Badge className="h-5 w-5 p-0 flex items-center justify-center rounded-full text-xs">
-                                {dayEvents.length}
-                              </Badge>
-                            )}
+                        <div key={i} className={`flex-1 text-center py-3 ${isToday ? 'bg-light-themeprimarylight-blue/20' : ''}`}>
+                          <div className={`text-sm ${isToday ? 'font-bold text-light-themeprimaryblue' : ''}`}>
+                            {format(day, "EEE")}
                           </div>
-                          <div className="space-y-1 mt-1">
-                            {dayEvents.slice(0, 3).map((event, index) => (
-                              <div 
-                                key={index}
-                                className={`p-1 text-xs rounded cursor-pointer ${getEventTypeColor(event.type)} border-l-2`}
-                                onClick={() => handleViewEvent(event)}
-                              >
-                                {format(event.start, "h:mm a")} - {event.title}
-                              </div>
-                            ))}
-                            {dayEvents.length > 3 && (
-                              <div className="text-xs text-blackblack-60 pl-1">
-                                + {dayEvents.length - 3} more
-                              </div>
-                            )}
+                          <div className={`text-lg ${isToday ? 'font-bold text-light-themeprimaryblue' : ''}`}>
+                            {format(day, "d")}
                           </div>
                         </div>
                       );
                     })}
                   </div>
-                )}
-                
-                {view === "week" && (
-                  <div className="flex flex-col h-[600px]">
-                    {/* Time headers */}
-                    <div className="flex border-b border-[#111c2d1a]">
-                      <div className="w-16 shrink-0"></div>
-                      {generateWeekDays().map((day, i) => {
-                        const isToday = isSameDay(day, new Date());
-                        return (
-                          <div key={i} className={`flex-1 text-center py-3 ${isToday ? 'bg-light-themeprimarylight-blue/20' : ''}`}>
-                            <div className={`text-sm ${isToday ? 'font-bold text-light-themeprimaryblue' : ''}`}>
-                              {format(day, "EEE")}
-                            </div>
-                            <div className={`text-lg ${isToday ? 'font-bold text-light-themeprimaryblue' : ''}`}>
-                              {format(day, "d")}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    
-                    {/* Hours grid */}
-                    <div className="flex flex-1 overflow-y-auto">
-                      {/* Time labels */}
-                      <div className="w-16 shrink-0 border-r border-[#111c2d1a]">
-                        {generateDayHours().map((hour) => (
-                          <div key={hour} className="h-16 text-xs text-blackblack-60 text-right pr-2 relative">
-                            <span className="absolute top-[-0.5em] right-2">
-                              {hour === 0 ? "12 AM" : hour < 12 ? `${hour} AM` : hour === 12 ? "12 PM" : `${hour - 12} PM`}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      {/* Week days columns */}
-                      {generateWeekDays().map((day, dayIndex) => {
-                        const dayEvents = getEventsForDate(day);
-                        const isToday = isSameDay(day, new Date());
-                        
-                        return (
-                          <div 
-                            key={dayIndex} 
-                            className={`flex-1 border-r border-[#111c2d1a] relative ${isToday ? 'bg-light-themeprimarylight-blue/10' : ''}`}
-                          >
-                            {generateDayHours().map((hour, hourIndex) => (
-                              <div 
-                                key={hourIndex} 
-                                className="h-16 border-b border-[#111c2d1a] last:border-b-0"
-                              ></div>
-                            ))}
-                            
-                            {/* Events */}
-                            {dayEvents.map((event, eventIndex) => {
-                              const startHour = event.start.getHours() + (event.start.getMinutes() / 60);
-                              const endHour = event.end.getHours() + (event.end.getMinutes() / 60);
-                              const durationHours = endHour - startHour;
-                              const top = (startHour - 8) * 64; // 8am is the start hour, each hour is 64px (16px * 4)
-                              const height = durationHours * 64;
-                              
-                              return (
-                                <div
-                                  key={eventIndex}
-                                  className={`absolute left-0 right-0 mx-1 p-2 rounded text-xs overflow-hidden cursor-pointer border-l-2 ${getEventTypeColor(event.type)}`}
-                                  style={{ 
-                                    top: `${top}px`, 
-                                    height: `${height}px`,
-                                    zIndex: 10
-                                  }}
-                                  onClick={() => handleViewEvent(event)}
-                                >
-                                  <div className="font-medium truncate">{event.title}</div>
-                                  <div className="truncate">
-                                    {format(event.start, "h:mm a")} - {format(event.end, "h:mm a")}
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-                
-                {view === "day" && (
-                  <div className="flex flex-col h-[600px]">
-                    {/* Day header */}
-                    <div className="flex border-b border-[#111c2d1a] p-3 justify-center">
-                      <div className="text-lg font-medium text-blackblack-100">
-                        {format(currentDate, "EEEE, MMMM d")}
-                      </div>
-                    </div>
-                    
-                    {/* Hours grid */}
-                    <div className="flex flex-1 overflow-y-auto">
-                      {/* Time labels */}
-                      <div className="w-16 shrink-0 border-r border-[#111c2d1a]">
-                        {generateDayHours().map((hour) => (
-                          <div key={hour} className="h-16 text-xs text-blackblack-60 text-right pr-2 relative">
-                            <span className="absolute top-[-0.5em] right-2">
-                              {hour === 0 ? "12 AM" : hour < 12 ? `${hour} AM` : hour === 12 ? "12 PM" : `${hour - 12} PM`}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      {/* Day column */}
-                      <div className="flex-1 relative">
-                        {generateDayHours().map((hour, hourIndex) => (
-                          <div 
-                            key={hourIndex} 
-                            className="h-16 border-b border-[#111c2d1a] last:border-b-0"
-                          ></div>
-                        ))}
-                        
-                        {/* Events */}
-                        {getEventsForDate(currentDate).map((event, eventIndex) => {
-                          const startHour = event.start.getHours() + (event.start.getMinutes() / 60);
-                          const endHour = event.end.getHours() + (event.end.getMinutes() / 60);
-                          const durationHours = endHour - startHour;
-                          const top = (startHour - 8) * 64; // 8am is the start hour, each hour is 64px
-                          const height = durationHours * 64;
-                          
-                          return (
-                            <div
-                              key={eventIndex}
-                              className={`absolute left-0 right-0 mx-4 p-2 rounded text-sm overflow-hidden cursor-pointer border-l-2 ${getEventTypeColor(event.type)}`}
-                              style={{ 
-                                top: `${top}px`, 
-                                height: `${height}px`,
-                                zIndex: 10
-                              }}
-                              onClick={() => handleViewEvent(event)}
-                            >
-                              <div className="font-medium">{event.title}</div>
-                              <div className="text-xs flex items-center mt-1">
-                                <Clock className="h-3 w-3 mr-1" />
-                                {format(event.start, "h:mm a")} - {format(event.end, "h:mm a")}
-                              </div>
-                              {event.location && (
-                                <div className="text-xs flex items-center mt-1">
-                                  <MapPin className="h-3 w-3 mr-1" />
-                                  {event.location}
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-            
-            {/* Upcoming Events */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <Card className="rounded-xl shadow-light-theme-shadow-medium lg:col-span-2">
-                <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
-                  <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100 flex justify-between items-center">
-                    <span>Upcoming Events</span>
-                    <Button variant="outline" size="sm" className="flex items-center gap-1">
-                      <Download className="h-4 w-4" /> Export
-                    </Button>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <table className="w-full">
-                    <thead className="bg-surfaceslightgray-10">
-                      <tr className="text-left">
-                        <th className="py-3 px-6 text-sm font-medium text-blackblack-60">Event</th>
-                        <th className="py-3 px-6 text-sm font-medium text-blackblack-60">Date & Time</th>
-                        <th className="py-3 px-6 text-sm font-medium text-blackblack-60">Type</th>
-                        <th className="py-3 px-6 text-sm font-medium text-blackblack-60">Status</th>
-                        <th className="py-3 px-6 text-sm font-medium text-blackblack-60"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {getFilteredEvents().slice(0, 5).map((event, index) => (
-                        <tr key={index} className="border-t border-[#111c2d1a]">
-                          <td className="py-3 px-6">
-                            <div>
-                              <div className="font-medium text-blackblack-100">{event.title}</div>
-                              <div className="text-xs text-blackblack-60 mt-1">{event.description?.substring(0, 50)}{event.description && event.description.length > 50 ? '...' : ''}</div>
-                            </div>
-                          </td>
-                          <td className="py-3 px-6">
-                            <div className="text-sm text-blackblack-80">{format(event.start, "MMM d, yyyy")}</div>
-                            <div className="text-xs text-blackblack-60">{format(event.start, "h:mm a")} - {format(event.end, "h:mm a")}</div>
-                          </td>
-                          <td className="py-3 px-6">
-                            <Badge className={`${getEventTypeColor(event.type)}`}>
-                              {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
-                            </Badge>
-                          </td>
-                          <td className="py-3 px-6">
-                            <Badge className={`
-                              ${event.status === 'confirmed' ? 'bg-actionsuccess-light text-actionsuccess' : 
-                                event.status === 'tentative' ? 'bg-actionalert-light text-actionalert' : 
-                                'bg-actionwarning-light text-actionwarning'}
-                            `}>
-                              {event.status.charAt(0).toUpperCase() + event.status.slice(1)}
-                            </Badge>
-                          </td>
-                          <td className="py-3 px-6 text-right">
-                            <Button 
-                              variant="ghost" 
-                              size="sm" 
-                              className="text-light-themeprimaryblue"
-                              onClick={() => handleViewEvent(event)}
-                            >
-                              View
-                            </Button>
-                          </td>
-                        </tr>
+                  
+                  {/* Hours grid */}
+                  <div className="flex flex-1 overflow-y-auto">
+                    {/* Time labels */}
+                    <div className="w-16 shrink-0 border-r border-[#111c2d1a]">
+                      {generateDayHours().map((hour) => (
+                        <div key={hour} className="h-16 text-xs text-blackblack-60 text-right pr-2 relative">
+                          <span className="absolute top-[-0.5em] right-2">
+                            {hour === 0 ? "12 AM" : hour < 12 ? `${hour} AM` : hour === 12 ? "12 PM" : `${hour - 12} PM`}
+                          </span>
+                        </div>
                       ))}
-                      {getFilteredEvents().length === 0 && (
-                        <tr>
-                          <td colSpan={5} className="py-8 text-center text-blackblack-60">
-                            No events found matching your criteria.
-                          </td>
-                        </tr>
-                      )}
-                    </tbody>
-                  </table>
-                </CardContent>
-              </Card>
+                    </div>
+                    
+                    {/* Week days columns */}
+                    {generateWeekDays().map((day, dayIndex) => {
+                      const dayEvents = getEventsForDate(day);
+                      const isToday = isSameDay(day, new Date());
+                      
+                      return (
+                        <div 
+                          key={dayIndex} 
+                          className={`flex-1 border-r border-[#111c2d1a] relative ${isToday ? 'bg-light-themeprimarylight-blue/10' : ''}`}
+                        >
+                          {generateDayHours().map((hour, hourIndex) => (
+                            <div 
+                              key={hourIndex} 
+                              className="h-16 border-b border-[#111c2d1a] last:border-b-0"
+                            ></div>
+                          ))}
+                          
+                          {/* Events */}
+                          {dayEvents.map((event, eventIndex) => {
+                            const startHour = event.start.getHours() + (event.start.getMinutes() / 60);
+                            const endHour = event.end.getHours() + (event.end.getMinutes() / 60);
+                            const durationHours = endHour - startHour;
+                            const top = (startHour - 8) * 64; // 8am is the start hour, each hour is 64px (16px * 4)
+                            const height = durationHours * 64;
+                            
+                            return (
+                              <div
+                                key={eventIndex}
+                                className={`absolute left-0 right-0 mx-1 p-2 rounded text-xs overflow-hidden cursor-pointer border-l-2 ${getEventTypeColor(event.type)}`}
+                                style={{ 
+                                  top: `${top}px`, 
+                                  height: `${height}px`,
+                                  zIndex: 10
+                                }}
+                                onClick={() => handleViewEvent(event)}
+                              >
+                                <div className="font-medium truncate">{event.title}</div>
+                                <div className="truncate">
+                                  {format(event.start, "h:mm a")} - {format(event.end, "h:mm a")}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
               
-              <div className="space-y-6">
-                <Card className="rounded-xl shadow-light-theme-shadow-medium">
-                  <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
-                    <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
-                      Today's Schedule
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <div className="space-y-4">
-                      {getEventsForDate(new Date()).length > 0 ? (
-                        getEventsForDate(new Date()).map((event, index) => (
-                          <div key={index} className={`p-3 rounded border-l-2 ${getEventTypeColor(event.type)}`}>
+              {view === "day" && (
+                <div className="flex flex-col h-[600px]">
+                  {/* Day header */}
+                  <div className="flex border-b border-[#111c2d1a] p-3 justify-center">
+                    <div className="text-lg font-medium text-blackblack-100">
+                      {format(currentDate, "EEEE, MMMM d")}
+                    </div>
+                  </div>
+                  
+                  {/* Hours grid */}
+                  <div className="flex flex-1 overflow-y-auto">
+                    {/* Time labels */}
+                    <div className="w-16 shrink-0 border-r border-[#111c2d1a]">
+                      {generateDayHours().map((hour) => (
+                        <div key={hour} className="h-16 text-xs text-blackblack-60 text-right pr-2 relative">
+                          <span className="absolute top-[-0.5em] right-2">
+                            {hour === 0 ? "12 AM" : hour < 12 ? `${hour} AM` : hour === 12 ? "12 PM" : `${hour - 12} PM`}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Day column */}
+                    <div className="flex-1 relative">
+                      {generateDayHours().map((hour, hourIndex) => (
+                        <div 
+                          key={hourIndex} 
+                          className="h-16 border-b border-[#111c2d1a] last:border-b-0"
+                        ></div>
+                      ))}
+                      
+                      {/* Events */}
+                      {getEventsForDate(currentDate).map((event, eventIndex) => {
+                        const startHour = event.start.getHours() + (event.start.getMinutes() / 60);
+                        const endHour = event.end.getHours() + (event.end.getMinutes() / 60);
+                        const durationHours = endHour - startHour;
+                        const top = (startHour - 8) * 64; // 8am is the start hour, each hour is 64px
+                        const height = durationHours * 64;
+                        
+                        return (
+                          <div
+                            key={eventIndex}
+                            className={`absolute left-0 right-0 mx-4 p-2 rounded text-sm overflow-hidden cursor-pointer border-l-2 ${getEventTypeColor(event.type)}`}
+                            style={{ 
+                              top: `${top}px`, 
+                              height: `${height}px`,
+                              zIndex: 10
+                            }}
+                            onClick={() => handleViewEvent(event)}
+                          >
                             <div className="font-medium">{event.title}</div>
-                            <div className="text-xs text-blackblack-60 flex items-center mt-1">
+                            <div className="text-xs flex items-center mt-1">
                               <Clock className="h-3 w-3 mr-1" />
                               {format(event.start, "h:mm a")} - {format(event.end, "h:mm a")}
                             </div>
                             {event.location && (
-                              <div className="text-xs text-blackblack-60 flex items-center mt-1">
+                              <div className="text-xs flex items-center mt-1">
                                 <MapPin className="h-3 w-3 mr-1" />
                                 {event.location}
                               </div>
                             )}
-                            {event.attendees && (
-                              <div className="text-xs text-blackblack-60 flex items-center mt-1">
-                                <Users className="h-3 w-3 mr-1" />
-                                {event.attendees.length} attendees
-                              </div>
-                            )}
-                            <Button 
-                              variant="ghost" 
-                              size="sm" 
-                              className="mt-2 text-light-themeprimaryblue p-0 h-auto"
-                              onClick={() => handleViewEvent(event)}
-                            >
-                              View Details
-                            </Button>
                           </div>
-                        ))
-                      ) : (
-                        <div className="text-center py-8 text-blackblack-60">
-                          <CalendarIcon className="h-12 w-12 mx-auto text-blackblack-40 mb-2" />
-                          <p>No events scheduled for today</p>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          
+          {/* Upcoming Events */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <Card className="rounded-xl shadow-light-theme-shadow-medium lg:col-span-2">
+              <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
+                <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100 flex justify-between items-center">
+                  <span>Upcoming Events</span>
+                  <Button variant="outline" size="sm" className="flex items-center gap-1">
+                    <Download className="h-4 w-4" /> Export
+                  </Button>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <table className="w-full">
+                  <thead className="bg-surfaceslightgray-10">
+                    <tr className="text-left">
+                      <th className="py-3 px-6 text-sm font-medium text-blackblack-60">Event</th>
+                      <th className="py-3 px-6 text-sm font-medium text-blackblack-60">Date & Time</th>
+                      <th className="py-3 px-6 text-sm font-medium text-blackblack-60">Type</th>
+                      <th className="py-3 px-6 text-sm font-medium text-blackblack-60">Status</th>
+                      <th className="py-3 px-6 text-sm font-medium text-blackblack-60"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {getFilteredEvents().slice(0, 5).map((event, index) => (
+                      <tr key={index} className="border-t border-[#111c2d1a]">
+                        <td className="py-3 px-6">
+                          <div>
+                            <div className="font-medium text-blackblack-100">{event.title}</div>
+                            <div className="text-xs text-blackblack-60 mt-1">{event.description?.substring(0, 50)}{event.description && event.description.length > 50 ? '...' : ''}</div>
+                          </div>
+                        </td>
+                        <td className="py-3 px-6">
+                          <div className="text-sm text-blackblack-80">{format(event.start, "MMM d, yyyy")}</div>
+                          <div className="text-xs text-blackblack-60">{format(event.start, "h:mm a")} - {format(event.end, "h:mm a")}</div>
+                        </td>
+                        <td className="py-3 px-6">
+                          <Badge className={`${getEventTypeColor(event.type)}`}>
+                            {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
+                          </Badge>
+                        </td>
+                        <td className="py-3 px-6">
+                          <Badge className={`
+                            ${event.status === 'confirmed' ? 'bg-actionsuccess-light text-actionsuccess' : 
+                              event.status === 'tentative' ? 'bg-actionalert-light text-actionalert' : 
+                              'bg-actionwarning-light text-actionwarning'}
+                          `}>
+                            {event.status.charAt(0).toUpperCase() + event.status.slice(1)}
+                          </Badge>
+                        </td>
+                        <td className="py-3 px-6 text-right">
                           <Button 
-                            variant="outline" 
-                            className="mt-3"
-                            onClick={() => setIsNewEventOpen(true)}
+                            variant="ghost" 
+                            size="sm" 
+                            className="text-light-themeprimaryblue"
+                            onClick={() => handleViewEvent(event)}
                           >
-                            <Plus className="h-4 w-4 mr-1" /> Add Event
+                            View
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                    {getFilteredEvents().length === 0 && (
+                      <tr>
+                        <td colSpan={5} className="py-8 text-center text-blackblack-60">
+                          No events found matching your criteria.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </CardContent>
+            </Card>
+            
+            <div className="space-y-6">
+              <Card className="rounded-xl shadow-light-theme-shadow-medium">
+                <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
+                  <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
+                    Today's Schedule
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="space-y-4">
+                    {getEventsForDate(new Date()).length > 0 ? (
+                      getEventsForDate(new Date()).map((event, index) => (
+                        <div key={index} className={`p-3 rounded border-l-2 ${getEventTypeColor(event.type)}`}>
+                          <div className="font-medium">{event.title}</div>
+                          <div className="text-xs text-blackblack-60 flex items-center mt-1">
+                            <Clock className="h-3 w-3 mr-1" />
+                            {format(event.start, "h:mm a")} - {format(event.end, "h:mm a")}
+                          </div>
+                          {event.location && (
+                            <div className="text-xs text-blackblack-60 flex items-center mt-1">
+                              <MapPin className="h-3 w-3 mr-1" />
+                              {event.location}
+                            </div>
+                          )}
+                          {event.attendees && (
+                            <div className="text-xs text-blackblack-60 flex items-center mt-1">
+                              <Users className="h-3 w-3 mr-1" />
+                              {event.attendees.length} attendees
+                            </div>
+                          )}
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="mt-2 text-light-themeprimaryblue p-0 h-auto"
+                            onClick={() => handleViewEvent(event)}
+                          >
+                            View Details
                           </Button>
                         </div>
-                      )}
+                      ))
+                    ) : (
+                      <div className="text-center py-8 text-blackblack-60">
+                        <CalendarIcon className="h-12 w-12 mx-auto text-blackblack-40 mb-2" />
+                        <p>No events scheduled for today</p>
+                        <Button 
+                          variant="outline" 
+                          className="mt-3"
+                          onClick={() => setIsNewEventOpen(true)}
+                        >
+                          <Plus className="h-4 w-4 mr-1" /> Add Event
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="rounded-xl shadow-light-theme-shadow-medium">
+                <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
+                  <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
+                    Event Overview
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-full bg-light-themeprimaryblue mr-2"></div>
+                        <span className="text-blackblack-80">Meetings</span>
+                      </div>
+                      <span className="font-medium">{events.filter(e => e.type === "meeting").length}</span>
                     </div>
-                  </CardContent>
-                </Card>
-                
-                <Card className="rounded-xl shadow-light-theme-shadow-medium">
-                  <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
-                    <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
-                      Event Overview
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <div className="w-3 h-3 rounded-full bg-light-themeprimaryblue mr-2"></div>
-                          <span className="text-blackblack-80">Meetings</span>
-                        </div>
-                        <span className="font-medium">{events.filter(e => e.type === "meeting").length}</span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-full bg-actionsuccess mr-2"></div>
+                        <span className="text-blackblack-80">Tasks</span>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <div className="w-3 h-3 rounded-full bg-actionsuccess mr-2"></div>
-                          <span className="text-blackblack-80">Tasks</span>
-                        </div>
-                        <span className="font-medium">{events.filter(e => e.type === "task").length}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <div className="w-3 h-3 rounded-full bg-actionalert mr-2"></div>
-                          <span className="text-blackblack-80">Reminders</span>
-                        </div>
-                        <span className="font-medium">{events.filter(e => e.type === "reminder").length}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <div className="w-3 h-3 rounded-full bg-light-themesecondarypurple mr-2"></div>
-                          <span className="text-blackblack-80">Events</span>
-                        </div>
-                        <span className="font-medium">{events.filter(e => e.type === "event").length}</span>
-                      </div>
+                      <span className="font-medium">{events.filter(e => e.type === "task").length}</span>
                     </div>
-                    
-                    <div className="h-[1px] bg-[#111c2d1a] my-4"></div>
-                    
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-actionsuccess mr-2" />
-                          <span className="text-blackblack-80">Confirmed</span>
-                        </div>
-                        <span className="font-medium">{events.filter(e => e.status === "confirmed").length}</span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-full bg-actionalert mr-2"></div>
+                        <span className="text-blackblack-80">Reminders</span>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <AlertCircle className="h-4 w-4 text-actionalert mr-2" />
-                          <span className="text-blackblack-80">Tentative</span>
-                        </div>
-                        <span className="font-medium">{events.filter(e => e.status === "tentative").length}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <X className="h-4 w-4 text-actionwarning mr-2" />
-                          <span className="text-blackblack-80">Cancelled</span>
-                        </div>
-                        <span className="font-medium">{events.filter(e => e.status === "cancelled").length}</span>
-                      </div>
+                      <span className="font-medium">{events.filter(e => e.type === "reminder").length}</span>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-full bg-light-themesecondarypurple mr-2"></div>
+                        <span className="text-blackblack-80">Events</span>
+                      </div>
+                      <span className="font-medium">{events.filter(e => e.type === "event").length}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="h-[1px] bg-[#111c2d1a] my-4"></div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <CheckCircle className="h-4 w-4 text-actionsuccess mr-2" />
+                        <span className="text-blackblack-80">Confirmed</span>
+                      </div>
+                      <span className="font-medium">{events.filter(e => e.status === "confirmed").length}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <AlertCircle className="h-4 w-4 text-actionalert mr-2" />
+                        <span className="text-blackblack-80">Tentative</span>
+                      </div>
+                      <span className="font-medium">{events.filter(e => e.status === "tentative").length}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <X className="h-4 w-4 text-actionwarning mr-2" />
+                        <span className="text-blackblack-80">Cancelled</span>
+                      </div>
+                      <span className="font-medium">{events.filter(e => e.status === "cancelled").length}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
       
       {/* Event details dialog */}
       <Dialog open={isEventDetailsOpen} onOpenChange={setIsEventDetailsOpen}>
