@@ -1,6 +1,4 @@
 import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
 import { TitlebarByAnima } from "../Buttons/components/Titlebar";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
@@ -183,13 +181,10 @@ export const BarCharts = (): JSX.Element => {
   };
 
   return (
-    <div className="flex h-screen bg-surfaceslightgray-10 overflow-hidden">
-      <SidebarByAnima />
-      <div className="flex flex-col flex-1 overflow-hidden">
-        <TopBarByAnima />
-        <TitlebarByAnima title="Bar Charts" />
-        <main className="flex-1 overflow-auto p-6">
-          <div className="space-y-6">
+    <div className="flex flex-col overflow-hidden">
+      <TitlebarByAnima title="Bar Charts" />
+      <main className="flex-1 overflow-auto p-6">
+        <div className="space-y-6">
             <Card className="rounded-xl shadow-light-theme-shadow-medium">
               <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
                 <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
@@ -458,6 +453,5 @@ const horizontalChartOptions = {
           </div>
         </main>
       </div>
-    </div>
   );
 };

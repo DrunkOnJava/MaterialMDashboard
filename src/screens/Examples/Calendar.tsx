@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
 import { TitlebarByAnima } from "../Buttons/components/Titlebar";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
@@ -251,12 +249,9 @@ export const Calendar = (): JSX.Element => {
   };
   
   return (
-    <div className="flex h-screen bg-surfaceslightgray-10 overflow-hidden">
-      <SidebarByAnima />
-      <div className="flex flex-col flex-1 overflow-hidden">
-        <TopBarByAnima />
-        <TitlebarByAnima title="Calendar" />
-        <main className="flex-1 overflow-auto p-6">
+    <div className="flex flex-col overflow-hidden">
+      <TitlebarByAnima title="Calendar" />
+      <main className="flex-1 overflow-auto p-6">
           <div className="space-y-6">
             <div className="flex flex-col md:flex-row gap-4 items-start justify-between">
               <div className="flex-1 w-full">
@@ -883,6 +878,6 @@ export const Calendar = (): JSX.Element => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
+      </div>
   );
 };

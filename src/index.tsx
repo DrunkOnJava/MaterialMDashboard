@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Chip } from "./screens/Chip/Chip";
 import { Dashboard } from "./screens/Dashboard/Dashboard";
 import { Toaster } from "./components/ui/toaster";
+import { Layout } from "./components/layout/Layout";
 import { PrimaryButtons } from "./screens/Buttons/PrimaryButtons";
 import { SecondaryButtons } from "./screens/Buttons/SecondaryButtons";
 import { OutlineButtons } from "./screens/Buttons/OutlineButtons";
@@ -32,49 +33,58 @@ import { PaginationPage } from "./screens/Components/Pagination";
 import { FileUpload } from "./screens/Examples/FileUpload";
 import { Ecommerce } from "./screens/Ecommerce/Ecommerce";
 import { BlueMountainWicks } from "./screens/BlueMountainWicks/BlueMountainWicks";
+import { BarCharts } from "./screens/Charts/BarCharts";
+import { Calendar } from "./screens/Examples/Calendar";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/ui-components" element={<Chip />} />
-        <Route path="/ecommerce" element={<Ecommerce />} />
-        <Route path="/blue-mountain-wicks" element={<BlueMountainWicks />} />
-        
-        {/* Button Routes */}
-        <Route path="/buttons/primary" element={<PrimaryButtons />} />
-        <Route path="/buttons/secondary" element={<SecondaryButtons />} />
-        <Route path="/buttons/outline" element={<OutlineButtons />} />
-        <Route path="/buttons/ghost" element={<GhostButtons />} />
-        <Route path="/buttons/icon" element={<IconButtons />} />
-        <Route path="/buttons/success" element={<SuccessButtons />} />
-        <Route path="/buttons/warning" element={<WarningButtons />} />
-        <Route path="/buttons/danger" element={<DangerButtons />} />
-        <Route path="/buttons/link" element={<LinkButtons />} />
-        <Route path="/buttons/loading" element={<LoadingButtons />} />
-        <Route path="/buttons/grouped" element={<GroupedButtons />} />
-        
-        {/* Form Routes */}
-        <Route path="/forms/input-fields" element={<InputFields />} />
-        <Route path="/forms/select-fields" element={<SelectFields />} />
-        <Route path="/forms/checkbox-radio" element={<CheckboxRadio />} />
-        <Route path="/forms/form-validation" element={<FormValidation />} />
-        <Route path="/forms/date-picker" element={<DatePickerDemo />} />
-        
-        {/* Component Routes */}
-        <Route path="/components/cards" element={<Cards />} />
-        <Route path="/components/alerts" element={<Alerts />} />
-        <Route path="/components/modals" element={<Modals />} />
-        <Route path="/components/tabs" element={<TabsPage />} />
-        <Route path="/components/accordion" element={<AccordionPage />} />
-        <Route path="/components/tables" element={<TablesPage />} />
-        <Route path="/components/avatars" element={<AvatarsPage />} />
-        <Route path="/components/progress" element={<ProgressPage />} />
-        <Route path="/components/pagination" element={<PaginationPage />} />
-        
-        {/* Example Routes */}
-        <Route path="/examples/file-upload" element={<FileUpload />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/ui-components" element={<Chip />} />
+          <Route path="/ecommerce" element={<Ecommerce />} />
+          <Route path="/blue-mountain-wicks" element={<BlueMountainWicks />} />
+
+          {/* Button Routes */}
+          <Route path="/buttons/primary" element={<PrimaryButtons />} />
+          <Route path="/buttons/secondary" element={<SecondaryButtons />} />
+          <Route path="/buttons/outline" element={<OutlineButtons />} />
+          <Route path="/buttons/ghost" element={<GhostButtons />} />
+          <Route path="/buttons/icon" element={<IconButtons />} />
+          <Route path="/buttons/success" element={<SuccessButtons />} />
+          <Route path="/buttons/warning" element={<WarningButtons />} />
+          <Route path="/buttons/danger" element={<DangerButtons />} />
+          <Route path="/buttons/link" element={<LinkButtons />} />
+          <Route path="/buttons/loading" element={<LoadingButtons />} />
+          <Route path="/buttons/grouped" element={<GroupedButtons />} />
+
+          {/* Form Routes */}
+          <Route path="/forms/input-fields" element={<InputFields />} />
+          <Route path="/forms/select-fields" element={<SelectFields />} />
+          <Route path="/forms/checkbox-radio" element={<CheckboxRadio />} />
+          <Route path="/forms/form-validation" element={<FormValidation />} />
+          <Route path="/forms/date-picker" element={<DatePickerDemo />} />
+
+          {/* Component Routes */}
+          <Route path="/components/cards" element={<Cards />} />
+          <Route path="/components/alerts" element={<Alerts />} />
+          <Route path="/components/modals" element={<Modals />} />
+          <Route path="/components/tabs" element={<TabsPage />} />
+          <Route path="/components/accordion" element={<AccordionPage />} />
+          <Route path="/components/tables" element={<TablesPage />} />
+          <Route path="/components/avatars" element={<AvatarsPage />} />
+          <Route path="/components/progress" element={<ProgressPage />} />
+          <Route path="/components/pagination" element={<PaginationPage />} />
+
+          {/* Example Routes */}
+          <Route path="/examples/file-upload" element={<FileUpload />} />
+          <Route path="/examples/calendar" element={<Calendar />} />
+
+          {/* Chart Routes */}
+          <Route path="/charts/bar" element={<BarCharts />} />
+        </Route>
       </Routes>
       <Toaster />
     </Router>
