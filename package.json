@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "deploy": "./deploy-to-netlify.sh",
     "deploy:direct": "./netlify-direct-deploy.sh",
-    "get-url": "./get-netlify-url.sh"
+    "get-url": "./get-netlify-url.sh",
+    "postinstall": "./scripts/install-hooks.sh",
+    "hooks:install": "./scripts/install-hooks.sh"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",

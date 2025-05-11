@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Check for possible secrets in files being committed
+GREP_CMD="grep -l -E"
+PATTERNS=(
+  "[-._a-zA-Z0-9]{23}[_-][a-zA-Z0-9]{8}" # Figma token pattern
+  "ghp_[a-zA-Z0-9]{36}" # GitHub token pattern
+  "sk-[a-zA-Z0-9]{32,}" # OpenAI key pattern
+  "api[-_]?key['\"]?\s*[:=]\s*['\"][a-zA-Z0-9_\.-]" # Generic API key pattern
+  "secret[_-]?key['\"]?\s*[:=]\s*['\"][a-zA-Z0-9_\.-]" # Generic secret key pattern
+  "password['\"]?\s*[:=]\s*['\"][a-zA-Z0-9_\.-]" # Password pattern
+  "access[_-]?token['\"]?\s*[:=]\s*['\"][a-zA-Z0-9_\.-]" # Access token pattern
+)
+
+FILES_WITH_SECRETS=()
+
+for FILE in $(git diff --name-only --cached); do
+  if [ -f "$FILE" ]; then
+    for PATTERN in "${PATTERNS[@]}"; do
+      if $GREP_CMD "$PATTERN" "$FILE" > /dev/null 2>&1; then
+        FILES_WITH_SECRETS+=("$FILE")
+        break
+      fi
+    done
+  fi
+done
+
+if [ ${#FILES_WITH_SECRETS[@]} -gt 0 ]; then
+  echo "Error: Possible API keys/tokens/secrets found in the following files:"
+  for FILE in "${FILES_WITH_SECRETS[@]}"; do
+    echo "- $FILE"
+  done
+  echo "Please remove any secrets before committing."
+  exit 1
+fi
+
+exit 0
