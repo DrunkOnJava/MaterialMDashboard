@@ -52,3 +52,21 @@ yarn-error.log
 # Deployment
 .netlify
 MaterialMDashboard.zip
+
+# Development and testing files
+ESLINT_SETUP.md
+README-component-viewer.md
+TEST_COVERAGE_PLAN.md
+TEST_COVERAGE_PLAN_WITH_RESULTS.md
+analyze-website.js
+component-screenshot.js
+component-viewer.html
+eslint.config.js
+fix_component_structures.sh
+memory_manager.py
+scripts/
+testImages/
+tests/
+website-analysis-report.json
+website-analysis-report.md
+website-analysis-screenshots/
