@@ -1,17 +1,18 @@
-import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "../Buttons/components/Titlebar";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
+import React from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from '../Buttons/components/Titlebar';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../components/ui/select";
-import { Line } from "react-chartjs-2";
+} from '../../components/ui/select';
+import { Line } from 'react-chartjs-2';
+import { ChartErrorBoundary } from '../../components/ChartErrorBoundary';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,8 +23,8 @@ import {
   Tooltip,
   Legend,
   Filler,
-} from "chart.js";
-import { Download, Calendar, RefreshCw } from "lucide-react";
+} from 'chart.js';
+import { Download, Calendar, RefreshCw } from 'lucide-react';
 
 // Register Chart.js components
 ChartJS.register(
@@ -38,17 +39,17 @@ ChartJS.register(
 );
 
 export const LineCharts = (): JSX.Element => {
-  const [dateRange, setDateRange] = React.useState("last30days");
+  const [dateRange, setDateRange] = React.useState('last30days');
 
   // Basic line chart data
   const basicLineData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: "Sales 2025",
+        label: 'Sales 2025',
         data: [65, 59, 80, 81, 56, 55, 40, 74, 82, 90, 95, 100],
-        borderColor: "rgb(0, 161, 255)",
-        backgroundColor: "transparent",
+        borderColor: 'rgb(0, 161, 255)',
+        backgroundColor: 'transparent',
         tension: 0.4,
       },
     ],
@@ -56,20 +57,20 @@ export const LineCharts = (): JSX.Element => {
 
   // Multi-line chart data
   const multiLineData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: "Sales 2025",
+        label: 'Sales 2025',
         data: [65, 59, 80, 81, 56, 55, 40, 74, 82, 90, 95, 100],
-        borderColor: "rgb(0, 161, 255)",
-        backgroundColor: "transparent",
+        borderColor: 'rgb(0, 161, 255)',
+        backgroundColor: 'transparent',
         tension: 0.4,
       },
       {
-        label: "Sales 2024",
+        label: 'Sales 2024',
         data: [40, 45, 60, 70, 45, 50, 35, 60, 70, 80, 85, 90],
-        borderColor: "rgb(137, 101, 229)",
-        backgroundColor: "transparent",
+        borderColor: 'rgb(137, 101, 229)',
+        backgroundColor: 'transparent',
         tension: 0.4,
       },
     ],
@@ -77,13 +78,13 @@ export const LineCharts = (): JSX.Element => {
 
   // Area chart data
   const areaChartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: "Revenue",
+        label: 'Revenue',
         data: [65, 59, 80, 81, 56, 55, 40, 74, 82, 90, 95, 100],
-        borderColor: "rgb(0, 161, 255)",
-        backgroundColor: "rgba(0, 161, 255, 0.1)",
+        borderColor: 'rgb(0, 161, 255)',
+        backgroundColor: 'rgba(0, 161, 255, 0.1)',
         fill: true,
         tension: 0.4,
       },
@@ -92,17 +93,17 @@ export const LineCharts = (): JSX.Element => {
 
   // Gradient area chart data
   const gradientAreaChartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: "Profit",
+        label: 'Profit',
         data: [30, 40, 35, 50, 49, 60, 70, 91, 80, 90, 95, 102],
-        borderColor: "rgb(0, 206, 182)",
-        backgroundColor: (context) => {
+        borderColor: 'rgb(0, 206, 182)',
+        backgroundColor: context => {
           const ctx = context.chart.ctx;
           const gradient = ctx.createLinearGradient(0, 0, 0, 250);
-          gradient.addColorStop(0, "rgba(0, 206, 182, 0.4)");
-          gradient.addColorStop(1, "rgba(0, 206, 182, 0)");
+          gradient.addColorStop(0, 'rgba(0, 206, 182, 0.4)');
+          gradient.addColorStop(1, 'rgba(0, 206, 182, 0)');
           return gradient;
         },
         fill: true,
@@ -117,7 +118,7 @@ export const LineCharts = (): JSX.Element => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "top" as const,
+        position: 'top' as const,
       },
       title: {
         display: false,
@@ -127,7 +128,7 @@ export const LineCharts = (): JSX.Element => {
       y: {
         beginAtZero: true,
         grid: {
-          color: "rgba(0, 0, 0, 0.05)",
+          color: 'rgba(0, 0, 0, 0.05)',
         },
       },
       x: {
@@ -179,7 +180,9 @@ export const LineCharts = (): JSX.Element => {
                 </div>
 
                 <div className="h-[300px] mt-4">
-                  <Line data={basicLineData} options={chartOptions} />
+                  <ChartErrorBoundary>
+                    <Line data={basicLineData} options={chartOptions} />
+                  </ChartErrorBoundary>
                 </div>
               </CardContent>
             </Card>
@@ -194,11 +197,15 @@ export const LineCharts = (): JSX.Element => {
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <h3 className="text-lg font-medium">Sales Comparison</h3>
-                    <p className="text-sm text-blackblack-60">Comparing sales data year over year</p>
+                    <p className="text-sm text-blackblack-60">
+                      Comparing sales data year over year
+                    </p>
                   </div>
 
                   <div className="h-[250px] mt-4">
-                    <Line data={multiLineData} options={chartOptions} />
+                    <ChartErrorBoundary>
+                      <Line data={multiLineData} options={chartOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -216,7 +223,9 @@ export const LineCharts = (): JSX.Element => {
                   </div>
 
                   <div className="h-[250px] mt-4">
-                    <Line data={areaChartData} options={chartOptions} />
+                    <ChartErrorBoundary>
+                      <Line data={areaChartData} options={chartOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -246,7 +255,9 @@ export const LineCharts = (): JSX.Element => {
                 </div>
 
                 <div className="h-[300px] mt-4">
-                  <Line data={gradientAreaChartData} options={chartOptions} />
+                  <ChartErrorBoundary>
+                    <Line data={gradientAreaChartData} options={chartOptions} />
+                  </ChartErrorBoundary>
                 </div>
               </CardContent>
             </Card>
@@ -262,7 +273,7 @@ export const LineCharts = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Basic Chart Implementation</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// First, import the necessary components
+                      {`// First, import the necessary components
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -331,7 +342,7 @@ const chartOptions = {
                   <h3 className="text-lg font-medium mt-6">Area Chart Implementation</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// Area chart data
+                      {`// Area chart data
 const areaChartData = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   datasets: [

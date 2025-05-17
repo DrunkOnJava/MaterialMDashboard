@@ -1,10 +1,10 @@
-import * as React from "react";
-import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
-import { cn } from "../../lib/utils";
-import { Button } from "./button";
-import { Calendar } from "./calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import * as React from 'react';
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon } from 'lucide-react';
+import { cn } from '../../lib/utils';
+import { Button } from './button';
+import { Calendar } from './calendar';
+import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 export interface DatePickerProps {
   date: Date | undefined;
@@ -18,10 +18,10 @@ export interface DatePickerProps {
 export function DatePicker({
   date,
   setDate,
-  placeholder = "Select date",
+  placeholder = 'Select date',
   className,
   disabled = false,
-  displayFormat = "PPP",
+  displayFormat = 'PPP',
 }: DatePickerProps) {
   return (
     <Popover>
@@ -29,8 +29,8 @@ export function DatePicker({
         <Button
           variant="outline"
           className={cn(
-            "w-full justify-start text-left font-normal",
-            !date && "text-blackblack-60",
+            'w-full justify-start text-left font-normal',
+            !date && 'text-blackblack-60',
             className
           )}
           disabled={disabled}
@@ -40,12 +40,7 @@ export function DatePicker({
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          initialFocus
-        />
+        <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
       </PopoverContent>
     </Popover>
   );
@@ -63,13 +58,13 @@ export interface DateRangePickerProps {
 export function DateRangePicker({
   dateRange,
   setDateRange,
-  placeholder = "Select date range",
+  placeholder = 'Select date range',
   className,
   disabled = false,
-  displayFormat = "MMM d, yyyy",
+  displayFormat = 'MMM d, yyyy',
 }: DateRangePickerProps) {
   const { from, to } = dateRange;
-  
+
   const handleSelect = (selectedDate: Date | undefined) => {
     if (!selectedDate) return;
 
@@ -98,8 +93,8 @@ export function DateRangePicker({
         <Button
           variant="outline"
           className={cn(
-            "w-full justify-start text-left font-normal",
-            !from && !to && "text-blackblack-60",
+            'w-full justify-start text-left font-normal',
+            !from && !to && 'text-blackblack-60',
             className
           )}
           disabled={disabled}
@@ -112,7 +107,7 @@ export function DateRangePicker({
         <Calendar
           mode="range"
           selected={{ from, to }}
-          onSelect={(selected) => {
+          onSelect={selected => {
             if (!selected?.from || !selected?.to) {
               // Handle partial selection
               if (selected?.from) {

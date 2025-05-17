@@ -1,13 +1,13 @@
-import { HomeIcon } from "lucide-react";
-import React from "react";
-import { Badge } from "../../../components/ui/badge";
+import { HomeIcon } from 'lucide-react';
+import React from 'react';
+import { Badge } from '../../../components/ui/badge';
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbSeparator,
-} from "../../../components/ui/breadcrumb";
-import { Card, CardContent } from "../../../components/ui/card";
+} from '../../../components/ui/breadcrumb';
+import { Card, CardContent } from '../../../components/ui/card';
 
 interface TitlebarProps {
   title: string;

@@ -1,10 +1,10 @@
-import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "./components/Titlebar";
-import { Button } from "../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { RefreshCw, Copy, Trash2, Edit2 } from "lucide-react";
+import React from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from './components/Titlebar';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { RefreshCw, Copy, Trash2, Edit2 } from 'lucide-react';
 
 export const GhostButtons = (): JSX.Element => {
   return (
@@ -27,9 +27,15 @@ export const GhostButtons = (): JSX.Element => {
                     <h3 className="text-lg font-medium">Basic Variants</h3>
                     <div className="flex flex-wrap gap-4">
                       <Button variant="ghost">Default</Button>
-                      <Button variant="ghost" disabled>Disabled</Button>
-                      <Button variant="ghost" size="sm">Small</Button>
-                      <Button variant="ghost" size="lg">Large</Button>
+                      <Button variant="ghost" disabled>
+                        Disabled
+                      </Button>
+                      <Button variant="ghost" size="sm">
+                        Small
+                      </Button>
+                      <Button variant="ghost" size="lg">
+                        Large
+                      </Button>
                     </div>
                   </div>
                   <div className="space-y-4">
@@ -47,7 +53,7 @@ export const GhostButtons = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 space-y-4">
                   <h3 className="text-lg font-medium">Usage Example</h3>
                   <div className="p-6 border border-[#111c2d1a] rounded-lg bg-surfaceslightgray-10">
@@ -71,7 +77,7 @@ export const GhostButtons = (): JSX.Element => {
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="rounded-xl shadow-light-theme-shadow-medium">
               <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
                 <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
@@ -83,7 +89,7 @@ export const GhostButtons = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Code Example</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// Basic button
+                      {`// Basic button
 <Button variant="ghost">Default</Button>
 
 // With icon

@@ -1,27 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "../../../../components/ui/card";
-import { Button } from "../../../../components/ui/button";
-import { Input } from "../../../../components/ui/input";
-import { Textarea } from "../../../../components/ui/textarea";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../../components/ui/tabs";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../../components/ui/select";
-import { Label } from "../../../../components/ui/label";
-import { Switch } from "../../../../components/ui/switch";
-import { Separator } from "../../../../components/ui/separator";
-import { useBlueMountainWicks } from "../../context/BlueMountainWicksContext";
-import { 
-  Save, 
-  ArrowLeft, 
-  Trash2, 
-  ImagePlus, 
-  Tag, 
-  PackageCheck, 
+import React, { useState, useEffect } from 'react';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from '../../../../components/ui/card';
+import { Button } from '../../../../components/ui/button';
+import { Input } from '../../../../components/ui/input';
+import { Textarea } from '../../../../components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../../components/ui/tabs';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../../../../components/ui/select';
+import { Label } from '../../../../components/ui/label';
+import { Switch } from '../../../../components/ui/switch';
+import { Separator } from '../../../../components/ui/separator';
+import { useBlueMountainWicks } from '../../context/BlueMountainWicksContext';
+import {
+  Save,
+  ArrowLeft,
+  Trash2,
+  ImagePlus,
+  Tag,
+  PackageCheck,
   PlusCircle,
   AlertCircle,
-  Loader2
-} from "lucide-react";
+  Loader2,
+} from 'lucide-react';
 
-import { Product, CandleCategory, ScentFamily, CandleSize, WaxType, BurnTime, ProductStatus } from "../../models/types";
+import {
+  Product,
+  CandleCategory,
+  ScentFamily,
+  CandleSize,
+  WaxType,
+  BurnTime,
+  ProductStatus,
+} from '../../models/types';
 
 interface ProductDetailProps {
   product: Product | null;
@@ -36,52 +56,52 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
   isNew,
   onSave,
   onCancel,
-  onDelete
+  onDelete,
 }) => {
   const { addProduct, updateProduct, deleteProduct } = useBlueMountainWicks();
   const [formData, setFormData] = useState<Partial<Product>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [activeTab, setActiveTab] = useState("basic");
+  const [activeTab, setActiveTab] = useState('basic');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
   // Default empty product for new products
   const emptyProduct: Partial<Product> = {
-    name: "",
-    sku: "",
+    name: '',
+    sku: '',
     price: 0,
-    description: "",
-    shortDescription: "",
+    description: '',
+    shortDescription: '',
     category: CandleCategory.SIGNATURE,
     scentFamily: [ScentFamily.FRESH],
     size: CandleSize.MEDIUM,
-    weight: "",
+    weight: '',
     waxType: WaxType.SOY,
     burnTime: BurnTime.MEDIUM,
     images: [],
-    featuredImage: "",
-    ingredients: "",
+    featuredImage: '',
+    ingredients: '',
     isFeatured: false,
     isNew: true,
     stockQuantity: 0,
     reorderThreshold: 5,
     status: ProductStatus.DRAFT,
-    tags: []
+    tags: [],
   };
 
   // Initialize form data when product changes
   useEffect(() => {
     setFormData(product || emptyProduct);
-  }, [product]);
+  }, [product, emptyProduct]);
 
   // Handle input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    
+    setFormData(prev => ({ ...prev, [name]: value }));
+
     // Clear error when field is edited
     if (errors[name]) {
-      setErrors((prev) => {
+      setErrors(prev => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -91,11 +111,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
   // Handle select changes
   const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    
+    setFormData(prev => ({ ...prev, [name]: value }));
+
     // Clear error when field is edited
     if (errors[name]) {
-      setErrors((prev) => {
+      setErrors(prev => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -105,23 +125,23 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
   // Handle switch changes
   const handleSwitchChange = (name: string, checked: boolean) => {
-    setFormData((prev) => ({ ...prev, [name]: checked }));
+    setFormData(prev => ({ ...prev, [name]: checked }));
   };
 
   // Validate form
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
-    
+
     // Required fields
-    if (!formData.name) newErrors.name = "Product name is required";
-    if (!formData.sku) newErrors.sku = "SKU is required";
+    if (!formData.name) newErrors.name = 'Product name is required';
+    if (!formData.sku) newErrors.sku = 'SKU is required';
     if (formData.price === undefined || formData.price < 0) {
-      newErrors.price = "Price must be a positive number";
+      newErrors.price = 'Price must be a positive number';
     }
     if (!formData.shortDescription) {
-      newErrors.shortDescription = "Short description is required";
+      newErrors.shortDescription = 'Short description is required';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -131,15 +151,19 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
     if (!validateForm()) {
       // If there are errors, switch to the tab containing the first error
       const errorFields = Object.keys(errors);
-      if (errorFields.includes('name') || errorFields.includes('sku') || 
-          errorFields.includes('price') || errorFields.includes('shortDescription')) {
+      if (
+        errorFields.includes('name') ||
+        errorFields.includes('sku') ||
+        errorFields.includes('price') ||
+        errorFields.includes('shortDescription')
+      ) {
         setActiveTab('basic');
       }
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     try {
       if (isNew) {
         // Add new product
@@ -148,7 +172,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
         // Update existing product
         await updateProduct({ ...product, ...formData });
       }
-      
+
       // Call parent's onSave callback
       onSave(product?.id || '', formData);
     } catch (error) {
@@ -161,7 +185,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
   // Handle product deletion
   const handleDelete = async () => {
     if (!product) return;
-    
+
     setIsSubmitting(true);
     try {
       await deleteProduct(product.id);
@@ -185,23 +209,23 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
               <ArrowLeft className="h-5 w-5" />
             </Button>
             <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
-              {isNew ? "Add New Product" : `Edit Product: ${currentProduct.name}`}
+              {isNew ? 'Add New Product' : `Edit Product: ${currentProduct.name}`}
             </CardTitle>
           </div>
           <div className="flex gap-2">
             {!isNew && (
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="text-actionwarning border-actionwarning hover:bg-actionwarning/10"
-                onClick={() => onDelete(product?.id || "")}
+                onClick={() => onDelete(product?.id || '')}
               >
                 <Trash2 className="h-4 w-4 mr-1" />
                 Delete
               </Button>
             )}
-            <Button onClick={() => onSave(product?.id || "", currentProduct)}>
+            <Button onClick={() => onSave(product?.id || '', currentProduct)}>
               <Save className="h-4 w-4 mr-1" />
-              {isNew ? "Create Product" : "Save Changes"}
+              {isNew ? 'Create Product' : 'Save Changes'}
             </Button>
           </div>
         </div>
@@ -211,7 +235,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
           <TabsList className="mb-6">
             <TabsTrigger value="basic" className="px-4">
               Basic Info
-              {Object.keys(errors).some(k => ['name', 'sku', 'price', 'shortDescription', 'category', 'status'].includes(k)) && (
+              {Object.keys(errors).some(k =>
+                ['name', 'sku', 'price', 'shortDescription', 'category', 'status'].includes(k)
+              ) && (
                 <span className="ml-2 text-actionwarning-light">
                   <AlertCircle className="h-4 w-4 inline-block" />
                 </span>
@@ -219,13 +245,17 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
             </TabsTrigger>
             <TabsTrigger value="details" className="px-4">
               Product Details
-              {Object.keys(errors).some(k => ['scentFamily', 'size', 'weight', 'waxType', 'burnTime'].includes(k)) && (
+              {Object.keys(errors).some(k =>
+                ['scentFamily', 'size', 'weight', 'waxType', 'burnTime'].includes(k)
+              ) && (
                 <span className="ml-2 text-actionwarning-light">
                   <AlertCircle className="h-4 w-4 inline-block" />
                 </span>
               )}
             </TabsTrigger>
-            <TabsTrigger value="images" className="px-4">Images</TabsTrigger>
+            <TabsTrigger value="images" className="px-4">
+              Images
+            </TabsTrigger>
             <TabsTrigger value="inventory" className="px-4">
               Inventory
               {Object.keys(errors).some(k => ['stockQuantity', 'reorderThreshold'].includes(k)) && (
@@ -234,62 +264,59 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                 </span>
               )}
             </TabsTrigger>
-            <TabsTrigger value="seo" className="px-4">SEO</TabsTrigger>
+            <TabsTrigger value="seo" className="px-4">
+              SEO
+            </TabsTrigger>
           </TabsList>
-          
+
           {/* Basic Info Tab */}
           <TabsContent value="basic">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="name" className={errors.name ? "text-actionwarning" : ""}>
-                    Product Name {errors.name && <span className="text-sm text-actionwarning">*</span>}
+                  <Label htmlFor="name" className={errors.name ? 'text-actionwarning' : ''}>
+                    Product Name{' '}
+                    {errors.name && <span className="text-sm text-actionwarning">*</span>}
                   </Label>
-                  <Input 
-                    id="name" 
+                  <Input
+                    id="name"
                     name="name"
-                    value={currentProduct.name || ""}
+                    value={currentProduct.name || ''}
                     onChange={handleInputChange}
-                    className={errors.name ? "border-actionwarning" : ""}
+                    className={errors.name ? 'border-actionwarning' : ''}
                   />
-                  {errors.name && (
-                    <p className="text-sm text-actionwarning mt-1">{errors.name}</p>
-                  )}
+                  {errors.name && <p className="text-sm text-actionwarning mt-1">{errors.name}</p>}
                 </div>
-                
+
                 <div>
-                  <Label htmlFor="sku" className={errors.sku ? "text-actionwarning" : ""}>
+                  <Label htmlFor="sku" className={errors.sku ? 'text-actionwarning' : ''}>
                     SKU {errors.sku && <span className="text-sm text-actionwarning">*</span>}
                   </Label>
-                  <Input 
-                    id="sku" 
+                  <Input
+                    id="sku"
                     name="sku"
-                    value={currentProduct.sku || ""}
+                    value={currentProduct.sku || ''}
                     onChange={handleInputChange}
-                    className={errors.sku ? "border-actionwarning" : ""} 
+                    className={errors.sku ? 'border-actionwarning' : ''}
                   />
-                  {errors.sku && (
-                    <p className="text-sm text-actionwarning mt-1">{errors.sku}</p>
-                  )}
+                  {errors.sku && <p className="text-sm text-actionwarning mt-1">{errors.sku}</p>}
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label 
-                      htmlFor="price"
-                      className={errors.price ? "text-actionwarning" : ""}
-                    >
-                      Regular Price {errors.price && <span className="text-sm text-actionwarning">*</span>}
+                    <Label htmlFor="price" className={errors.price ? 'text-actionwarning' : ''}>
+                      Regular Price{' '}
+                      {errors.price && <span className="text-sm text-actionwarning">*</span>}
                     </Label>
-                    <Input 
-                      id="price" 
+                    <Input
+                      id="price"
                       name="price"
-                      type="number" 
+                      type="number"
                       value={currentProduct.price || 0}
                       onChange={handleInputChange}
-                      min={0} 
+                      min={0}
                       step={0.01}
-                      className={errors.price ? "border-actionwarning" : ""}
+                      className={errors.price ? 'border-actionwarning' : ''}
                     />
                     {errors.price && (
                       <p className="text-sm text-actionwarning mt-1">{errors.price}</p>
@@ -297,23 +324,23 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                   </div>
                   <div>
                     <Label htmlFor="salePrice">Sale Price (Optional)</Label>
-                    <Input 
-                      id="salePrice" 
+                    <Input
+                      id="salePrice"
                       name="salePrice"
-                      type="number" 
-                      value={currentProduct.salePrice || ""}
+                      type="number"
+                      value={currentProduct.salePrice || ''}
                       onChange={handleInputChange}
-                      min={0} 
-                      step={0.01} 
+                      min={0}
+                      step={0.01}
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="category">Category</Label>
-                  <Select 
-                    value={currentProduct.category as string || CandleCategory.SIGNATURE}
-                    onValueChange={(value) => handleSelectChange("category", value)}
+                  <Select
+                    value={(currentProduct.category as string) || CandleCategory.SIGNATURE}
+                    onValueChange={value => handleSelectChange('category', value)}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select category" />
@@ -327,12 +354,12 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="status">Product Status</Label>
-                  <Select 
-                    value={currentProduct.status as string || ProductStatus.DRAFT}
-                    onValueChange={(value) => handleSelectChange("status", value)}
+                  <Select
+                    value={(currentProduct.status as string) || ProductStatus.DRAFT}
+                    onValueChange={value => handleSelectChange('status', value)}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select status" />
@@ -345,71 +372,77 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div className="flex gap-4 items-start pt-2">
                   <div className="flex items-center space-x-2">
-                    <Switch 
-                      id="isFeatured" 
+                    <Switch
+                      id="isFeatured"
                       checked={currentProduct.isFeatured || false}
-                      onCheckedChange={(checked) => handleSwitchChange("isFeatured", checked)}
+                      onCheckedChange={checked => handleSwitchChange('isFeatured', checked)}
                     />
                     <Label htmlFor="isFeatured">Featured Product</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Switch 
-                      id="isNew" 
+                    <Switch
+                      id="isNew"
                       checked={currentProduct.isNew || false}
-                      onCheckedChange={(checked) => handleSwitchChange("isNew", checked)}
+                      onCheckedChange={checked => handleSwitchChange('isNew', checked)}
                     />
                     <Label htmlFor="isNew">Mark as New</Label>
                   </div>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <div>
-                  <Label 
+                  <Label
                     htmlFor="shortDescription"
-                    className={errors.shortDescription ? "text-actionwarning" : ""}
+                    className={errors.shortDescription ? 'text-actionwarning' : ''}
                   >
-                    Short Description {errors.shortDescription && <span className="text-sm text-actionwarning">*</span>}
+                    Short Description{' '}
+                    {errors.shortDescription && (
+                      <span className="text-sm text-actionwarning">*</span>
+                    )}
                   </Label>
-                  <Textarea 
+                  <Textarea
                     id="shortDescription"
                     name="shortDescription"
                     rows={2}
-                    value={currentProduct.shortDescription || ""} 
+                    value={currentProduct.shortDescription || ''}
                     onChange={handleInputChange}
                     placeholder="Brief description that appears in product cards"
-                    className={errors.shortDescription ? "border-actionwarning" : ""}
+                    className={errors.shortDescription ? 'border-actionwarning' : ''}
                   />
                   {errors.shortDescription && (
                     <p className="text-sm text-actionwarning mt-1">{errors.shortDescription}</p>
                   )}
                 </div>
-                
+
                 <div>
                   <Label htmlFor="description">Full Description</Label>
-                  <Textarea 
+                  <Textarea
                     id="description"
                     name="description"
                     rows={8}
-                    value={currentProduct.description || ""} 
+                    value={currentProduct.description || ''}
                     onChange={handleInputChange}
                     placeholder="Detailed product description"
                   />
                 </div>
-                
+
                 <div>
                   <Label htmlFor="tags">Tags (comma separated)</Label>
-                  <Input 
+                  <Input
                     id="tags"
                     name="tags"
-                    value={Array.isArray(currentProduct.tags) ? currentProduct.tags.join(", ") : ""}
-                    onChange={(e) => {
+                    value={Array.isArray(currentProduct.tags) ? currentProduct.tags.join(', ') : ''}
+                    onChange={e => {
                       // Split tags by comma and trim whitespace
-                      const tags = e.target.value.split(",").map(tag => tag.trim()).filter(Boolean);
-                      setFormData((prev) => ({ ...prev, tags }));
+                      const tags = e.target.value
+                        .split(',')
+                        .map(tag => tag.trim())
+                        .filter(Boolean);
+                      setFormData(prev => ({ ...prev, tags }));
                     }}
                     placeholder="e.g. summer, floral, gift"
                   />
@@ -417,7 +450,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
               </div>
             </div>
           </TabsContent>
-          
+
           {/* Product Details Tab */}
           <TabsContent value="details">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -439,7 +472,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="size">Candle Size</Label>
                   <Select defaultValue={currentProduct.size}>
@@ -455,12 +488,12 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="weight">Weight</Label>
                   <Input id="weight" defaultValue={currentProduct.weight} placeholder="e.g. 8 oz" />
                 </div>
-                
+
                 <div>
                   <Label htmlFor="wax-type">Wax Type</Label>
                   <Select defaultValue={currentProduct.waxType}>
@@ -476,7 +509,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div>
                   <Label htmlFor="burn-time">Burn Time</Label>
                   <Select defaultValue={currentProduct.burnTime}>
@@ -492,18 +525,18 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                   </Select>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="ingredients">Ingredients</Label>
-                  <Textarea 
-                    id="ingredients" 
+                  <Textarea
+                    id="ingredients"
                     rows={8}
-                    defaultValue={currentProduct.ingredients} 
+                    defaultValue={currentProduct.ingredients}
                     placeholder="List of ingredients used in the product"
                   />
                 </div>
-                
+
                 <div>
                   <Label>Related Products</Label>
                   <div className="mt-2 border rounded-md p-4 bg-surfaceslightgray-10">
@@ -517,7 +550,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
               </div>
             </div>
           </TabsContent>
-          
+
           {/* Images Tab */}
           <TabsContent value="images">
             <div className="space-y-6">
@@ -526,29 +559,27 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                 <div className="border-2 border-dashed rounded-md p-6 flex flex-col items-center justify-center bg-surfaceslightgray-10">
                   {currentProduct.featuredImage ? (
                     <div className="relative w-full max-w-md">
-                      <img 
-                        src={currentProduct.featuredImage} 
-                        alt="Featured" 
+                      <img
+                        src={currentProduct.featuredImage}
+                        alt="Featured"
                         className="w-full h-auto rounded-md"
                       />
-                      <Button 
-                        variant="destructive" 
-                        size="sm" 
-                        className="absolute top-2 right-2"
-                      >
+                      <Button variant="destructive" size="sm" className="absolute top-2 right-2">
                         Remove
                       </Button>
                     </div>
                   ) : (
                     <>
                       <ImagePlus className="h-12 w-12 text-blackblack-40 mb-2" />
-                      <p className="text-blackblack-60 mb-2">Drag and drop image here, or click to browse</p>
+                      <p className="text-blackblack-60 mb-2">
+                        Drag and drop image here, or click to browse
+                      </p>
                       <Button variant="outline">Upload Image</Button>
                     </>
                   )}
                 </div>
               </div>
-              
+
               <div>
                 <Label className="block mb-2">Additional Images</Label>
                 <div className="border-2 border-dashed rounded-md p-6 flex flex-col items-center justify-center bg-surfaceslightgray-10">
@@ -556,14 +587,14 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                     <div className="grid grid-cols-3 gap-4 w-full">
                       {currentProduct.images.map((image, index) => (
                         <div key={index} className="relative">
-                          <img 
-                            src={image} 
-                            alt={`Product ${index + 1}`} 
+                          <img
+                            src={image}
+                            alt={`Product ${index + 1}`}
                             className="w-full h-auto rounded-md"
                           />
-                          <Button 
-                            variant="destructive" 
-                            size="sm" 
+                          <Button
+                            variant="destructive"
+                            size="sm"
                             className="absolute top-2 right-2"
                           >
                             Remove
@@ -574,7 +605,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                   ) : (
                     <>
                       <ImagePlus className="h-12 w-12 text-blackblack-40 mb-2" />
-                      <p className="text-blackblack-60 mb-2">Drag and drop images here, or click to browse</p>
+                      <p className="text-blackblack-60 mb-2">
+                        Drag and drop images here, or click to browse
+                      </p>
                       <Button variant="outline">Upload Images</Button>
                     </>
                   )}
@@ -582,34 +615,34 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
               </div>
             </div>
           </TabsContent>
-          
+
           {/* Inventory Tab */}
           <TabsContent value="inventory">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="stockQuantity">Current Stock</Label>
-                  <Input 
-                    id="stockQuantity" 
-                    type="number" 
-                    defaultValue={currentProduct.stockQuantity} 
+                  <Input
+                    id="stockQuantity"
+                    type="number"
+                    defaultValue={currentProduct.stockQuantity}
                     min={0}
                   />
                 </div>
-                
+
                 <div>
                   <Label htmlFor="reorderThreshold">Low Stock Threshold</Label>
-                  <Input 
-                    id="reorderThreshold" 
-                    type="number" 
-                    defaultValue={currentProduct.reorderThreshold} 
+                  <Input
+                    id="reorderThreshold"
+                    type="number"
+                    defaultValue={currentProduct.reorderThreshold}
                     min={0}
                   />
                   <p className="text-xs text-blackblack-60 mt-1">
                     When stock reaches this level, the product will be flagged for reordering
                   </p>
                 </div>
-                
+
                 <div className="pt-4">
                   <Label className="block mb-2">Stock Management</Label>
                   <div className="flex flex-col gap-2">
@@ -624,7 +657,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                   </div>
                 </div>
               </div>
-              
+
               <Card className="rounded-lg shadow-sm">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-base">Inventory Status</CardTitle>
@@ -646,9 +679,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                       <span className="font-medium">In Stock</span>
                     </div>
                   )}
-                  
+
                   <Separator className="my-4" />
-                  
+
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span className="text-blackblack-60">Total Sales:</span>
@@ -667,40 +700,40 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
               </Card>
             </div>
           </TabsContent>
-          
+
           {/* SEO Tab */}
           <TabsContent value="seo">
             <div className="space-y-4">
               <div>
                 <Label htmlFor="seoTitle">SEO Title</Label>
-                <Input 
-                  id="seoTitle" 
-                  defaultValue={currentProduct.seoTitle} 
+                <Input
+                  id="seoTitle"
+                  defaultValue={currentProduct.seoTitle}
                   placeholder="Title that appears in search engine results"
                 />
                 <p className="text-xs text-blackblack-60 mt-1">
                   Recommended length: 50-60 characters
                 </p>
               </div>
-              
+
               <div>
                 <Label htmlFor="seoDescription">Meta Description</Label>
-                <Textarea 
-                  id="seoDescription" 
+                <Textarea
+                  id="seoDescription"
                   rows={3}
-                  defaultValue={currentProduct.seoDescription} 
+                  defaultValue={currentProduct.seoDescription}
                   placeholder="Description that appears in search engine results"
                 />
                 <p className="text-xs text-blackblack-60 mt-1">
                   Recommended length: 150-160 characters
                 </p>
               </div>
-              
+
               <div>
                 <Label htmlFor="seoKeywords">Keywords (comma separated)</Label>
-                <Input 
-                  id="seoKeywords" 
-                  defaultValue={currentProduct.seoKeywords?.join(", ")} 
+                <Input
+                  id="seoKeywords"
+                  defaultValue={currentProduct.seoKeywords?.join(', ')}
                   placeholder="e.g. candle, soy wax, handmade, blue mountain wicks"
                 />
               </div>
@@ -709,20 +742,19 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
         </Tabs>
       </CardContent>
       <CardFooter className="border-t border-[#111c2d1a] px-6 py-4 flex justify-between">
-        <Button variant="outline" onClick={onCancel} disabled={isSubmitting}>Cancel</Button>
-        <Button 
-          onClick={handleSubmit} 
-          disabled={isSubmitting}
-        >
+        <Button variant="outline" onClick={onCancel} disabled={isSubmitting}>
+          Cancel
+        </Button>
+        <Button onClick={handleSubmit} disabled={isSubmitting}>
           {isSubmitting ? (
             <>
               <Loader2 className="h-4 w-4 mr-1 animate-spin" />
-              {isNew ? "Creating..." : "Saving..."}
+              {isNew ? 'Creating...' : 'Saving...'}
             </>
           ) : (
             <>
               <Save className="h-4 w-4 mr-1" />
-              {isNew ? "Create Product" : "Save Changes"}
+              {isNew ? 'Create Product' : 'Save Changes'}
             </>
           )}
         </Button>

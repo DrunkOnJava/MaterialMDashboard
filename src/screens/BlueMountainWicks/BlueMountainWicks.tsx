@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
-import { Button } from "../../components/ui/button";
-import { useToast } from "../../hooks/use-toast";
-import { WebsitePreview } from "./components/WebsitePreview";
-import { BlueMountainWicksProvider } from "./context/BlueMountainWicksContext";
+import React, { useState } from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+import { Button } from '../../components/ui/button';
+import { useToast } from '../../hooks/use-toast';
+import { WebsitePreview } from './components/WebsitePreview';
+import { BlueMountainWicksProvider } from './context/BlueMountainWicksContext';
 import {
   BarChart,
   Package,
@@ -17,29 +17,24 @@ import {
   Users,
   Truck,
   ExternalLink,
-  Globe
-} from "lucide-react";
+  Globe,
+} from 'lucide-react';
 
 // Import mock data
-import { 
-  mockProducts, 
-  mockOrders, 
-  mockCustomers, 
-  mockSalesSummary 
-} from "./data/mockData";
+import { mockProducts, mockOrders, mockCustomers, mockSalesSummary } from './data/mockData';
 
 // Import Dashboard component directly since we've implemented it
-import Dashboard from "./sections/Dashboard/Dashboard";
+import Dashboard from './sections/Dashboard/Dashboard';
 
 // Lazy-load other components that will be implemented later
-const ProductList = React.lazy(() => import("./sections/Products/ProductList"));
-const OrderList = React.lazy(() => import("./sections/Orders/OrderList"));
-const ProductDetail = React.lazy(() => import("./sections/Products/ProductDetail"));
-const CheckoutManagement = React.lazy(() => import("./sections/Checkout/CheckoutManagement"));
+const ProductList = React.lazy(() => import('./sections/Products/ProductList'));
+const OrderList = React.lazy(() => import('./sections/Orders/OrderList'));
+const ProductDetail = React.lazy(() => import('./sections/Products/ProductDetail'));
+const CheckoutManagement = React.lazy(() => import('./sections/Checkout/CheckoutManagement'));
 
 export const BlueMountainWicksContent = (): JSX.Element => {
   // State hooks
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState('dashboard');
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const [isAddingProduct, setIsAddingProduct] = useState(false);
   const { toast } = useToast();
@@ -55,39 +50,39 @@ export const BlueMountainWicksContent = (): JSX.Element => {
   const handleViewProduct = (productId: string) => {
     setSelectedProductId(productId);
     setIsAddingProduct(false);
-    setActiveTab("product-detail");
+    setActiveTab('product-detail');
   };
 
   // Function to add a new product
   const handleAddProduct = () => {
     setIsAddingProduct(true);
     setSelectedProductId(null);
-    setActiveTab("product-detail");
+    setActiveTab('product-detail');
   };
 
   // Function to handle product updates
   const handleProductUpdate = (productId: string, data: any) => {
     // In a real app, this would update the backend
     toast({
-      title: "Product updated",
+      title: 'Product updated',
       description: `Product ${data.name} has been updated successfully.`,
     });
-    setActiveTab("products");
+    setActiveTab('products');
   };
 
   // Function to handle product deletion
   const handleProductDelete = (productId: string) => {
     // In a real app, this would delete from the backend
     toast({
-      title: "Product deleted",
-      description: "Product has been deleted successfully.",
+      title: 'Product deleted',
+      description: 'Product has been deleted successfully.',
     });
-    setActiveTab("products");
+    setActiveTab('products');
   };
 
   // Get current product for the detail view
-  const currentProduct = selectedProductId 
-    ? mockProducts.find(p => p.id === selectedProductId) 
+  const currentProduct = selectedProductId
+    ? mockProducts.find(p => p.id === selectedProductId)
     : null;
 
   return (
@@ -108,22 +103,16 @@ export const BlueMountainWicksContent = (): JSX.Element => {
               </div>
               <div className="flex gap-2">
                 {/* Website access point #1: Header button */}
-                <WebsitePreview 
+                <WebsitePreview
                   trigger={
-                    <Button 
-                      variant="outline" 
-                      className="flex items-center gap-1"
-                    >
+                    <Button variant="outline" className="flex items-center gap-1">
                       <Globe className="h-4 w-4 mr-1" />
                       View Website
                     </Button>
                   }
                 />
-                {activeTab === "products" && (
-                  <Button 
-                    onClick={handleAddProduct}
-                    className="flex items-center gap-1"
-                  >
+                {activeTab === 'products' && (
+                  <Button onClick={handleAddProduct} className="flex items-center gap-1">
                     <PlusCircle className="h-4 w-4 mr-1" />
                     Add New Product
                   </Button>
@@ -132,7 +121,7 @@ export const BlueMountainWicksContent = (): JSX.Element => {
             </div>
           </div>
 
-          {activeTab !== "product-detail" ? (
+          {activeTab !== 'product-detail' ? (
             <main className="p-6">
               <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
                 <TabsList className="mb-6 bg-white p-1 rounded-lg">
@@ -169,7 +158,7 @@ export const BlueMountainWicksContent = (): JSX.Element => {
                 {/* Dashboard Tab */}
                 <TabsContent value="dashboard">
                   <React.Suspense fallback={<div>Loading dashboard...</div>}>
-                    <Dashboard 
+                    <Dashboard
                       salesSummary={mockSalesSummary}
                       products={mockProducts}
                       orders={mockOrders}
@@ -180,7 +169,7 @@ export const BlueMountainWicksContent = (): JSX.Element => {
                 {/* Products Tab */}
                 <TabsContent value="products">
                   <React.Suspense fallback={<div>Loading products...</div>}>
-                    <ProductList 
+                    <ProductList
                       products={mockProducts}
                       onViewProduct={handleViewProduct}
                       onAddProduct={handleAddProduct}
@@ -192,10 +181,7 @@ export const BlueMountainWicksContent = (): JSX.Element => {
                 {/* Orders Tab */}
                 <TabsContent value="orders">
                   <React.Suspense fallback={<div>Loading orders...</div>}>
-                    <OrderList 
-                      orders={mockOrders}
-                      customers={mockCustomers}
-                    />
+                    <OrderList orders={mockOrders} customers={mockCustomers} />
                   </React.Suspense>
                 </TabsContent>
 
@@ -209,8 +195,9 @@ export const BlueMountainWicksContent = (): JSX.Element => {
                     </CardHeader>
                     <CardContent className="p-6">
                       <p className="text-blackblack-60">
-                        Customer management functionality will be implemented here, allowing you to view and manage customer accounts,
-                        track purchase history, manage loyalty programs, and handle customer support requests.
+                        Customer management functionality will be implemented here, allowing you to
+                        view and manage customer accounts, track purchase history, manage loyalty
+                        programs, and handle customer support requests.
                       </p>
                     </CardContent>
                   </Card>
@@ -226,8 +213,9 @@ export const BlueMountainWicksContent = (): JSX.Element => {
                     </CardHeader>
                     <CardContent className="p-6">
                       <p className="text-blackblack-60">
-                        Inventory management functionality will be implemented here, allowing you to track stock levels,
-                        manage reordering, handle supplier relationships, and generate inventory reports.
+                        Inventory management functionality will be implemented here, allowing you to
+                        track stock levels, manage reordering, handle supplier relationships, and
+                        generate inventory reports.
                       </p>
                     </CardContent>
                   </Card>
@@ -243,8 +231,9 @@ export const BlueMountainWicksContent = (): JSX.Element => {
                     </CardHeader>
                     <CardContent className="p-6">
                       <p className="text-blackblack-60">
-                        Shipping management functionality will be implemented here, allowing you to configure shipping methods,
-                        print shipping labels, track deliveries, and manage returns.
+                        Shipping management functionality will be implemented here, allowing you to
+                        configure shipping methods, print shipping labels, track deliveries, and
+                        manage returns.
                       </p>
                     </CardContent>
                   </Card>
@@ -260,8 +249,9 @@ export const BlueMountainWicksContent = (): JSX.Element => {
                     </CardHeader>
                     <CardContent className="p-6">
                       <p className="text-blackblack-60">
-                        Store settings functionality will be implemented here, allowing you to configure your store details,
-                        manage payment methods, set up taxes, handle user accounts, and customize the storefront.
+                        Store settings functionality will be implemented here, allowing you to
+                        configure your store details, manage payment methods, set up taxes, handle
+                        user accounts, and customize the storefront.
                       </p>
                     </CardContent>
                   </Card>
@@ -271,11 +261,11 @@ export const BlueMountainWicksContent = (): JSX.Element => {
           ) : (
             <main className="p-6">
               <React.Suspense fallback={<div>Loading product details...</div>}>
-                <ProductDetail 
+                <ProductDetail
                   product={currentProduct}
                   isNew={isAddingProduct}
                   onSave={handleProductUpdate}
-                  onCancel={() => setActiveTab("products")}
+                  onCancel={() => setActiveTab('products')}
                   onDelete={handleProductDelete}
                 />
               </React.Suspense>

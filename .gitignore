@@ -45,6 +45,12 @@ dist-ssr/
 .env.*
 !.env.example
 
+# MCP Settings (prevent secrets from being committed)
+**/globalStorage/**/settings/*.json
+**/mcp_settings.json
+**/cline_mcp_settings.json
+Support/Code/User/globalStorage/
+
 # Package manager specific
 .npm
 yarn-error.log
