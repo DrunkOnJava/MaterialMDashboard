@@ -4,11 +4,90 @@
     <meta charset="utf-8" />
     <title>Material Dashboard - React UI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A modern React dashboard application featuring Material Design components, charts, forms, and responsive layouts. Built with TypeScript, Vite, and TailwindCSS." />
+    <meta name="keywords" content="react dashboard, material design, ui components, typescript, vite, tailwindcss, react ui library" />
+    <meta name="author" content="Material Dashboard Team" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://materialdashboard.com/" />
+    <meta property="og:title" content="Material Dashboard - React UI" />
+    <meta property="og:description" content="A modern React dashboard application featuring Material Design components, charts, forms, and responsive layouts." />
+    <meta property="og:image" content="https://materialdashboard.com/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://materialdashboard.com/" />
+    <meta property="twitter:title" content="Material Dashboard - React UI" />
+    <meta property="twitter:description" content="A modern React dashboard application featuring Material Design components, charts, forms, and responsive layouts." />
+    <meta property="twitter:image" content="https://materialdashboard.com/og-image.png" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://materialdashboard.com/" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/logo-icon-svg.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#00A1FF" />
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    
     <style>
       @import url("https://fonts.googleapis.com/css?family=Inter:400");
+      
+      .component-catalog-link {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #00A1FF;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        z-index: 9999;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.2s;
+      }
+      
+      .component-catalog-link:hover {
+        background-color: #0091E5;
+      }
+      
+      .download-components-link {
+        position: fixed;
+        top: 10px;
+        right: 160px;
+        background-color: #8965E5;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        z-index: 9999;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.2s;
+      }
+      
+      .download-components-link:hover {
+        background-color: #673ADE;
+      }
     </style>
   </head>
   <body>
+    <a href="./dist/component-downloads/index.html" class="download-components-link">Download Components ⬇</a>
+    <a href="./public/components.html" class="component-catalog-link">View Component Catalog</a>
     <div id="app"></div>
     <script type="module" src="./src/index.tsx"></script>
   </body>

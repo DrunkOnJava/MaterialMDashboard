@@ -1,10 +1,10 @@
-import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "./components/Titlebar";
-import { Button } from "../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Trash2, X, AlertCircle, Ban, Shield } from "lucide-react";
+import React from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from './components/Titlebar';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Trash2, X, AlertCircle, Ban, Shield } from 'lucide-react';
 
 export const DangerButtons = (): JSX.Element => {
   return (
@@ -29,13 +29,22 @@ export const DangerButtons = (): JSX.Element => {
                       <Button className="bg-actionwarning hover:bg-actionwarning/90 text-white">
                         Delete
                       </Button>
-                      <Button className="bg-actionwarning hover:bg-actionwarning/90 text-white" disabled>
+                      <Button
+                        className="bg-actionwarning hover:bg-actionwarning/90 text-white"
+                        disabled
+                      >
                         Disabled
                       </Button>
-                      <Button className="bg-actionwarning hover:bg-actionwarning/90 text-white" size="sm">
+                      <Button
+                        className="bg-actionwarning hover:bg-actionwarning/90 text-white"
+                        size="sm"
+                      >
                         Small
                       </Button>
-                      <Button className="bg-actionwarning hover:bg-actionwarning/90 text-white" size="lg">
+                      <Button
+                        className="bg-actionwarning hover:bg-actionwarning/90 text-white"
+                        size="lg"
+                      >
                         Large
                       </Button>
                     </div>
@@ -55,7 +64,7 @@ export const DangerButtons = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 space-y-4">
                   <h3 className="text-lg font-medium">Usage Example</h3>
                   <div className="p-6 border border-[#111c2d1a] rounded-lg bg-surfaceslightgray-10">
@@ -64,7 +73,10 @@ export const DangerButtons = (): JSX.Element => {
                         <AlertCircle className="h-5 w-5 text-actionwarning mr-2" />
                         <h4 className="text-xl font-medium">Delete Account</h4>
                       </div>
-                      <p className="text-blackblack-60">Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.</p>
+                      <p className="text-blackblack-60">
+                        Are you sure you want to delete your account? This action cannot be undone
+                        and all your data will be permanently lost.
+                      </p>
                       <div className="flex gap-3 mt-2">
                         <Button variant="outline" className="flex-1">
                           Cancel
@@ -78,7 +90,7 @@ export const DangerButtons = (): JSX.Element => {
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="rounded-xl shadow-light-theme-shadow-medium">
               <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
                 <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
@@ -90,7 +102,7 @@ export const DangerButtons = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Code Example</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// Basic danger button
+                      {`// Basic danger button
 <Button className="bg-actionwarning hover:bg-actionwarning/90 text-white">
   Delete
 </Button>

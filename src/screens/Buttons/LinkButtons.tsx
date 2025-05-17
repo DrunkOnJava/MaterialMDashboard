@@ -1,10 +1,10 @@
-import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "./components/Titlebar";
-import { Button } from "../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { ExternalLink, ChevronRight, ArrowRight, HelpCircle, Info } from "lucide-react";
+import React from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from './components/Titlebar';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { ExternalLink, ChevronRight, ArrowRight, HelpCircle, Info } from 'lucide-react';
 
 export const LinkButtons = (): JSX.Element => {
   return (
@@ -55,7 +55,7 @@ export const LinkButtons = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 space-y-4">
                   <h3 className="text-lg font-medium">Usage Example</h3>
                   <div className="p-6 border border-[#111c2d1a] rounded-lg bg-surfaceslightgray-10">
@@ -65,7 +65,10 @@ export const LinkButtons = (): JSX.Element => {
                           <Info className="h-5 w-5 text-light-themeprimaryblue mr-2" />
                           <h4 className="text-lg font-medium">Terms & Conditions</h4>
                         </div>
-                        <p className="text-sm text-blackblack-60 mb-3">By creating an account, you agree to our Terms of Service and Privacy Policy.</p>
+                        <p className="text-sm text-blackblack-60 mb-3">
+                          By creating an account, you agree to our Terms of Service and Privacy
+                          Policy.
+                        </p>
                         <div className="flex gap-2">
                           <Button variant="link" className="text-light-themeprimaryblue h-8 p-0">
                             Terms of Service <ExternalLink className="ml-1 h-3 w-3" />
@@ -89,7 +92,7 @@ export const LinkButtons = (): JSX.Element => {
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="rounded-xl shadow-light-theme-shadow-medium">
               <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
                 <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
@@ -101,7 +104,7 @@ export const LinkButtons = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Code Example</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// Basic link button
+                      {`// Basic link button
 <Button variant="link" className="text-light-themeprimaryblue">
   View details
 </Button>

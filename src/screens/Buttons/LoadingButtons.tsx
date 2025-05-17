@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "./components/Titlebar";
-import { Button } from "../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Loader2, Save, Download, Send, RefreshCw } from "lucide-react";
+import React, { useState } from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from './components/Titlebar';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Loader2, Save, Download, Send, RefreshCw } from 'lucide-react';
 
 export const LoadingButtons = (): JSX.Element => {
   const [isLoading1, setIsLoading1] = useState(false);
@@ -36,8 +36,8 @@ export const LoadingButtons = (): JSX.Element => {
                   <div className="space-y-4">
                     <h3 className="text-lg font-medium">Primary Variants</h3>
                     <div className="flex flex-wrap gap-4">
-                      <Button 
-                        variant="primary" 
+                      <Button
+                        variant="primary"
                         disabled={isLoading1}
                         onClick={() => simulateLoading(setIsLoading1)}
                       >
@@ -47,12 +47,12 @@ export const LoadingButtons = (): JSX.Element => {
                             Loading...
                           </>
                         ) : (
-                          "Click to Load"
+                          'Click to Load'
                         )}
                       </Button>
-                      
-                      <Button 
-                        variant="outline" 
+
+                      <Button
+                        variant="outline"
                         disabled={isLoading2}
                         onClick={() => simulateLoading(setIsLoading2)}
                       >
@@ -73,7 +73,7 @@ export const LoadingButtons = (): JSX.Element => {
                   <div className="space-y-4">
                     <h3 className="text-lg font-medium">Other Variants</h3>
                     <div className="flex flex-wrap gap-4">
-                      <Button 
+                      <Button
                         className="bg-actionsuccess hover:bg-actionsuccess/90 text-white"
                         disabled={isLoading3}
                         onClick={() => simulateLoading(setIsLoading3)}
@@ -87,8 +87,8 @@ export const LoadingButtons = (): JSX.Element => {
                           </>
                         )}
                       </Button>
-                      
-                      <Button 
+
+                      <Button
                         variant="ghost"
                         disabled={isLoading4}
                         onClick={() => simulateLoading(setIsLoading4)}
@@ -108,7 +108,7 @@ export const LoadingButtons = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 space-y-4">
                   <h3 className="text-lg font-medium">Usage Example</h3>
                   <div className="p-6 border border-[#111c2d1a] rounded-lg bg-surfaceslightgray-10">
@@ -117,14 +117,22 @@ export const LoadingButtons = (): JSX.Element => {
                       <div className="space-y-4">
                         <div className="space-y-2">
                           <label className="text-sm font-medium">Email</label>
-                          <input type="email" placeholder="email@example.com" className="w-full p-2 border border-[#111c2d1a] rounded-md" />
+                          <input
+                            type="email"
+                            placeholder="email@example.com"
+                            className="w-full p-2 border border-[#111c2d1a] rounded-md"
+                          />
                         </div>
                         <div className="space-y-2">
                           <label className="text-sm font-medium">Message</label>
-                          <textarea className="w-full p-2 border border-[#111c2d1a] rounded-md" rows={3} placeholder="Type your message here..."></textarea>
+                          <textarea
+                            className="w-full p-2 border border-[#111c2d1a] rounded-md"
+                            rows={3}
+                            placeholder="Type your message here..."
+                          ></textarea>
                         </div>
-                        <Button 
-                          variant="primary" 
+                        <Button
+                          variant="primary"
                           className="w-full"
                           disabled={isLoading1}
                           onClick={() => simulateLoading(setIsLoading1)}
@@ -135,7 +143,7 @@ export const LoadingButtons = (): JSX.Element => {
                               Submitting...
                             </>
                           ) : (
-                            "Submit Form"
+                            'Submit Form'
                           )}
                         </Button>
                       </div>
@@ -144,7 +152,7 @@ export const LoadingButtons = (): JSX.Element => {
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="rounded-xl shadow-light-theme-shadow-medium">
               <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
                 <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
@@ -156,7 +164,7 @@ export const LoadingButtons = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Code Example</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`import { useState } from "react";
+                      {`import { useState } from "react";
 import { Button } from "../components/ui/button";
 import { Loader2, Save } from "lucide-react";
 

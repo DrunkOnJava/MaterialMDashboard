@@ -1,7 +1,7 @@
-import React from "react";
-import { Button } from "../ui/button";
-import { cn } from "../../lib/utils";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { Button } from '../ui/button';
+import { cn } from '../../lib/utils';
+import { useNavigate } from 'react-router-dom';
 import {
   Home,
   LayoutDashboard,
@@ -9,12 +9,11 @@ import {
   Users,
   ShoppingBag,
   BarChart3,
-  FileText,
   Calendar,
   CreditCard,
   HelpCircle,
   LogOut,
-} from "lucide-react";
+} from 'lucide-react';
 
 interface SidebarProps {
   isCollapsed?: boolean;
@@ -22,7 +21,7 @@ interface SidebarProps {
 
 export function Sidebar({ isCollapsed = false }: SidebarProps) {
   const navigate = useNavigate();
-  
+
   const navItems = [
     { icon: Home, label: 'Home', href: '/' },
     { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
@@ -40,17 +39,19 @@ export function Sidebar({ isCollapsed = false }: SidebarProps) {
   ];
 
   return (
-    <div className={cn(
-      "flex flex-col h-full border-r bg-white p-3",
-      isCollapsed ? "w-[70px]" : "w-[240px]"
-    )}>
+    <div
+      className={cn(
+        'flex flex-col h-full border-r bg-white p-3',
+        isCollapsed ? 'w-[70px]' : 'w-[240px]'
+      )}
+    >
       <div className="flex items-center h-14 px-3">
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full bg-blue-500"></div>
           {!isCollapsed && <span className="font-medium">Material Dashboard</span>}
         </div>
       </div>
-      
+
       <div className="flex-1 overflow-auto py-2">
         <nav className="grid gap-1 px-2">
           {navItems.map((item, index) => (
@@ -66,7 +67,7 @@ export function Sidebar({ isCollapsed = false }: SidebarProps) {
           ))}
         </nav>
       </div>
-      
+
       <div className="mt-auto border-t pt-4">
         <nav className="grid gap-1 px-2">
           {bottomNavItems.map((item, index) => (

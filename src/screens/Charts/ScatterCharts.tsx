@@ -1,35 +1,30 @@
-import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "../Buttons/components/Titlebar";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
+import React from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from '../Buttons/components/Titlebar';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../components/ui/select";
-import { 
+} from '../../components/ui/select';
+import {
   Chart as ChartJS,
   LinearScale,
   PointElement,
   LineElement,
   Tooltip,
   Legend,
-} from "chart.js";
-import { Scatter } from "react-chartjs-2";
-import { Download, Calendar, RefreshCw, Filter } from "lucide-react";
+} from 'chart.js';
+import { Scatter } from 'react-chartjs-2';
+import { ChartErrorBoundary } from '../../components/ChartErrorBoundary';
+import { Download, Calendar, RefreshCw, Filter } from 'lucide-react';
 
 // Register Chart.js components
-ChartJS.register(
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-  Legend
-);
+ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 // Generate random scatter data
 const generateScatterData = (count, min, max) => {
@@ -40,71 +35,71 @@ const generateScatterData = (count, min, max) => {
 };
 
 export const ScatterCharts = (): JSX.Element => {
-  const [datasetFilter, setDatasetFilter] = React.useState("all");
+  const [datasetFilter, setDatasetFilter] = React.useState('all');
 
   // Basic scatter data
   const basicScatterData = {
     datasets: [
       {
-        label: "Dataset 1",
+        label: 'Dataset 1',
         data: generateScatterData(50, 0, 100),
-        backgroundColor: "rgba(0, 161, 255, 0.6)",
+        backgroundColor: 'rgba(0, 161, 255, 0.6)',
       },
     ],
   };
-  
+
   // Multi dataset scatter data
   const multiScatterData = {
     datasets: [
       {
-        label: "Group A",
+        label: 'Group A',
         data: generateScatterData(30, 10, 80),
-        backgroundColor: "rgba(0, 161, 255, 0.6)",
+        backgroundColor: 'rgba(0, 161, 255, 0.6)',
       },
       {
-        label: "Group B",
+        label: 'Group B',
         data: generateScatterData(30, 20, 90),
-        backgroundColor: "rgba(137, 101, 229, 0.6)",
+        backgroundColor: 'rgba(137, 101, 229, 0.6)',
       },
       {
-        label: "Group C",
+        label: 'Group C',
         data: generateScatterData(30, 30, 100),
-        backgroundColor: "rgba(0, 206, 182, 0.6)",
+        backgroundColor: 'rgba(0, 206, 182, 0.6)',
       },
     ],
   };
-  
+
   // Bubble chart data (scatter with varying point sizes)
   const bubbleChartData = {
     datasets: [
       {
-        label: "Dataset 1",
+        label: 'Dataset 1',
         data: Array.from({ length: 20 }, () => ({
           x: Math.floor(Math.random() * 100),
           y: Math.floor(Math.random() * 100),
           r: Math.floor(Math.random() * 15) + 5, // Radius between 5 and 20
         })),
-        backgroundColor: "rgba(0, 161, 255, 0.6)",
+        backgroundColor: 'rgba(0, 161, 255, 0.6)',
       },
       {
-        label: "Dataset 2",
+        label: 'Dataset 2',
         data: Array.from({ length: 20 }, () => ({
           x: Math.floor(Math.random() * 100),
           y: Math.floor(Math.random() * 100),
           r: Math.floor(Math.random() * 15) + 5,
         })),
-        backgroundColor: "rgba(255, 102, 146, 0.6)",
+        backgroundColor: 'rgba(255, 102, 146, 0.6)',
       },
     ],
   };
-  
+
   // Chart options
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "top" as const,
+        position: 'top' as const,
       },
       title: {
         display: false,
@@ -113,20 +108,20 @@ export const ScatterCharts = (): JSX.Element => {
     scales: {
       x: {
         grid: {
-          color: "rgba(0, 0, 0, 0.05)",
+          color: 'rgba(0, 0, 0, 0.05)',
         },
         title: {
           display: true,
-          text: "X Axis",
+          text: 'X Axis',
         },
       },
       y: {
         grid: {
-          color: "rgba(0, 0, 0, 0.05)",
+          color: 'rgba(0, 0, 0, 0.05)',
         },
         title: {
           display: true,
-          text: "Y Axis",
+          text: 'Y Axis',
         },
         beginAtZero: true,
       },
@@ -140,13 +135,13 @@ export const ScatterCharts = (): JSX.Element => {
       ...chartOptions.plugins,
       tooltip: {
         callbacks: {
-          label: function(context) {
-            const label = context.dataset.label || "";
+          label: function (context) {
+            const label = context.dataset.label || '';
             const x = context.parsed.x;
             const y = context.parsed.y;
             return `${label}: (${x}, ${y})`;
-          }
-        }
+          },
+        },
       },
     },
   };
@@ -155,20 +150,20 @@ export const ScatterCharts = (): JSX.Element => {
   const quadrantData = {
     datasets: [
       {
-        label: "Products",
+        label: 'Products',
         data: [
-          { x: 80, y: 85, product: "Product A" },
-          { x: 75, y: 30, product: "Product B" },
-          { x: 30, y: 70, product: "Product C" },
-          { x: 40, y: 25, product: "Product D" },
-          { x: 95, y: 90, product: "Product E" },
-          { x: 20, y: 15, product: "Product F" },
-          { x: 60, y: 55, product: "Product G" },
-          { x: 35, y: 95, product: "Product H" },
-          { x: 90, y: 40, product: "Product I" },
-          { x: 15, y: 60, product: "Product J" },
+          { x: 80, y: 85, product: 'Product A' },
+          { x: 75, y: 30, product: 'Product B' },
+          { x: 30, y: 70, product: 'Product C' },
+          { x: 40, y: 25, product: 'Product D' },
+          { x: 95, y: 90, product: 'Product E' },
+          { x: 20, y: 15, product: 'Product F' },
+          { x: 60, y: 55, product: 'Product G' },
+          { x: 35, y: 95, product: 'Product H' },
+          { x: 90, y: 40, product: 'Product I' },
+          { x: 15, y: 60, product: 'Product J' },
         ],
-        backgroundColor: "rgba(0, 161, 255, 0.6)",
+        backgroundColor: 'rgba(0, 161, 255, 0.6)',
         pointRadius: 8,
         pointHoverRadius: 10,
       },
@@ -179,14 +174,17 @@ export const ScatterCharts = (): JSX.Element => {
   const quadrantPlugin = {
     id: 'quadrantLines',
     beforeDraw(chart) {
-      const { ctx, chartArea: {top, bottom, left, right, width, height} } = chart;
-      
+      const {
+        ctx,
+        chartArea: { top, bottom, left, right, width, height },
+      } = chart;
+
       // Calculate the midpoint
       const midX = left + width / 2;
       const midY = top + height / 2;
-      
+
       ctx.save();
-      
+
       // Draw horizontal line
       ctx.beginPath();
       ctx.moveTo(left, midY);
@@ -194,25 +192,25 @@ export const ScatterCharts = (): JSX.Element => {
       ctx.lineWidth = 1;
       ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.stroke();
-      
+
       // Draw vertical line
       ctx.beginPath();
       ctx.moveTo(midX, top);
       ctx.lineTo(midX, bottom);
       ctx.stroke();
-      
+
       // Add quadrant labels
       ctx.font = '12px Arial';
       ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
       ctx.textAlign = 'center';
-      
-      ctx.fillText('High Importance, Low Satisfaction', midX - width/4, top + 15);
-      ctx.fillText('High Importance, High Satisfaction', midX + width/4, top + 15);
-      ctx.fillText('Low Importance, Low Satisfaction', midX - width/4, bottom - 5);
-      ctx.fillText('Low Importance, High Satisfaction', midX + width/4, bottom - 5);
-      
+
+      ctx.fillText('High Importance, Low Satisfaction', midX - width / 4, top + 15);
+      ctx.fillText('High Importance, High Satisfaction', midX + width / 4, top + 15);
+      ctx.fillText('Low Importance, Low Satisfaction', midX - width / 4, bottom - 5);
+      ctx.fillText('Low Importance, High Satisfaction', midX + width / 4, bottom - 5);
+
       ctx.restore();
-    }
+    },
   };
 
   const quadrantChartOptions = {
@@ -226,22 +224,22 @@ export const ScatterCharts = (): JSX.Element => {
         min: 0,
         max: 100,
         grid: {
-          color: "rgba(0, 0, 0, 0.05)",
+          color: 'rgba(0, 0, 0, 0.05)',
         },
         title: {
           display: true,
-          text: "Importance",
+          text: 'Importance',
         },
       },
       y: {
         min: 0,
         max: 100,
         grid: {
-          color: "rgba(0, 0, 0, 0.05)",
+          color: 'rgba(0, 0, 0, 0.05)',
         },
         title: {
           display: true,
-          text: "Satisfaction",
+          text: 'Satisfaction',
         },
       },
     },
@@ -279,7 +277,9 @@ export const ScatterCharts = (): JSX.Element => {
                 </div>
 
                 <div className="h-[300px] mt-4">
-                  <Scatter data={basicScatterData} options={chartOptions} />
+                  <ChartErrorBoundary>
+                    <Scatter data={basicScatterData} options={chartOptions} />
+                  </ChartErrorBoundary>
                 </div>
               </CardContent>
             </Card>
@@ -312,7 +312,9 @@ export const ScatterCharts = (): JSX.Element => {
                   </div>
 
                   <div className="h-[250px] mt-4">
-                    <Scatter data={multiScatterData} options={chartOptions} />
+                    <ChartErrorBoundary>
+                      <Scatter data={multiScatterData} options={chartOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -326,11 +328,15 @@ export const ScatterCharts = (): JSX.Element => {
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <h3 className="text-lg font-medium">Data with Magnitude</h3>
-                    <p className="text-sm text-blackblack-60">Scatter plot with varying point sizes</p>
+                    <p className="text-sm text-blackblack-60">
+                      Scatter plot with varying point sizes
+                    </p>
                   </div>
 
                   <div className="h-[250px] mt-4">
-                    <Scatter data={bubbleChartData} options={chartOptions} />
+                    <ChartErrorBoundary>
+                      <Scatter data={bubbleChartData} options={chartOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -346,7 +352,9 @@ export const ScatterCharts = (): JSX.Element => {
                 <div className="flex justify-between items-center mb-4">
                   <div>
                     <h3 className="text-lg font-medium">Product Satisfaction vs. Importance</h3>
-                    <p className="text-sm text-blackblack-60">Quadrant analysis for product prioritization</p>
+                    <p className="text-sm text-blackblack-60">
+                      Quadrant analysis for product prioritization
+                    </p>
                   </div>
                   <div className="flex gap-2">
                     <Select defaultValue="q2">
@@ -367,8 +375,8 @@ export const ScatterCharts = (): JSX.Element => {
                 </div>
 
                 <div className="h-[500px] mt-4">
-                  <Scatter 
-                    data={quadrantData} 
+                  <Scatter
+                    data={quadrantData}
                     options={quadrantChartOptions}
                     plugins={[quadrantPlugin]}
                   />
@@ -387,7 +395,7 @@ export const ScatterCharts = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Basic Scatter Chart Code Example</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// First, import the necessary components
+                      {`// First, import the necessary components
 import { Scatter } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -457,10 +465,12 @@ const chartOptions = {
                     </code>
                   </pre>
 
-                  <h3 className="text-lg font-medium mt-6">Bubble Chart Code Example (Scatter with Point Sizes)</h3>
+                  <h3 className="text-lg font-medium mt-6">
+                    Bubble Chart Code Example (Scatter with Point Sizes)
+                  </h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// Bubble chart data (scatter with varying point sizes)
+                      {`// Bubble chart data (scatter with varying point sizes)
 const bubbleChartData = {
   datasets: [
     {

@@ -1,17 +1,18 @@
-import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "../Buttons/components/Titlebar";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
+import React from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from '../Buttons/components/Titlebar';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../components/ui/select";
-import { Line } from "react-chartjs-2";
+} from '../../components/ui/select';
+import { Line } from 'react-chartjs-2';
+import { ChartErrorBoundary } from '../../components/ChartErrorBoundary';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,8 +23,8 @@ import {
   Tooltip,
   Legend,
   Filler,
-} from "chart.js";
-import { Download, Calendar, RefreshCw } from "lucide-react";
+} from 'chart.js';
+import { Download, Calendar, RefreshCw } from 'lucide-react';
 
 // Register Chart.js components
 ChartJS.register(
@@ -38,17 +39,17 @@ ChartJS.register(
 );
 
 export const AreaCharts = (): JSX.Element => {
-  const [dateRange, setDateRange] = React.useState("last30days");
+  const [dateRange, setDateRange] = React.useState('last30days');
 
   // Basic area chart data
   const basicAreaData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: "Revenue",
+        label: 'Revenue',
         data: [65, 59, 80, 81, 56, 55, 40, 74, 82, 90, 95, 100],
-        borderColor: "rgb(0, 161, 255)",
-        backgroundColor: "rgba(0, 161, 255, 0.1)",
+        borderColor: 'rgb(0, 161, 255)',
+        backgroundColor: 'rgba(0, 161, 255, 0.1)',
         fill: true,
         tension: 0.4,
       },
@@ -57,17 +58,17 @@ export const AreaCharts = (): JSX.Element => {
 
   // Gradient area chart data
   const gradientAreaChartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: "Profit",
+        label: 'Profit',
         data: [30, 40, 35, 50, 49, 60, 70, 91, 80, 90, 95, 102],
-        borderColor: "rgb(0, 206, 182)",
-        backgroundColor: (context) => {
+        borderColor: 'rgb(0, 206, 182)',
+        backgroundColor: context => {
           const ctx = context.chart.ctx;
           const gradient = ctx.createLinearGradient(0, 0, 0, 250);
-          gradient.addColorStop(0, "rgba(0, 206, 182, 0.4)");
-          gradient.addColorStop(1, "rgba(0, 206, 182, 0)");
+          gradient.addColorStop(0, 'rgba(0, 206, 182, 0.4)');
+          gradient.addColorStop(1, 'rgba(0, 206, 182, 0)');
           return gradient;
         },
         fill: true,
@@ -78,31 +79,31 @@ export const AreaCharts = (): JSX.Element => {
 
   // Multi area chart data
   const multiAreaData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: "Revenue",
+        label: 'Revenue',
         data: [65, 59, 80, 81, 56, 55, 40, 74, 82, 90, 95, 100],
-        borderColor: "rgb(0, 161, 255)",
-        backgroundColor: "rgba(0, 161, 255, 0.1)",
+        borderColor: 'rgb(0, 161, 255)',
+        backgroundColor: 'rgba(0, 161, 255, 0.1)',
         fill: true,
         tension: 0.4,
         order: 1,
       },
       {
-        label: "Cost",
+        label: 'Cost',
         data: [30, 40, 35, 45, 40, 50, 35, 50, 55, 60, 70, 65],
-        borderColor: "rgb(255, 102, 146)",
-        backgroundColor: "rgba(255, 102, 146, 0.1)",
+        borderColor: 'rgb(255, 102, 146)',
+        backgroundColor: 'rgba(255, 102, 146, 0.1)',
         fill: true,
         tension: 0.4,
         order: 2,
       },
       {
-        label: "Profit",
+        label: 'Profit',
         data: [35, 19, 45, 36, 16, 5, 5, 24, 27, 30, 25, 35],
-        borderColor: "rgb(137, 101, 229)",
-        backgroundColor: "rgba(137, 101, 229, 0.1)",
+        borderColor: 'rgb(137, 101, 229)',
+        backgroundColor: 'rgba(137, 101, 229, 0.1)',
         fill: true,
         tension: 0.4,
         order: 0, // This will put profit at the bottom of the stack
@@ -112,13 +113,13 @@ export const AreaCharts = (): JSX.Element => {
 
   // Stepped area chart data
   const steppedAreaData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: "Users",
+        label: 'Users',
         data: [500, 800, 800, 1200, 1200, 1200, 1500, 1500, 2000, 2000, 2500, 3000],
-        borderColor: "rgb(0, 161, 255)",
-        backgroundColor: "rgba(0, 161, 255, 0.1)",
+        borderColor: 'rgb(0, 161, 255)',
+        backgroundColor: 'rgba(0, 161, 255, 0.1)',
         fill: true,
         stepped: true,
       },
@@ -131,7 +132,7 @@ export const AreaCharts = (): JSX.Element => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "top" as const,
+        position: 'top' as const,
       },
       title: {
         display: false,
@@ -141,7 +142,7 @@ export const AreaCharts = (): JSX.Element => {
       y: {
         beginAtZero: true,
         grid: {
-          color: "rgba(0, 0, 0, 0.05)",
+          color: 'rgba(0, 0, 0, 0.05)',
         },
       },
       x: {
@@ -205,7 +206,9 @@ export const AreaCharts = (): JSX.Element => {
                 </div>
 
                 <div className="h-[300px] mt-4">
-                  <Line data={basicAreaData} options={chartOptions} />
+                  <ChartErrorBoundary>
+                    <Line data={basicAreaData} options={chartOptions} />
+                  </ChartErrorBoundary>
                 </div>
               </CardContent>
             </Card>
@@ -224,7 +227,9 @@ export const AreaCharts = (): JSX.Element => {
                   </div>
 
                   <div className="h-[250px] mt-4">
-                    <Line data={gradientAreaChartData} options={chartOptions} />
+                    <ChartErrorBoundary>
+                      <Line data={gradientAreaChartData} options={chartOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -242,7 +247,9 @@ export const AreaCharts = (): JSX.Element => {
                   </div>
 
                   <div className="h-[250px] mt-4">
-                    <Line data={steppedAreaData} options={chartOptions} />
+                    <ChartErrorBoundary>
+                      <Line data={steppedAreaData} options={chartOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -272,7 +279,9 @@ export const AreaCharts = (): JSX.Element => {
                 </div>
 
                 <div className="h-[300px] mt-4">
-                  <Line data={multiAreaData} options={stackedChartOptions} />
+                  <ChartErrorBoundary>
+                    <Line data={multiAreaData} options={stackedChartOptions} />
+                  </ChartErrorBoundary>
                 </div>
               </CardContent>
             </Card>
@@ -288,7 +297,7 @@ export const AreaCharts = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Basic Area Chart Code Example</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// First, import the necessary components
+                      {`// First, import the necessary components
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -354,7 +363,7 @@ const chartOptions = {
                   <h3 className="text-lg font-medium mt-6">Gradient Area Chart Code Example</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// Gradient area chart data 
+                      {`// Gradient area chart data 
 const gradientAreaData = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   datasets: [

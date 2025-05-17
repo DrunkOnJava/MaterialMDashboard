@@ -1,52 +1,44 @@
-import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "../Buttons/components/Titlebar";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
+import React from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from '../Buttons/components/Titlebar';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../components/ui/select";
-import { Pie, Doughnut } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Download, RefreshCw } from "lucide-react";
+} from '../../components/ui/select';
+import { Pie, Doughnut } from 'react-chartjs-2';
+import { ChartErrorBoundary } from '../../components/ChartErrorBoundary';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Download, RefreshCw } from 'lucide-react';
 
 // Register Chart.js components
-ChartJS.register(
-  ArcElement,
-  Tooltip,
-  Legend
-);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const PieCharts = (): JSX.Element => {
   // Basic pie chart data
   const basicPieData = {
-    labels: ["Electronics", "Clothing", "Home & Kitchen", "Beauty", "Sports"],
+    labels: ['Electronics', 'Clothing', 'Home & Kitchen', 'Beauty', 'Sports'],
     datasets: [
       {
         data: [35, 25, 15, 15, 10],
         backgroundColor: [
-          "rgba(0, 161, 255, 0.8)",
-          "rgba(137, 101, 229, 0.8)",
-          "rgba(0, 206, 182, 0.8)",
-          "rgba(255, 185, 0, 0.8)",
-          "rgba(255, 102, 146, 0.8)",
+          'rgba(0, 161, 255, 0.8)',
+          'rgba(137, 101, 229, 0.8)',
+          'rgba(0, 206, 182, 0.8)',
+          'rgba(255, 185, 0, 0.8)',
+          'rgba(255, 102, 146, 0.8)',
         ],
         borderColor: [
-          "rgba(0, 161, 255, 1)",
-          "rgba(137, 101, 229, 1)",
-          "rgba(0, 206, 182, 1)",
-          "rgba(255, 185, 0, 1)",
-          "rgba(255, 102, 146, 1)",
+          'rgba(0, 161, 255, 1)',
+          'rgba(137, 101, 229, 1)',
+          'rgba(0, 206, 182, 1)',
+          'rgba(255, 185, 0, 1)',
+          'rgba(255, 102, 146, 1)',
         ],
         borderWidth: 1,
       },
@@ -55,21 +47,21 @@ export const PieCharts = (): JSX.Element => {
 
   // Doughnut chart data
   const doughnutData = {
-    labels: ["Completed", "In Progress", "Pending", "Cancelled"],
+    labels: ['Completed', 'In Progress', 'Pending', 'Cancelled'],
     datasets: [
       {
         data: [63, 15, 12, 10],
         backgroundColor: [
-          "rgba(0, 206, 182, 0.8)",
-          "rgba(0, 161, 255, 0.8)",
-          "rgba(255, 185, 0, 0.8)",
-          "rgba(255, 102, 146, 0.8)",
+          'rgba(0, 206, 182, 0.8)',
+          'rgba(0, 161, 255, 0.8)',
+          'rgba(255, 185, 0, 0.8)',
+          'rgba(255, 102, 146, 0.8)',
         ],
         borderColor: [
-          "rgba(0, 206, 182, 1)",
-          "rgba(0, 161, 255, 1)",
-          "rgba(255, 185, 0, 1)",
-          "rgba(255, 102, 146, 1)",
+          'rgba(0, 206, 182, 1)',
+          'rgba(0, 161, 255, 1)',
+          'rgba(255, 185, 0, 1)',
+          'rgba(255, 102, 146, 1)',
         ],
         borderWidth: 1,
       },
@@ -78,25 +70,25 @@ export const PieCharts = (): JSX.Element => {
 
   // User demographics pie chart data
   const demographicsData = {
-    labels: ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"],
+    labels: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+'],
     datasets: [
       {
         data: [15, 30, 25, 18, 8, 4],
         backgroundColor: [
-          "rgba(66, 133, 244, 0.8)",
-          "rgba(219, 68, 55, 0.8)",
-          "rgba(244, 180, 0, 0.8)",
-          "rgba(15, 157, 88, 0.8)",
-          "rgba(171, 71, 188, 0.8)",
-          "rgba(0, 172, 193, 0.8)",
+          'rgba(66, 133, 244, 0.8)',
+          'rgba(219, 68, 55, 0.8)',
+          'rgba(244, 180, 0, 0.8)',
+          'rgba(15, 157, 88, 0.8)',
+          'rgba(171, 71, 188, 0.8)',
+          'rgba(0, 172, 193, 0.8)',
         ],
         borderColor: [
-          "rgba(66, 133, 244, 1)",
-          "rgba(219, 68, 55, 1)",
-          "rgba(244, 180, 0, 1)",
-          "rgba(15, 157, 88, 1)",
-          "rgba(171, 71, 188, 1)",
-          "rgba(0, 172, 193, 1)",
+          'rgba(66, 133, 244, 1)',
+          'rgba(219, 68, 55, 1)',
+          'rgba(244, 180, 0, 1)',
+          'rgba(15, 157, 88, 1)',
+          'rgba(171, 71, 188, 1)',
+          'rgba(0, 172, 193, 1)',
         ],
         borderWidth: 1,
       },
@@ -105,23 +97,23 @@ export const PieCharts = (): JSX.Element => {
 
   // Revenue sources doughnut chart data
   const revenueSourcesData = {
-    labels: ["Direct Sales", "Online Store", "Marketplace", "Wholesale", "Other"],
+    labels: ['Direct Sales', 'Online Store', 'Marketplace', 'Wholesale', 'Other'],
     datasets: [
       {
         data: [45, 30, 15, 8, 2],
         backgroundColor: [
-          "rgba(0, 161, 255, 0.8)",
-          "rgba(0, 206, 182, 0.8)",
-          "rgba(137, 101, 229, 0.8)",
-          "rgba(255, 185, 0, 0.8)",
-          "rgba(255, 102, 146, 0.8)",
+          'rgba(0, 161, 255, 0.8)',
+          'rgba(0, 206, 182, 0.8)',
+          'rgba(137, 101, 229, 0.8)',
+          'rgba(255, 185, 0, 0.8)',
+          'rgba(255, 102, 146, 0.8)',
         ],
         borderColor: [
-          "rgba(0, 161, 255, 1)",
-          "rgba(0, 206, 182, 1)",
-          "rgba(137, 101, 229, 1)",
-          "rgba(255, 185, 0, 1)",
-          "rgba(255, 102, 146, 1)",
+          'rgba(0, 161, 255, 1)',
+          'rgba(0, 206, 182, 1)',
+          'rgba(137, 101, 229, 1)',
+          'rgba(255, 185, 0, 1)',
+          'rgba(255, 102, 146, 1)',
         ],
         borderWidth: 1,
       },
@@ -134,7 +126,7 @@ export const PieCharts = (): JSX.Element => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "right" as const,
+        position: 'right' as const,
       },
     },
   };
@@ -142,7 +134,7 @@ export const PieCharts = (): JSX.Element => {
   // Doughnut chart options with center text
   const doughnutOptions = {
     ...chartOptions,
-    cutout: "70%",
+    cutout: '70%',
   };
 
   return (
@@ -172,7 +164,9 @@ export const PieCharts = (): JSX.Element => {
                   </div>
 
                   <div className="h-[300px] mt-4">
-                    <Pie data={basicPieData} options={chartOptions} />
+                    <ChartErrorBoundary>
+                      <Pie data={basicPieData} options={chartOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -195,7 +189,9 @@ export const PieCharts = (): JSX.Element => {
                   </div>
 
                   <div className="h-[300px] mt-4 relative">
-                    <Doughnut data={doughnutData} options={doughnutOptions} />
+                    <ChartErrorBoundary>
+                      <Doughnut data={doughnutData} options={doughnutOptions} />
+                    </ChartErrorBoundary>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
                         <div className="text-3xl font-bold text-blackblack-100">63%</div>
@@ -239,7 +235,9 @@ export const PieCharts = (): JSX.Element => {
                   </div>
 
                   <div className="h-[300px] mt-4">
-                    <Pie data={demographicsData} options={chartOptions} />
+                    <ChartErrorBoundary>
+                      <Pie data={demographicsData} options={chartOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -263,7 +261,9 @@ export const PieCharts = (): JSX.Element => {
                   </div>
 
                   <div className="h-[300px] mt-4">
-                    <Doughnut data={revenueSourcesData} options={doughnutOptions} />
+                    <ChartErrorBoundary>
+                      <Doughnut data={revenueSourcesData} options={doughnutOptions} />
+                    </ChartErrorBoundary>
                   </div>
                 </CardContent>
               </Card>
@@ -280,7 +280,7 @@ export const PieCharts = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Basic Pie Chart Implementation</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// First, import the necessary components
+                      {`// First, import the necessary components
 import { Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -342,7 +342,7 @@ const chartOptions = {
                   <h3 className="text-lg font-medium mt-6">Doughnut Chart with Center Text</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// Import Doughnut chart
+                      {`// Import Doughnut chart
 import { Doughnut } from 'react-chartjs-2';
 
 // Define doughnut chart options

@@ -1,20 +1,20 @@
-import React from "react";
-import { SidebarByAnima } from "../Chip/sections/SidebarByAnima";
-import { TopBarByAnima } from "../Chip/sections/TopBarByAnima";
-import { TitlebarByAnima } from "../Buttons/components/Titlebar";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Label } from "../../components/ui/label";
-import { Button } from "../../components/ui/button";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
+import React from 'react';
+import { SidebarByAnima } from '../Chip/sections/SidebarByAnima';
+import { TopBarByAnima } from '../Chip/sections/TopBarByAnima';
+import { TitlebarByAnima } from '../Buttons/components/Titlebar';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Label } from '../../components/ui/label';
+import { Button } from '../../components/ui/button';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
   SelectValue,
   SelectGroup,
-  SelectLabel
-} from "../../components/ui/select";
-import { Check, ChevronsUpDown, Globe, Clock, Users, Flag } from "lucide-react";
+  SelectLabel,
+} from '../../components/ui/select';
+import { Check, ChevronsUpDown, Globe, Clock, Users, Flag } from 'lucide-react';
 
 export const SelectFields = (): JSX.Element => {
   return (
@@ -48,7 +48,7 @@ export const SelectFields = (): JSX.Element => {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="disabled-select">Disabled select</Label>
                       <Select disabled>
@@ -61,7 +61,7 @@ export const SelectFields = (): JSX.Element => {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="preselected">Pre-selected value</Label>
                       <Select defaultValue="option2">
@@ -100,7 +100,7 @@ export const SelectFields = (): JSX.Element => {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="icon-select">Select with icons</Label>
                       <Select>
@@ -132,7 +132,7 @@ export const SelectFields = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 space-y-4">
                   <h3 className="text-lg font-medium">Custom Selects</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -150,7 +150,7 @@ export const SelectFields = (): JSX.Element => {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label>User select</Label>
                       <Select>
@@ -162,7 +162,9 @@ export const SelectFields = (): JSX.Element => {
                           <SelectItem value="john">
                             <div className="flex items-center">
                               <div className="w-6 h-6 rounded-full bg-light-themeprimarylight-blue flex items-center justify-center mr-2">
-                                <span className="text-xs font-medium text-light-themeprimaryblue">J</span>
+                                <span className="text-xs font-medium text-light-themeprimaryblue">
+                                  J
+                                </span>
                               </div>
                               <span>John Doe</span>
                             </div>
@@ -170,7 +172,9 @@ export const SelectFields = (): JSX.Element => {
                           <SelectItem value="jane">
                             <div className="flex items-center">
                               <div className="w-6 h-6 rounded-full bg-light-themesecondarylight-purple flex items-center justify-center mr-2">
-                                <span className="text-xs font-medium text-light-themesecondarypurple">J</span>
+                                <span className="text-xs font-medium text-light-themesecondarypurple">
+                                  J
+                                </span>
                               </div>
                               <span>Jane Smith</span>
                             </div>
@@ -188,13 +192,13 @@ export const SelectFields = (): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 space-y-4">
                   <h3 className="text-lg font-medium">Usage Example</h3>
                   <div className="p-6 border border-[#111c2d1a] rounded-lg bg-surfaceslightgray-10">
                     <form className="space-y-4 max-w-md mx-auto">
                       <h4 className="text-xl font-medium text-center">Event Registration</h4>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="event-type">Event Type</Label>
                         <Select>
@@ -209,7 +213,7 @@ export const SelectFields = (): JSX.Element => {
                           </SelectContent>
                         </Select>
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="time-slot">Preferred Time Slot</Label>
                         <Select>
@@ -224,7 +228,7 @@ export const SelectFields = (): JSX.Element => {
                           </SelectContent>
                         </Select>
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="participants">Number of Participants</Label>
                         <Select>
@@ -240,14 +244,16 @@ export const SelectFields = (): JSX.Element => {
                           </SelectContent>
                         </Select>
                       </div>
-                      
-                      <Button type="submit" variant="primary" className="w-full mt-4">Register</Button>
+
+                      <Button type="submit" variant="primary" className="w-full mt-4">
+                        Register
+                      </Button>
                     </form>
                   </div>
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="rounded-xl shadow-light-theme-shadow-medium">
               <CardHeader className="border-b border-[#111c2d1a] px-6 py-4">
                 <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
@@ -259,7 +265,7 @@ export const SelectFields = (): JSX.Element => {
                   <h3 className="text-lg font-medium">Code Example</h3>
                   <pre className="p-4 bg-surfaceslightgray-20 rounded-lg overflow-x-auto">
                     <code className="text-sm">
-{`// Basic select
+                      {`// Basic select
 <div className="space-y-2">
   <Label htmlFor="default-select">Default select</Label>
   <Select>

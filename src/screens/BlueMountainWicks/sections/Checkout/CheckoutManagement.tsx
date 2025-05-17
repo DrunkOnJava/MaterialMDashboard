@@ -1,13 +1,13 @@
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../../components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../../components/ui/tabs";
-import { Button } from "../../../../components/ui/button";
-import { Input } from "../../../../components/ui/input";
-import { Label } from "../../../../components/ui/label";
-import { Switch } from "../../../../components/ui/switch";
-import { Textarea } from "../../../../components/ui/textarea";
-import { Separator } from "../../../../components/ui/separator";
-import { WebsitePreview } from "../../components/WebsitePreview";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../../components/ui/tabs';
+import { Button } from '../../../../components/ui/button';
+import { Input } from '../../../../components/ui/input';
+import { Label } from '../../../../components/ui/label';
+import { Switch } from '../../../../components/ui/switch';
+import { Textarea } from '../../../../components/ui/textarea';
+import { Separator } from '../../../../components/ui/separator';
+import { WebsitePreview } from '../../components/WebsitePreview';
 import {
   CreditCard,
   Tag,
@@ -17,8 +17,8 @@ import {
   Gift,
   ExternalLink,
   Save,
-  Plus
-} from "lucide-react";
+  Plus,
+} from 'lucide-react';
 
 const CheckoutManagement: React.FC = () => {
   return (
@@ -59,12 +59,12 @@ const CheckoutManagement: React.FC = () => {
                 <span>Gift Options</span>
               </TabsTrigger>
             </TabsList>
-            
+
             <TabsContent value="settings">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium">Checkout Process</h3>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="guest-checkout" defaultChecked={true} />
@@ -74,7 +74,7 @@ const CheckoutManagement: React.FC = () => {
                       Customers can check out without creating an account
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="single-page-checkout" defaultChecked={true} />
@@ -84,7 +84,7 @@ const CheckoutManagement: React.FC = () => {
                       All checkout steps appear on a single page instead of multi-step process
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="require-phone" defaultChecked={true} />
@@ -94,7 +94,7 @@ const CheckoutManagement: React.FC = () => {
                       Phone number is required for checkout completion
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="newsletter-signup" defaultChecked={true} />
@@ -104,20 +104,20 @@ const CheckoutManagement: React.FC = () => {
                       Add newsletter subscription checkbox during checkout
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2 mt-6">
                     <Label htmlFor="confirmation-email">Order Confirmation Email</Label>
-                    <Textarea 
-                      id="confirmation-email" 
+                    <Textarea
+                      id="confirmation-email"
                       rows={4}
                       defaultValue="Thank you for your order with Blue Mountain Wicks! We're preparing your handcrafted candles with care and will send you shipping updates soon."
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium">Address Format & Validation</h3>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="address-validation" defaultChecked={true} />
@@ -127,23 +127,29 @@ const CheckoutManagement: React.FC = () => {
                       Validate customer addresses during checkout
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="same-billing-shipping" defaultChecked={true} />
-                      <Label htmlFor="same-billing-shipping">Default to same billing and shipping address</Label>
+                      <Label htmlFor="same-billing-shipping">
+                        Default to same billing and shipping address
+                      </Label>
                     </div>
                     <p className="text-sm text-blackblack-60 pl-10">
                       Pre-select checkbox to use same address for billing and shipping
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="countries">Allowed Countries</Label>
                     <div className="p-3 border rounded-md bg-surfaceslightgray-10">
                       <div className="flex items-center mb-2">
-                        <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded mr-2">United States</span>
-                        <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded mr-2">Canada</span>
+                        <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded mr-2">
+                          United States
+                        </span>
+                        <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded mr-2">
+                          Canada
+                        </span>
                       </div>
                       <Button variant="outline" size="sm" className="flex items-center">
                         <Plus className="h-3 w-3 mr-1" />
@@ -151,7 +157,7 @@ const CheckoutManagement: React.FC = () => {
                       </Button>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2 mt-6">
                     <Label htmlFor="order-notes">Order Notes Field</Label>
                     <div className="space-y-2">
@@ -159,16 +165,16 @@ const CheckoutManagement: React.FC = () => {
                         <Switch id="enable-notes" defaultChecked={true} />
                         <Label htmlFor="enable-notes">Enable order notes field</Label>
                       </div>
-                      <Input 
-                        id="notes-label" 
-                        defaultValue="Add a note to your order (optional)" 
+                      <Input
+                        id="notes-label"
+                        defaultValue="Add a note to your order (optional)"
                         className="mt-2"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex justify-end mt-6">
                 <Button className="flex items-center gap-1">
                   <Save className="h-4 w-4 mr-1" />
@@ -176,11 +182,11 @@ const CheckoutManagement: React.FC = () => {
                 </Button>
               </div>
             </TabsContent>
-            
+
             <TabsContent value="payments">
               <div className="space-y-6">
                 <h3 className="text-lg font-medium">Payment Methods</h3>
-                
+
                 <div className="space-y-4">
                   <div className="rounded-lg border p-4 bg-white">
                     <div className="flex items-start justify-between">
@@ -207,7 +213,7 @@ const CheckoutManagement: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="rounded-lg border p-4 bg-white">
                     <div className="flex items-start justify-between">
                       <div className="flex gap-4">
@@ -227,7 +233,7 @@ const CheckoutManagement: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="rounded-lg border p-4 bg-white">
                     <div className="flex items-start justify-between">
                       <div className="flex gap-4">
@@ -248,33 +254,34 @@ const CheckoutManagement: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <Button variant="outline" className="flex items-center gap-1 mt-6">
                   <Plus className="h-4 w-4 mr-1" />
                   Add Payment Method
                 </Button>
-                
+
                 <Separator className="my-6" />
-                
+
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium">Payment Settings</h3>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="capture-payment" defaultChecked={true} />
                       <Label htmlFor="capture-payment">Capture payment immediately</Label>
                     </div>
                     <p className="text-sm text-blackblack-60 pl-10">
-                      If disabled, payments will be authorized but not captured until manually processed
+                      If disabled, payments will be authorized but not captured until manually
+                      processed
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="currency">Currency</Label>
                     <Input id="currency" defaultValue="USD - United States Dollar" disabled />
                   </div>
                 </div>
-                
+
                 <div className="flex justify-end mt-6">
                   <Button className="flex items-center gap-1">
                     <Save className="h-4 w-4 mr-1" />
@@ -283,11 +290,11 @@ const CheckoutManagement: React.FC = () => {
                 </div>
               </div>
             </TabsContent>
-            
+
             <TabsContent value="shipping">
               <div className="space-y-6">
                 <h3 className="text-lg font-medium">Shipping Methods</h3>
-                
+
                 <div className="space-y-4">
                   <div className="rounded-lg border p-4 bg-white">
                     <div className="flex items-start justify-between">
@@ -297,12 +304,8 @@ const CheckoutManagement: React.FC = () => {
                         </div>
                         <div>
                           <h4 className="font-medium">Standard Shipping</h4>
-                          <p className="text-sm text-blackblack-60 mt-1">
-                            3-5 business days
-                          </p>
-                          <p className="text-sm font-medium mt-1">
-                            $5.99
-                          </p>
+                          <p className="text-sm text-blackblack-60 mt-1">3-5 business days</p>
+                          <p className="text-sm font-medium mt-1">$5.99</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -311,7 +314,7 @@ const CheckoutManagement: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="rounded-lg border p-4 bg-white">
                     <div className="flex items-start justify-between">
                       <div className="flex gap-4">
@@ -320,12 +323,8 @@ const CheckoutManagement: React.FC = () => {
                         </div>
                         <div>
                           <h4 className="font-medium">Express Shipping</h4>
-                          <p className="text-sm text-blackblack-60 mt-1">
-                            1-2 business days
-                          </p>
-                          <p className="text-sm font-medium mt-1">
-                            $12.99
-                          </p>
+                          <p className="text-sm text-blackblack-60 mt-1">1-2 business days</p>
+                          <p className="text-sm font-medium mt-1">$12.99</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -335,17 +334,17 @@ const CheckoutManagement: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <Button variant="outline" className="flex items-center gap-1 mt-6">
                   <Plus className="h-4 w-4 mr-1" />
                   Add Shipping Method
                 </Button>
-                
+
                 <Separator className="my-6" />
-                
+
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium">Free Shipping</h3>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="enable-free-shipping" defaultChecked={true} />
@@ -369,7 +368,7 @@ const CheckoutManagement: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex justify-end mt-6">
                   <Button className="flex items-center gap-1">
                     <Save className="h-4 w-4 mr-1" />
@@ -378,22 +377,36 @@ const CheckoutManagement: React.FC = () => {
                 </div>
               </div>
             </TabsContent>
-            
+
             <TabsContent value="discounts">
               <div className="space-y-6">
                 <h3 className="text-lg font-medium">Promotional Codes</h3>
-                
+
                 <div className="overflow-x-auto rounded-lg border border-[#111c2d1a]">
                   <table className="w-full">
                     <thead className="bg-surfaceslightgray-10 border-b border-[#111c2d1a]">
                       <tr>
-                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Code</th>
-                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Type</th>
-                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Value</th>
-                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Minimum Order</th>
-                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Active</th>
-                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Expires</th>
-                        <th className="py-3 px-4 text-right text-sm font-medium text-blackblack-60">Actions</th>
+                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                          Code
+                        </th>
+                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                          Type
+                        </th>
+                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                          Value
+                        </th>
+                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                          Minimum Order
+                        </th>
+                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                          Active
+                        </th>
+                        <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                          Expires
+                        </th>
+                        <th className="py-3 px-4 text-right text-sm font-medium text-blackblack-60">
+                          Actions
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -407,7 +420,9 @@ const CheckoutManagement: React.FC = () => {
                         </td>
                         <td className="py-3 px-4">Never</td>
                         <td className="py-3 px-4 text-right">
-                          <Button variant="ghost" size="sm">Edit</Button>
+                          <Button variant="ghost" size="sm">
+                            Edit
+                          </Button>
                         </td>
                       </tr>
                       <tr className="border-b border-[#111c2d1a] hover:bg-surfaceslightgray-10">
@@ -420,7 +435,9 @@ const CheckoutManagement: React.FC = () => {
                         </td>
                         <td className="py-3 px-4">Dec 31, 2025</td>
                         <td className="py-3 px-4 text-right">
-                          <Button variant="ghost" size="sm">Edit</Button>
+                          <Button variant="ghost" size="sm">
+                            Edit
+                          </Button>
                         </td>
                       </tr>
                       <tr className="border-b border-[#111c2d1a] hover:bg-surfaceslightgray-10">
@@ -433,23 +450,25 @@ const CheckoutManagement: React.FC = () => {
                         </td>
                         <td className="py-3 px-4">Sep 1, 2025</td>
                         <td className="py-3 px-4 text-right">
-                          <Button variant="ghost" size="sm">Edit</Button>
+                          <Button variant="ghost" size="sm">
+                            Edit
+                          </Button>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                
+
                 <Button className="flex items-center gap-1 mt-6">
                   <Plus className="h-4 w-4 mr-1" />
                   Add Promotional Code
                 </Button>
-                
+
                 <Separator className="my-6" />
-                
+
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium">Discount Settings</h3>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="stack-discounts" defaultChecked={false} />
@@ -459,7 +478,7 @@ const CheckoutManagement: React.FC = () => {
                       If enabled, customers can use multiple discount codes on a single order
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="auto-apply" defaultChecked={true} />
@@ -470,7 +489,7 @@ const CheckoutManagement: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex justify-end mt-6">
                   <Button className="flex items-center gap-1">
                     <Save className="h-4 w-4 mr-1" />
@@ -479,11 +498,11 @@ const CheckoutManagement: React.FC = () => {
                 </div>
               </div>
             </TabsContent>
-            
+
             <TabsContent value="gift">
               <div className="space-y-6">
                 <h3 className="text-lg font-medium">Gift Options</h3>
-                
+
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
@@ -507,7 +526,7 @@ const CheckoutManagement: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="enable-gift-message" defaultChecked={true} />
@@ -517,7 +536,7 @@ const CheckoutManagement: React.FC = () => {
                       Customers can add a personalized message to their order
                     </p>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="hide-prices" defaultChecked={true} />
@@ -528,12 +547,12 @@ const CheckoutManagement: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <Separator className="my-6" />
-                
+
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium">Gift Cards</h3>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Switch id="enable-gift-cards" defaultChecked={false} />
@@ -543,15 +562,21 @@ const CheckoutManagement: React.FC = () => {
                       Allow customers to purchase digital gift cards
                     </p>
                   </div>
-                  
+
                   <div className="pl-10 space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="gift-card-amounts">Available Amounts</Label>
                       <div className="p-3 border rounded-md bg-surfaceslightgray-10">
                         <div className="flex items-center flex-wrap gap-2 mb-2">
-                          <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded">$25</span>
-                          <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded">$50</span>
-                          <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded">$100</span>
+                          <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded">
+                            $25
+                          </span>
+                          <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded">
+                            $50
+                          </span>
+                          <span className="bg-light-themeprimarylight-blue text-light-themeprimaryblue text-sm px-2 py-1 rounded">
+                            $100
+                          </span>
                         </div>
                         <Button variant="outline" size="sm" className="flex items-center">
                           <Plus className="h-3 w-3 mr-1" />
@@ -559,7 +584,7 @@ const CheckoutManagement: React.FC = () => {
                         </Button>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
                         <Switch id="custom-amount" defaultChecked={true} />
@@ -567,7 +592,9 @@ const CheckoutManagement: React.FC = () => {
                       </div>
                       <div className="flex space-x-4">
                         <div className="w-1/2">
-                          <Label htmlFor="min-amount" className="text-sm">Minimum Amount</Label>
+                          <Label htmlFor="min-amount" className="text-sm">
+                            Minimum Amount
+                          </Label>
                           <div className="flex mt-1">
                             <span className="inline-flex items-center px-3 bg-surfaceslightgray-10 border border-r-0 border-[#111c2d1a] rounded-l-md">
                               $
@@ -581,7 +608,9 @@ const CheckoutManagement: React.FC = () => {
                           </div>
                         </div>
                         <div className="w-1/2">
-                          <Label htmlFor="max-amount" className="text-sm">Maximum Amount</Label>
+                          <Label htmlFor="max-amount" className="text-sm">
+                            Maximum Amount
+                          </Label>
                           <div className="flex mt-1">
                             <span className="inline-flex items-center px-3 bg-surfaceslightgray-10 border border-r-0 border-[#111c2d1a] rounded-l-md">
                               $
@@ -598,7 +627,7 @@ const CheckoutManagement: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex justify-end mt-6">
                   <Button className="flex items-center gap-1">
                     <Save className="h-4 w-4 mr-1" />
@@ -610,7 +639,7 @@ const CheckoutManagement: React.FC = () => {
           </Tabs>
         </CardContent>
       </Card>
-      
+
       <WebsitePreview fullWidth />
     </div>
   );

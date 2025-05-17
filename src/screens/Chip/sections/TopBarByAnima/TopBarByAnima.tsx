@@ -1,7 +1,7 @@
-import { MoonIcon, SearchIcon } from "lucide-react";
-import React from "react";
-import { Avatar } from "../../../../components/ui/avatar";
-import { Badge } from "../../../../components/ui/badge";
+import { MoonIcon, SearchIcon } from 'lucide-react';
+import React from 'react';
+import { Avatar } from '../../../../components/ui/avatar';
+import { Badge } from '../../../../components/ui/badge';
 
 export const TopBarByAnima = (): JSX.Element => {
   // Data for notification badges
@@ -15,19 +15,11 @@ export const TopBarByAnima = (): JSX.Element => {
       {/* Left side icons */}
       <div className="flex items-center gap-6">
         <div className="relative w-6 h-6">
-          <img
-            className="w-[18px] h-3 absolute top-1.5 left-[3px]"
-            alt="Menu"
-            src="/group.png"
-          />
+          <img className="w-[18px] h-3 absolute top-1.5 left-[3px]" alt="Menu" src="/group.png" />
         </div>
 
         <div className="relative w-6 h-6">
-          <img
-            className="w-5 h-5 absolute top-0.5 left-0.5"
-            alt="Dashboard"
-            src="/group-1.png"
-          />
+          <img className="w-5 h-5 absolute top-0.5 left-0.5" alt="Dashboard" src="/group-1.png" />
         </div>
       </div>
 
@@ -77,12 +69,8 @@ export const TopBarByAnima = (): JSX.Element => {
         </div>
 
         {/* User profile avatar */}
-        <Avatar className="w-10 h-10 rounded-full">
-          <img
-            src="/ellipse-8.png"
-            alt="User profile"
-            className="w-full h-full object-cover"
-          />
+        <Avatar id="user-menu" className="w-10 h-10 rounded-full">
+          <img src="/ellipse-8.png" alt="User profile" className="w-full h-full object-cover" />
         </Avatar>
       </div>
     </header>

@@ -1,9 +1,15 @@
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "../../../../components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../../components/ui/tabs";
-import { Button } from "../../../../components/ui/button";
-import { Badge } from "../../../../components/ui/badge";
-import { WebsitePreview } from "../../components/WebsitePreview";
+import React from 'react';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from '../../../../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../../components/ui/tabs';
+import { Button } from '../../../../components/ui/button';
+import { Badge } from '../../../../components/ui/badge';
+import { WebsitePreview } from '../../components/WebsitePreview';
 import {
   BarChart3,
   LineChart,
@@ -15,10 +21,10 @@ import {
   AlertTriangle,
   CheckCircle,
   Clock,
-  ExternalLink
-} from "lucide-react";
+  ExternalLink,
+} from 'lucide-react';
 
-import { Product, Order, SalesSummary } from "../../models/types";
+import { Product, Order, SalesSummary } from '../../models/types';
 
 interface DashboardProps {
   salesSummary: SalesSummary;
@@ -32,7 +38,7 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-      minimumFractionDigits: 2
+      minimumFractionDigits: 2,
     }).format(price);
   };
 
@@ -42,15 +48,15 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
   // Get badge class for percentage change
   const getPercentBadgeClass = (percent: number) => {
-    return percent >= 0 
-      ? "bg-actionsuccess-light text-actionsuccess" 
-      : "bg-actionwarning-light text-actionwarning";
+    return percent >= 0
+      ? 'bg-actionsuccess-light text-actionsuccess'
+      : 'bg-actionwarning-light text-actionwarning';
   };
 
   // Get percentage display with trend icon
@@ -75,18 +81,18 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
   // Get badge class for order status
   const getStatusBadgeClass = (status: string) => {
     switch (status.toLowerCase()) {
-      case "new":
-        return "bg-light-themeprimarylight-blue text-light-themeprimaryblue";
-      case "processing":
-        return "bg-actionalert-light text-actionalert";
-      case "shipped":
-        return "bg-light-themeprimarylight-blue text-light-themeprimaryblue";
-      case "delivered":
-        return "bg-actionsuccess-light text-actionsuccess";
-      case "cancelled":
-        return "bg-actionwarning-light text-actionwarning";
+      case 'new':
+        return 'bg-light-themeprimarylight-blue text-light-themeprimaryblue';
+      case 'processing':
+        return 'bg-actionalert-light text-actionalert';
+      case 'shipped':
+        return 'bg-light-themeprimarylight-blue text-light-themeprimaryblue';
+      case 'delivered':
+        return 'bg-actionsuccess-light text-actionsuccess';
+      case 'cancelled':
+        return 'bg-actionwarning-light text-actionwarning';
       default:
-        return "bg-blackblack-10 text-blackblack-100";
+        return 'bg-blackblack-10 text-blackblack-100';
     }
   };
 
@@ -99,7 +105,11 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
             <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
               Website Preview
             </CardTitle>
-            <Button variant="outline" className="flex items-center gap-1" onClick={() => window.open("https://example.com/blue-mountain-wicks", "_blank")}>
+            <Button
+              variant="outline"
+              className="flex items-center gap-1"
+              onClick={() => window.open('https://example.com/blue-mountain-wicks', '_blank')}
+            >
               <ExternalLink className="h-4 w-4 mr-1" />
               Open in Browser
             </Button>
@@ -117,8 +127,12 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-blackblack-60 text-sm">Today's Revenue</p>
-                <h3 className="text-2xl font-bold mt-1">{formatPrice(salesSummary.today.revenue)}</h3>
-                <p className="text-sm text-blackblack-60 mt-1">From {salesSummary.today.orders} orders</p>
+                <h3 className="text-2xl font-bold mt-1">
+                  {formatPrice(salesSummary.today.revenue)}
+                </h3>
+                <p className="text-sm text-blackblack-60 mt-1">
+                  From {salesSummary.today.orders} orders
+                </p>
               </div>
               <div className="bg-light-themeprimarylight-blue p-3 rounded-full">
                 <DollarSign className="h-5 w-5 text-light-themeprimaryblue" />
@@ -132,7 +146,9 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-blackblack-60 text-sm">Monthly Revenue</p>
-                <h3 className="text-2xl font-bold mt-1">{formatPrice(salesSummary.month.revenue)}</h3>
+                <h3 className="text-2xl font-bold mt-1">
+                  {formatPrice(salesSummary.month.revenue)}
+                </h3>
                 <Badge className={`mt-1 ${getPercentBadgeClass(salesSummary.month.percentChange)}`}>
                   {getPercentDisplay(salesSummary.month.percentChange)}
                 </Badge>
@@ -187,33 +203,52 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
                 <CardTitle className="font-normal text-lg tracking-[-0.18px] leading-[25.2px] text-blackblack-100">
                   Recent Orders
                 </CardTitle>
-                <Button variant="outline" size="sm">View All</Button>
+                <Button variant="outline" size="sm">
+                  View All
+                </Button>
               </div>
             </CardHeader>
             <CardContent className="p-0">
               <table className="w-full">
                 <thead className="bg-surfaceslightgray-10 border-b border-[#111c2d1a]">
                   <tr>
-                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Order ID</th>
-                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Customer</th>
-                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Date</th>
-                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Amount</th>
-                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Status</th>
+                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                      Order ID
+                    </th>
+                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                      Customer
+                    </th>
+                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                      Date
+                    </th>
+                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                      Amount
+                    </th>
+                    <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                      Status
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {orders.slice(0, 5).map((order) => (
-                    <tr key={order.id} className="border-b border-[#111c2d1a] last:border-b-0 hover:bg-surfaceslightgray-10">
-                      <td className="py-3 px-4 font-medium text-light-themeprimaryblue">{order.orderNumber}</td>
+                  {orders.slice(0, 5).map(order => (
+                    <tr
+                      key={order.id}
+                      className="border-b border-[#111c2d1a] last:border-b-0 hover:bg-surfaceslightgray-10"
+                    >
+                      <td className="py-3 px-4 font-medium text-light-themeprimaryblue">
+                        {order.orderNumber}
+                      </td>
                       <td className="py-3 px-4">{order.customerName}</td>
-                      <td className="py-3 px-4 text-blackblack-60">{formatDate(order.orderDate)}</td>
+                      <td className="py-3 px-4 text-blackblack-60">
+                        {formatDate(order.orderDate)}
+                      </td>
                       <td className="py-3 px-4 font-medium">{formatPrice(order.total)}</td>
                       <td className="py-3 px-4">
                         <Badge className={getStatusBadgeClass(order.status)}>
                           <div className="flex items-center gap-1">
-                            {order.status === "Processing" && <Clock className="h-3 w-3" />}
-                            {order.status === "Shipped" && <Package className="h-3 w-3" />}
-                            {order.status === "Delivered" && <CheckCircle className="h-3 w-3" />}
+                            {order.status === 'Processing' && <Clock className="h-3 w-3" />}
+                            {order.status === 'Shipped' && <Package className="h-3 w-3" />}
+                            {order.status === 'Delivered' && <CheckCircle className="h-3 w-3" />}
                             <span>{order.status}</span>
                           </div>
                         </Badge>
@@ -243,7 +278,7 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
             </CardHeader>
             <CardContent className="p-0">
               <div className="divide-y divide-[#111c2d1a]">
-                {salesSummary.topSellingProducts.map((product) => (
+                {salesSummary.topSellingProducts.map(product => (
                   <div key={product.id} className="p-4 flex items-center">
                     <div className="w-10 h-10 bg-light-themeprimarylight-blue rounded-md flex items-center justify-center mr-3">
                       <Package className="h-5 w-5 text-light-themeprimaryblue" />
@@ -279,19 +314,21 @@ const Dashboard: React.FC<DashboardProps> = ({ salesSummary, products, orders })
               </div>
             </div>
             <div className="w-1/3">
-              {salesSummary.salesByCategory.map((category) => (
+              {salesSummary.salesByCategory.map(category => (
                 <div key={category.category} className="mb-4 last:mb-0">
                   <div className="flex justify-between items-center mb-1">
                     <p className="font-medium">{category.category}</p>
                     <p className="text-sm font-medium">{formatPrice(category.sales)}</p>
                   </div>
                   <div className="w-full bg-blackblack-10 rounded-full h-2">
-                    <div 
-                      className="bg-light-themeprimaryblue h-2 rounded-full" 
+                    <div
+                      className="bg-light-themeprimaryblue h-2 rounded-full"
                       style={{ width: `${category.percentOfTotal}%` }}
                     ></div>
                   </div>
-                  <p className="text-xs text-blackblack-60 mt-1">{category.percentOfTotal}% of total sales</p>
+                  <p className="text-xs text-blackblack-60 mt-1">
+                    {category.percentOfTotal}% of total sales
+                  </p>
                 </div>
               ))}
             </div>

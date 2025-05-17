@@ -1,202 +1,197 @@
-import React from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../../../../components/ui/card";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../../components/ui/card';
 
 // Define chip data for reusability
 const filledChips = [
   {
-    icon: "M",
-    text: "Default Filled",
-    variant: "default",
+    icon: 'M',
+    text: 'Default Filled',
+    variant: 'default',
     hasCloseButton: false,
   },
   {
-    icon: "M",
-    text: "Default Filled",
-    variant: "default",
+    icon: 'M',
+    text: 'Default Filled',
+    variant: 'default',
     hasCloseButton: true,
   },
   {
-    icon: "avatar",
-    text: "Primary Filled",
-    variant: "primary",
+    icon: 'avatar',
+    text: 'Primary Filled',
+    variant: 'primary',
     hasCloseButton: false,
   },
   {
-    icon: "avatar",
-    text: "Primary Deletable",
-    variant: "primary",
+    icon: 'avatar',
+    text: 'Primary Deletable',
+    variant: 'primary',
     hasCloseButton: true,
   },
   {
-    icon: "smile",
-    text: "Secondary Filled",
-    variant: "secondary",
+    icon: 'smile',
+    text: 'Secondary Filled',
+    variant: 'secondary',
     hasCloseButton: false,
   },
   {
-    icon: "smile",
-    text: "Secondary Deletable",
-    variant: "secondary",
+    icon: 'smile',
+    text: 'Secondary Deletable',
+    variant: 'secondary',
     hasCloseButton: true,
   },
   {
-    icon: "avatar",
-    text: "Default Filled",
-    variant: "success",
+    icon: 'avatar',
+    text: 'Default Filled',
+    variant: 'success',
     hasCloseButton: false,
   },
   {
-    icon: "avatar",
-    text: "Default Deletable",
-    variant: "success",
+    icon: 'avatar',
+    text: 'Default Deletable',
+    variant: 'success',
     hasCloseButton: true,
   },
   {
-    icon: "smile",
-    text: "Default Filled",
-    variant: "alert",
+    icon: 'smile',
+    text: 'Default Filled',
+    variant: 'alert',
     hasCloseButton: false,
   },
   {
-    icon: "smile",
-    text: "Default Deletable",
-    variant: "alert",
+    icon: 'smile',
+    text: 'Default Deletable',
+    variant: 'alert',
     hasCloseButton: true,
   },
   {
-    icon: "avatar",
-    text: "Default Filled",
-    variant: "warning",
+    icon: 'avatar',
+    text: 'Default Filled',
+    variant: 'warning',
     hasCloseButton: false,
   },
   {
-    icon: "avatar",
-    text: "Default Deletable",
-    variant: "warning",
+    icon: 'avatar',
+    text: 'Default Deletable',
+    variant: 'warning',
     hasCloseButton: true,
   },
 ];
 
 const outlinedChips = [
   {
-    icon: "M",
-    text: "Default Filled",
-    variant: "default",
+    icon: 'M',
+    text: 'Default Filled',
+    variant: 'default',
     hasCloseButton: false,
   },
   {
-    icon: "M",
-    text: "Default Filled",
-    variant: "default",
+    icon: 'M',
+    text: 'Default Filled',
+    variant: 'default',
     hasCloseButton: true,
   },
   {
-    icon: "avatar",
-    text: "Primary Filled",
-    variant: "primary",
+    icon: 'avatar',
+    text: 'Primary Filled',
+    variant: 'primary',
     hasCloseButton: false,
   },
   {
-    icon: "avatar",
-    text: "Primary Deletable",
-    variant: "primary",
+    icon: 'avatar',
+    text: 'Primary Deletable',
+    variant: 'primary',
     hasCloseButton: true,
   },
   {
-    icon: "smile",
-    text: "Secondary Filled",
-    variant: "secondary",
+    icon: 'smile',
+    text: 'Secondary Filled',
+    variant: 'secondary',
     hasCloseButton: false,
   },
   {
-    icon: "smile",
-    text: "Secondary Deletable",
-    variant: "secondary",
+    icon: 'smile',
+    text: 'Secondary Deletable',
+    variant: 'secondary',
     hasCloseButton: true,
   },
   {
-    icon: "avatar",
-    text: "Default Filled",
-    variant: "success",
+    icon: 'avatar',
+    text: 'Default Filled',
+    variant: 'success',
     hasCloseButton: false,
   },
   {
-    icon: "avatar",
-    text: "Default Deletable",
-    variant: "success",
+    icon: 'avatar',
+    text: 'Default Deletable',
+    variant: 'success',
     hasCloseButton: true,
   },
   {
-    icon: "smile",
-    text: "Default Filled",
-    variant: "alert",
+    icon: 'smile',
+    text: 'Default Filled',
+    variant: 'alert',
     hasCloseButton: false,
   },
   {
-    icon: "smile",
-    text: "Default Deletable",
-    variant: "alert",
+    icon: 'smile',
+    text: 'Default Deletable',
+    variant: 'alert',
     hasCloseButton: true,
   },
   {
-    icon: "avatar",
-    text: "Default Filled",
-    variant: "warning",
+    icon: 'avatar',
+    text: 'Default Filled',
+    variant: 'warning',
     hasCloseButton: false,
   },
   {
-    icon: "avatar",
-    text: "Default Deletable",
-    variant: "warning",
+    icon: 'avatar',
+    text: 'Default Deletable',
+    variant: 'warning',
     hasCloseButton: true,
   },
 ];
 
 const customIconChips = [
-  { icon: "M", text: "Custom Icon", variant: "primary", customIcon: "check" },
+  { icon: 'M', text: 'Custom Icon', variant: 'primary', customIcon: 'check' },
   {
-    icon: "S",
-    text: "Default Filled",
-    variant: "secondary",
-    customIcon: "doubleCheck",
+    icon: 'S',
+    text: 'Default Filled',
+    variant: 'secondary',
+    customIcon: 'doubleCheck',
   },
 ];
 
 const customOutlinedIconChips = [
-  { icon: "M", text: "Custom Icon", variant: "primary", customIcon: "check" },
+  { icon: 'M', text: 'Custom Icon', variant: 'primary', customIcon: 'check' },
   {
-    icon: "S",
-    text: "Default Filled",
-    variant: "secondary",
-    customIcon: "doubleCheck",
+    icon: 'S',
+    text: 'Default Filled',
+    variant: 'secondary',
+    customIcon: 'doubleCheck',
   },
 ];
 
 const disabledChips = [
   {
-    icon: "M",
-    text: "Custom Icon",
-    variant: "default",
+    icon: 'M',
+    text: 'Custom Icon',
+    variant: 'default',
     hasCloseButton: true,
     disabled: true,
   },
   {
-    icon: "S",
-    text: "Default Filled",
-    variant: "primary",
+    icon: 'S',
+    text: 'Default Filled',
+    variant: 'primary',
     hasCloseButton: true,
     disabled: true,
   },
 ];
 
 const sizeChips = [
-  { text: "Small", variant: "primary", size: "small" },
-  { text: "Medium", variant: "primary", size: "medium" },
+  { text: 'Small', variant: 'primary', size: 'small' },
+  { text: 'Medium', variant: 'primary', size: 'medium' },
 ];
 
 export const DetailsByAnima = (): JSX.Element => {
@@ -220,20 +215,20 @@ export const DetailsByAnima = (): JSX.Element => {
               <div
                 key={`filled-${index}`}
                 className={`inline-flex h-10 items-center justify-center gap-2 px-2 py-0 rounded-lg ${
-                  chip.variant === "default"
-                    ? "bg-blackblack-10"
-                    : chip.variant === "primary"
-                      ? "bg-light-themesecondarypurple"
-                      : chip.variant === "secondary"
-                        ? "bg-light-themeprimaryblue"
-                        : chip.variant === "success"
-                          ? "bg-actionsuccess"
-                          : chip.variant === "alert"
-                            ? "bg-actionalert"
-                            : "bg-actionwarning"
+                  chip.variant === 'default'
+                    ? 'bg-blackblack-10'
+                    : chip.variant === 'primary'
+                      ? 'bg-light-themesecondarypurple'
+                      : chip.variant === 'secondary'
+                        ? 'bg-light-themeprimaryblue'
+                        : chip.variant === 'success'
+                          ? 'bg-actionsuccess'
+                          : chip.variant === 'alert'
+                            ? 'bg-actionalert'
+                            : 'bg-actionwarning'
                 }`}
               >
-                {chip.icon === "M" && (
+                {chip.icon === 'M' && (
                   <div className="relative w-[26px] h-6">
                     <div className="relative w-6 h-6 bg-blackblack-40 rounded-xl">
                       <div className="text-blackblack-40 absolute top-0.5 left-1.5 font-normal text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap">
@@ -242,18 +237,18 @@ export const DetailsByAnima = (): JSX.Element => {
                     </div>
                   </div>
                 )}
-                {chip.icon === "avatar" && (
+                {chip.icon === 'avatar' && (
                   <div
                     className={`relative w-6 h-6 bg-cover bg-[50%_50%] ${
-                      chip.variant === "primary"
-                        ? "bg-[url(/ellipse-178-7.png)]"
-                        : chip.variant === "success"
-                          ? "bg-[url(/ellipse-178-9.png)]"
-                          : "bg-[url(/ellipse-178-11.png)]"
+                      chip.variant === 'primary'
+                        ? 'bg-[url(/ellipse-178-7.png)]'
+                        : chip.variant === 'success'
+                          ? 'bg-[url(/ellipse-178-9.png)]'
+                          : 'bg-[url(/ellipse-178-11.png)]'
                     }`}
                   />
                 )}
-                {chip.icon === "smile" && (
+                {chip.icon === 'smile' && (
                   <img
                     className="relative w-6 h-6"
                     alt="Ant design smile"
@@ -262,15 +257,13 @@ export const DetailsByAnima = (): JSX.Element => {
                 )}
                 <div
                   className={`relative w-fit font-normal text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap ${
-                    chip.variant === "default"
-                      ? "text-blackblack-100"
-                      : "text-blackwhite"
+                    chip.variant === 'default' ? 'text-blackblack-100' : 'text-blackwhite'
                   }`}
                 >
                   {chip.text}
                 </div>
                 {chip.hasCloseButton &&
-                  (chip.variant === "default" ? (
+                  (chip.variant === 'default' ? (
                     <div className="bg-colors-for-light-themeblack-shadesblack-10 rounded-xl relative w-6 h-6">
                       <img
                         className="absolute w-4 h-4 top-1 left-1"
@@ -306,20 +299,20 @@ export const DetailsByAnima = (): JSX.Element => {
               <div
                 key={`outlined-${index}`}
                 className={`inline-flex h-10 items-center justify-center gap-2 px-2 py-0 rounded-lg border border-solid ${
-                  chip.variant === "default"
-                    ? "border-[#111c2d]"
-                    : chip.variant === "primary"
-                      ? "border-[#8865e5]"
-                      : chip.variant === "secondary"
-                        ? "border-[#00a1ff]"
-                        : chip.variant === "success"
-                          ? "border-[#00ceb6]"
-                          : chip.variant === "alert"
-                            ? "border-[#ffb900]"
-                            : "border-[#ff6692]"
+                  chip.variant === 'default'
+                    ? 'border-[#111c2d]'
+                    : chip.variant === 'primary'
+                      ? 'border-[#8865e5]'
+                      : chip.variant === 'secondary'
+                        ? 'border-[#00a1ff]'
+                        : chip.variant === 'success'
+                          ? 'border-[#00ceb6]'
+                          : chip.variant === 'alert'
+                            ? 'border-[#ffb900]'
+                            : 'border-[#ff6692]'
                 }`}
               >
-                {chip.icon === "M" && (
+                {chip.icon === 'M' && (
                   <div className="relative w-[26px] h-6">
                     <div className="relative w-6 h-6 bg-blackblack-40 rounded-xl">
                       <div className="text-blackblack-60 absolute top-0.5 left-1.5 font-normal text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap">
@@ -328,18 +321,18 @@ export const DetailsByAnima = (): JSX.Element => {
                     </div>
                   </div>
                 )}
-                {chip.icon === "avatar" && (
+                {chip.icon === 'avatar' && (
                   <div
                     className={`relative w-6 h-6 bg-cover bg-[50%_50%] ${
-                      chip.variant === "primary"
-                        ? "bg-[url(/ellipse-178-7.png)]"
-                        : chip.variant === "success"
-                          ? "bg-[url(/ellipse-178-9.png)]"
-                          : "bg-[url(/ellipse-178-11.png)]"
+                      chip.variant === 'primary'
+                        ? 'bg-[url(/ellipse-178-7.png)]'
+                        : chip.variant === 'success'
+                          ? 'bg-[url(/ellipse-178-9.png)]'
+                          : 'bg-[url(/ellipse-178-11.png)]'
                     }`}
                   />
                 )}
-                {chip.icon === "smile" && (
+                {chip.icon === 'smile' && (
                   <img
                     className="relative w-6 h-6"
                     alt="Ant design smile"
@@ -348,23 +341,23 @@ export const DetailsByAnima = (): JSX.Element => {
                 )}
                 <div
                   className={`relative w-fit font-normal text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap ${
-                    chip.variant === "default"
-                      ? "text-blackblack-100"
-                      : chip.variant === "primary"
-                        ? "text-light-themesecondarypurple"
-                        : chip.variant === "secondary"
-                          ? "text-light-themeprimaryblue"
-                          : chip.variant === "success"
-                            ? "text-actionsuccess"
-                            : chip.variant === "alert"
-                              ? "text-actionalert"
-                              : "text-actionwarning"
+                    chip.variant === 'default'
+                      ? 'text-blackblack-100'
+                      : chip.variant === 'primary'
+                        ? 'text-light-themesecondarypurple'
+                        : chip.variant === 'secondary'
+                          ? 'text-light-themeprimaryblue'
+                          : chip.variant === 'success'
+                            ? 'text-actionsuccess'
+                            : chip.variant === 'alert'
+                              ? 'text-actionalert'
+                              : 'text-actionwarning'
                   }`}
                 >
                   {chip.text}
                 </div>
                 {chip.hasCloseButton &&
-                  (chip.variant === "default" ? (
+                  (chip.variant === 'default' ? (
                     <div className="bg-blackblack-10 rounded-xl relative w-6 h-6">
                       <img
                         className="absolute w-4 h-4 top-1 left-1"
@@ -375,15 +368,15 @@ export const DetailsByAnima = (): JSX.Element => {
                   ) : (
                     <div
                       className={`rounded-xl relative w-6 h-6 ${
-                        chip.variant === "primary"
-                          ? "bg-light-themesecondarypurple"
-                          : chip.variant === "secondary"
-                            ? "bg-light-themeprimaryblue"
-                            : chip.variant === "success"
-                              ? "bg-actionsuccess"
-                              : chip.variant === "alert"
-                                ? "bg-actionalert"
-                                : "bg-actionwarning"
+                        chip.variant === 'primary'
+                          ? 'bg-light-themesecondarypurple'
+                          : chip.variant === 'secondary'
+                            ? 'bg-light-themeprimaryblue'
+                            : chip.variant === 'success'
+                              ? 'bg-actionsuccess'
+                              : chip.variant === 'alert'
+                                ? 'bg-actionalert'
+                                : 'bg-actionwarning'
                       }`}
                     >
                       <img
@@ -410,21 +403,21 @@ export const DetailsByAnima = (): JSX.Element => {
                 <div
                   key={`custom-${index}`}
                   className={`inline-flex h-10 items-center justify-center gap-2 px-2 py-0 rounded-lg ${
-                    chip.variant === "primary"
-                      ? "bg-light-themesecondarypurple"
-                      : "bg-light-themeprimaryblue"
+                    chip.variant === 'primary'
+                      ? 'bg-light-themesecondarypurple'
+                      : 'bg-light-themeprimaryblue'
                   }`}
                 >
                   <div className="relative w-[26px] h-6">
                     <div
                       className={`relative w-6 h-6 rounded-xl ${
-                        chip.variant === "primary"
-                          ? "bg-light-themesecondarypurple-hover"
-                          : "bg-light-themeprimaryblue-hover"
+                        chip.variant === 'primary'
+                          ? 'bg-light-themesecondarypurple-hover'
+                          : 'bg-light-themeprimaryblue-hover'
                       }`}
                     >
                       <div
-                        className={`absolute top-0.5 ${chip.icon === "M" ? "left-1.5" : "left-[7px]"} font-normal text-blackwhite text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap`}
+                        className={`absolute top-0.5 ${chip.icon === 'M' ? 'left-1.5' : 'left-[7px]'} font-normal text-blackwhite text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap`}
                       >
                         {chip.icon}
                       </div>
@@ -433,7 +426,7 @@ export const DetailsByAnima = (): JSX.Element => {
                   <div className="text-blackwhite relative w-fit font-normal text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap">
                     {chip.text}
                   </div>
-                  {chip.customIcon === "check" ? (
+                  {chip.customIcon === 'check' ? (
                     <img
                       className="relative w-6 h-6"
                       alt="Material symbols check"
@@ -462,21 +455,19 @@ export const DetailsByAnima = (): JSX.Element => {
                 <div
                   key={`custom-outlined-${index}`}
                   className={`inline-flex h-10 items-center justify-center gap-2 px-2 py-0 rounded-lg border border-solid ${
-                    chip.variant === "primary"
-                      ? "border-[#8865e5]"
-                      : "border-[#00a1ff]"
+                    chip.variant === 'primary' ? 'border-[#8865e5]' : 'border-[#00a1ff]'
                   }`}
                 >
                   <div className="relative w-[26px] h-6">
                     <div
                       className={`relative w-6 h-6 rounded-xl ${
-                        chip.variant === "primary"
-                          ? "bg-light-themesecondarypurple"
-                          : "bg-light-themeprimaryblue"
+                        chip.variant === 'primary'
+                          ? 'bg-light-themesecondarypurple'
+                          : 'bg-light-themeprimaryblue'
                       }`}
                     >
                       <div
-                        className={`absolute top-0.5 ${chip.icon === "M" ? "left-1.5" : "left-[7px]"} font-normal text-blackwhite text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap`}
+                        className={`absolute top-0.5 ${chip.icon === 'M' ? 'left-1.5' : 'left-[7px]'} font-normal text-blackwhite text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap`}
                       >
                         {chip.icon}
                       </div>
@@ -484,14 +475,14 @@ export const DetailsByAnima = (): JSX.Element => {
                   </div>
                   <div
                     className={`relative w-fit font-normal text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap ${
-                      chip.variant === "primary"
-                        ? "text-light-themesecondarypurple"
-                        : "text-light-themeprimaryblue"
+                      chip.variant === 'primary'
+                        ? 'text-light-themesecondarypurple'
+                        : 'text-light-themeprimaryblue'
                     }`}
                   >
                     {chip.text}
                   </div>
-                  {chip.customIcon === "check" ? (
+                  {chip.customIcon === 'check' ? (
                     <img
                       className="relative w-6 h-6"
                       alt="Material symbols check"
@@ -522,21 +513,21 @@ export const DetailsByAnima = (): JSX.Element => {
                 <div
                   key={`disabled-${index}`}
                   className={`inline-flex h-10 items-center justify-center gap-2 px-2 py-0 rounded-lg ${
-                    chip.variant === "default"
-                      ? "bg-blackblack-10"
-                      : "bg-light-themesecondarypurple opacity-60"
+                    chip.variant === 'default'
+                      ? 'bg-blackblack-10'
+                      : 'bg-light-themesecondarypurple opacity-60'
                   }`}
                 >
                   <div className="relative w-[26px] h-6">
                     <div
                       className={`relative w-6 h-6 rounded-xl ${
-                        chip.variant === "default"
-                          ? "bg-blackblack-20"
-                          : "bg-light-themesecondarypurple-hover"
+                        chip.variant === 'default'
+                          ? 'bg-blackblack-20'
+                          : 'bg-light-themesecondarypurple-hover'
                       }`}
                     >
                       <div
-                        className={`${chip.variant === "default" ? "opacity-[0.56] text-blackblack-40" : "text-blackwhite"} absolute top-0.5 ${chip.icon === "M" ? "left-1.5" : "left-[7px]"} font-normal text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap`}
+                        className={`${chip.variant === 'default' ? 'opacity-[0.56] text-blackblack-40' : 'text-blackwhite'} absolute top-0.5 ${chip.icon === 'M' ? 'left-1.5' : 'left-[7px]'} font-normal text-[15px] tracking-[-0.30px] leading-[21px] whitespace-nowrap`}
                       >
                         {chip.icon}
                       </div>
@@ -546,7 +537,7 @@ export const DetailsByAnima = (): JSX.Element => {
                     {chip.text}
                   </div>
                   {chip.hasCloseButton &&
-                    (chip.variant === "default" ? (
+                    (chip.variant === 'default' ? (
                       <div className="bg-blackblack-20 rounded-xl relative w-6 h-6">
                         <img
                           className="absolute w-4 h-4 top-1 left-1"

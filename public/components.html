@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material Dashboard Component Library</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00A1FF;
+      --primary-hover: #0091E5;
+      --primary-light: #D9F1FF;
+      --secondary: #8965E5;
+      --secondary-hover: #673ADE;
+      --secondary-light: #E7E2F3;
+      --success: #00CEB6;
+      --success-light: #BAFAF2;
+      --warning: #FFB900;
+      --warning-light: #FFF1CC;
+      --danger: #FF6692;
+      --danger-light: #FFD9E4;
+      --black: #111C2D;
+      --black-80: rgba(17, 28, 45, 0.8);
+      --black-60: rgba(17, 28, 45, 0.6);
+      --black-40: rgba(17, 28, 45, 0.4);
+      --black-20: rgba(17, 28, 45, 0.2);
+      --black-10: rgba(17, 28, 45, 0.1);
+      --white: #FFFFFF;
+      --gray-10: #F8FAFD;
+      --gray-20: #EFF4FA;
+      --border-color: #E4EBF0;
+      --shadow-medium: 0px 1px 4px 0px rgba(133, 146, 173, 0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--black);
+      background-color: var(--gray-10);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    h1 {
+      color: var(--black);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      color: var(--black);
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 500;
+    }
+
+    p {
+      color: var(--black-60);
+      margin-bottom: 1rem;
+    }
+
+    .category {
+      margin: 2.5rem 0;
+      padding: 1.5rem;
+      background-color: var(--white);
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .component-card {
+      background-color: var(--white);
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .component-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .component-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+    }
+
+    .component-card p {
+      font-size: 0.9rem;
+      color: var(--black-60);
+      margin-bottom: 1rem;
+    }
+
+    .view-btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+    }
+
+    .view-btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .demo-img {
+      width: 100%;
+      height: 120px;
+      background-color: var(--gray-20);
+      border-radius: 0.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black-40);
+      font-size: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--black-60);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Material Dashboard Component Library</h1>
+      <p>A comprehensive collection of UI components for React applications</p>
+      <a href="../dist/component-downloads/index.html" style="display: inline-block; background-color: var(--secondary); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500; margin-top: 1rem; transition: background-color 0.2s;">
+        Download Component Examples ⬇
+      </a>
+    </header>
+
+    <div class="category">
+      <h2>Dashboard & Layout</h2>
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="demo-img">Dashboard Preview</div>
+          <h3>Dashboard</h3>
+          <p>Main dashboard with statistics, charts, and overview data.</p>
+          <a href="../src/screens/Dashboard/Dashboard.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Layout Preview</div>
+          <h3>Layout</h3>
+          <p>Base layout structure with sidebar and content area.</p>
+          <a href="../src/components/layout/Layout.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Sidebar Preview</div>
+          <h3>Sidebar</h3>
+          <p>Navigation sidebar with links to different sections.</p>
+          <a href="../src/components/layout/Sidebar.tsx" class="view-btn">View Component</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>UI Components</h2>
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="demo-img">Accordion Preview</div>
+          <h3>Accordion</h3>
+          <p>Collapsible content panels for presenting information in a limited space.</p>
+          <a href="../src/components/ui/accordion.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Alert Preview</div>
+          <h3>Alert</h3>
+          <p>Feedback messages for user actions with various severity levels.</p>
+          <a href="../src/components/ui/alert.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Alert Dialog Preview</div>
+          <h3>Alert Dialog</h3>
+          <p>Modal dialog for important messages requiring user confirmation.</p>
+          <a href="../src/components/ui/alert-dialog.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Avatar Preview</div>
+          <h3>Avatar</h3>
+          <p>User profile image or initials display component.</p>
+          <a href="../src/components/ui/avatar.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Badge Preview</div>
+          <h3>Badge</h3>
+          <p>Small status indicators for showing counts and status.</p>
+          <a href="../src/components/ui/badge.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Breadcrumb Preview</div>
+          <h3>Breadcrumb</h3>
+          <p>Navigation aid showing the current location in hierarchical structure.</p>
+          <a href="../src/components/ui/breadcrumb.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Button Preview</div>
+          <h3>Button</h3>
+          <p>Interactive elements for triggering actions.</p>
+          <a href="../src/components/ui/button.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Calendar Preview</div>
+          <h3>Calendar</h3>
+          <p>Date picker component for selecting dates.</p>
+          <a href="../src/components/ui/calendar.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Card Preview</div>
+          <h3>Card</h3>
+          <p>Content containers for organizing information.</p>
+          <a href="../src/components/ui/card.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Checkbox Preview</div>
+          <h3>Checkbox</h3>
+          <p>Form input for multiple selection options.</p>
+          <a href="../src/components/ui/checkbox.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Data Table Preview</div>
+          <h3>Data Table</h3>
+          <p>Advanced table for displaying and manipulating data sets.</p>
+          <a href="../src/components/ui/data-table.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Date Picker Preview</div>
+          <h3>Date Picker</h3>
+          <p>Component for selecting dates with calendar integration.</p>
+          <a href="../src/components/ui/date-picker.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Dialog Preview</div>
+          <h3>Dialog</h3>
+          <p>Modal window for focused interactions.</p>
+          <a href="../src/components/ui/dialog.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Input Preview</div>
+          <h3>Input</h3>
+          <p>Text input fields for form data entry.</p>
+          <a href="../src/components/ui/input.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Label Preview</div>
+          <h3>Label</h3>
+          <p>Text labels for form elements.</p>
+          <a href="../src/components/ui/label.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Popover Preview</div>
+          <h3>Popover</h3>
+          <p>Floating content triggered by user interaction.</p>
+          <a href="../src/components/ui/popover.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Progress Preview</div>
+          <h3>Progress</h3>
+          <p>Visual indicators of completion progress.</p>
+          <a href="../src/components/ui/progress.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Radio Group Preview</div>
+          <h3>Radio Group</h3>
+          <p>Form input for single selection from multiple options.</p>
+          <a href="../src/components/ui/radio-group.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Scroll Area Preview</div>
+          <h3>Scroll Area</h3>
+          <p>Custom scrollable container with styled scrollbars.</p>
+          <a href="../src/components/ui/scroll-area.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Select Preview</div>
+          <h3>Select</h3>
+          <p>Dropdown selection component for choosing from a list of options.</p>
+          <a href="../src/components/ui/select.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Separator Preview</div>
+          <h3>Separator</h3>
+          <p>Visual divider between content sections.</p>
+          <a href="../src/components/ui/separator.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Slider Preview</div>
+          <h3>Slider</h3>
+          <p>Input component for selecting a value from a range.</p>
+          <a href="../src/components/ui/slider.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Switch Preview</div>
+          <h3>Switch</h3>
+          <p>Toggle input for boolean values.</p>
+          <a href="../src/components/ui/switch.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Tabs Preview</div>
+          <h3>Tabs</h3>
+          <p>Tabbed interface for switching between related content sections.</p>
+          <a href="../src/components/ui/tabs.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Textarea Preview</div>
+          <h3>Textarea</h3>
+          <p>Multi-line text input field.</p>
+          <a href="../src/components/ui/textarea.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Toast Preview</div>
+          <h3>Toast</h3>
+          <p>Temporary notification messages.</p>
+          <a href="../src/components/ui/toast.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Toaster Preview</div>
+          <h3>Toaster</h3>
+          <p>Toast notification container and manager.</p>
+          <a href="../src/components/ui/toaster.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Tooltip Preview</div>
+          <h3>Tooltip</h3>
+          <p>Informational text that appears on hover.</p>
+          <a href="../src/components/ui/tooltip.tsx" class="view-btn">View Component</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>Button Variants</h2>
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="demo-img">Primary Buttons</div>
+          <h3>Primary Buttons</h3>
+          <p>Main action buttons in primary color.</p>
+          <a href="../src/screens/Buttons/PrimaryButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Secondary Buttons</div>
+          <h3>Secondary Buttons</h3>
+          <p>Alternative action buttons in secondary color.</p>
+          <a href="../src/screens/Buttons/SecondaryButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Success Buttons</div>
+          <h3>Success Buttons</h3>
+          <p>Buttons indicating successful actions.</p>
+          <a href="../src/screens/Buttons/SuccessButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Warning Buttons</div>
+          <h3>Warning Buttons</h3>
+          <p>Buttons for warning or caution actions.</p>
+          <a href="../src/screens/Buttons/WarningButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Danger Buttons</div>
+          <h3>Danger Buttons</h3>
+          <p>Buttons for destructive or irreversible actions.</p>
+          <a href="../src/screens/Buttons/DangerButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Ghost Buttons</div>
+          <h3>Ghost Buttons</h3>
+          <p>Transparent buttons with borders.</p>
+          <a href="../src/screens/Buttons/GhostButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Outline Buttons</div>
+          <h3>Outline Buttons</h3>
+          <p>Buttons with outline styling instead of solid background.</p>
+          <a href="../src/screens/Buttons/OutlineButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Link Buttons</div>
+          <h3>Link Buttons</h3>
+          <p>Buttons that appear as links.</p>
+          <a href="../src/screens/Buttons/LinkButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Icon Buttons</div>
+          <h3>Icon Buttons</h3>
+          <p>Buttons with icons for visual clarity.</p>
+          <a href="../src/screens/Buttons/IconButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Group Buttons</div>
+          <h3>Grouped Buttons</h3>
+          <p>Button groups for related actions.</p>
+          <a href="../src/screens/Buttons/GroupedButtons.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Loading Buttons</div>
+          <h3>Loading Buttons</h3>
+          <p>Buttons with loading states for async operations.</p>
+          <a href="../src/screens/Buttons/LoadingButtons.tsx" class="view-btn">View Component</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>Chart Components</h2>
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="demo-img">Area Charts</div>
+          <h3>Area Charts</h3>
+          <p>Visualizations with filled areas below the line.</p>
+          <a href="../src/screens/Charts/AreaCharts.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Bar Charts</div>
+          <h3>Bar Charts</h3>
+          <p>Rectangular bar visualizations for comparing values.</p>
+          <a href="../src/screens/Charts/BarCharts.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Line Charts</div>
+          <h3>Line Charts</h3>
+          <p>Connected point visualizations for trends over time.</p>
+          <a href="../src/screens/Charts/LineCharts.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Pie Charts</div>
+          <h3>Pie Charts</h3>
+          <p>Circular visualizations for proportion comparison.</p>
+          <a href="../src/screens/Charts/PieCharts.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Scatter Charts</div>
+          <h3>Scatter Charts</h3>
+          <p>Point visualizations for showing distribution and correlation.</p>
+          <a href="../src/screens/Charts/ScatterCharts.tsx" class="view-btn">View Component</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>Form Components</h2>
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="demo-img">Checkbox & Radio</div>
+          <h3>Checkbox & Radio</h3>
+          <p>Selection form controls for different input needs.</p>
+          <a href="../src/screens/Forms/CheckboxRadio.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Date Picker Demo</div>
+          <h3>Date Picker Demo</h3>
+          <p>Calendar-based date selection examples.</p>
+          <a href="../src/screens/Forms/DatePickerDemo.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Form Validation</div>
+          <h3>Form Validation</h3>
+          <p>Input validation with error handling and feedback.</p>
+          <a href="../src/screens/Forms/FormValidation.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Input Fields</div>
+          <h3>Input Fields</h3>
+          <p>Various text input field types and configurations.</p>
+          <a href="../src/screens/Forms/InputFields.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Select Fields</div>
+          <h3>Select Fields</h3>
+          <p>Dropdown selection fields for single and multiple choices.</p>
+          <a href="../src/screens/Forms/SelectFields.tsx" class="view-btn">View Component</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>Example Screens</h2>
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="demo-img">Calendar App</div>
+          <h3>Calendar App</h3>
+          <p>Example calendar application with events and scheduling.</p>
+          <a href="../src/screens/Examples/Calendar.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">File Upload</div>
+          <h3>File Upload</h3>
+          <p>File upload interface with drag-and-drop support.</p>
+          <a href="../src/screens/Examples/FileUpload.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Notifications Center</div>
+          <h3>Notifications Center</h3>
+          <p>Unified notifications management interface.</p>
+          <a href="../src/screens/Examples/NotificationsCenter.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Timeline</div>
+          <h3>Timeline</h3>
+          <p>Visual representation of events in chronological order.</p>
+          <a href="../src/screens/Examples/Timeline.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">User Profile</div>
+          <h3>User Profile</h3>
+          <p>User profile management interface with settings.</p>
+          <a href="../src/screens/Examples/UserProfile.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">E-commerce</div>
+          <h3>E-commerce</h3>
+          <p>Product shop interface with catalog and cart functionality.</p>
+          <a href="../src/screens/Ecommerce/Ecommerce.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Analytics</div>
+          <h3>Analytics</h3>
+          <p>Data visualization and analytics dashboard.</p>
+          <a href="../src/screens/Analytics/Analytics.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">CRM</div>
+          <h3>CRM</h3>
+          <p>Customer relationship management interface.</p>
+          <a href="../src/screens/CRM/CRM.tsx" class="view-btn">View Component</a>
+        </div>
+        <div class="component-card">
+          <div class="demo-img">Todo App</div>
+          <h3>Todo App</h3>
+          <p>Task management application with status tracking.</p>
+          <a href="../src/screens/Todo/Todo.tsx" class="view-btn">View Component</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Material Dashboard UI Component Library - Copyright © 2025</p>
+    </footer>
+  </div>
+</body>
+</html>

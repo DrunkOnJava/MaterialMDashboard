@@ -2,56 +2,56 @@
 
 // Product category enum
 export enum CandleCategory {
-  SEASONAL = "Seasonal",
-  SIGNATURE = "Signature",
-  PREMIUM = "Premium",
-  GIFT_SET = "Gift Set",
-  SALE = "Sale"
+  SEASONAL = 'Seasonal',
+  SIGNATURE = 'Signature',
+  PREMIUM = 'Premium',
+  GIFT_SET = 'Gift Set',
+  SALE = 'Sale',
 }
 
 // Scent family enum
 export enum ScentFamily {
-  FLORAL = "Floral",
-  CITRUS = "Citrus",
-  WOODY = "Woody",
-  SPICY = "Spicy",
-  SWEET = "Sweet",
-  FRESH = "Fresh",
-  HERBAL = "Herbal"
+  FLORAL = 'Floral',
+  CITRUS = 'Citrus',
+  WOODY = 'Woody',
+  SPICY = 'Spicy',
+  SWEET = 'Sweet',
+  FRESH = 'Fresh',
+  HERBAL = 'Herbal',
 }
 
 // Product size enum
 export enum CandleSize {
-  MINI = "Mini",
-  SMALL = "Small",
-  MEDIUM = "Medium",
-  LARGE = "Large",
-  EXTRA_LARGE = "Extra Large"
+  MINI = 'Mini',
+  SMALL = 'Small',
+  MEDIUM = 'Medium',
+  LARGE = 'Large',
+  EXTRA_LARGE = 'Extra Large',
 }
 
 // Wax type enum
 export enum WaxType {
-  SOY = "Soy",
-  BEESWAX = "Beeswax",
-  COCONUT = "Coconut",
-  PARAFFIN = "Paraffin",
-  BLEND = "Blend"
+  SOY = 'Soy',
+  BEESWAX = 'Beeswax',
+  COCONUT = 'Coconut',
+  PARAFFIN = 'Paraffin',
+  BLEND = 'Blend',
 }
 
 // Burn time enum
 export enum BurnTime {
-  SHORT = "20-30 hours",
-  MEDIUM = "40-60 hours",
-  LONG = "70-90 hours",
-  EXTRA_LONG = "100+ hours"
+  SHORT = '20-30 hours',
+  MEDIUM = '40-60 hours',
+  LONG = '70-90 hours',
+  EXTRA_LONG = '100+ hours',
 }
 
 // Product status
 export enum ProductStatus {
-  ACTIVE = "Active",
-  DRAFT = "Draft",
-  OUT_OF_STOCK = "Out of Stock",
-  DISCONTINUED = "Discontinued"
+  ACTIVE = 'Active',
+  DRAFT = 'Draft',
+  OUT_OF_STOCK = 'Out of Stock',
+  DISCONTINUED = 'Discontinued',
 }
 
 // Product interface
@@ -88,20 +88,20 @@ export interface Product {
 
 // Order status
 export enum OrderStatus {
-  NEW = "New",
-  PROCESSING = "Processing",
-  SHIPPED = "Shipped",
-  DELIVERED = "Delivered",
-  CANCELLED = "Cancelled",
-  REFUNDED = "Refunded"
+  NEW = 'New',
+  PROCESSING = 'Processing',
+  SHIPPED = 'Shipped',
+  DELIVERED = 'Delivered',
+  CANCELLED = 'Cancelled',
+  REFUNDED = 'Refunded',
 }
 
 // Payment method
 export enum PaymentMethod {
-  CREDIT_CARD = "Credit Card",
-  PAYPAL = "PayPal",
-  BANK_TRANSFER = "Bank Transfer",
-  GIFT_CARD = "Gift Card"
+  CREDIT_CARD = 'Credit Card',
+  PAYPAL = 'PayPal',
+  BANK_TRANSFER = 'Bank Transfer',
+  GIFT_CARD = 'Gift Card',
 }
 
 // Customer data
