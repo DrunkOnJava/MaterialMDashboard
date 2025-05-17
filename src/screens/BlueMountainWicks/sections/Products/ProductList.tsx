@@ -1,27 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../../../../components/ui/card";
-import { Input } from "../../../../components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../../components/ui/select";
-import { Button } from "../../../../components/ui/button";
-import { Badge } from "../../../../components/ui/badge";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../../../../components/ui/alert-dialog";
-import { useBlueMountainWicks } from "../../context/BlueMountainWicksContext";
-import { 
-  Search, 
-  Filter, 
-  Edit, 
-  Trash2, 
-  Eye, 
-  Plus, 
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../../components/ui/card';
+import { Input } from '../../../../components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../../../../components/ui/select';
+import { Button } from '../../../../components/ui/button';
+import { Badge } from '../../../../components/ui/badge';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '../../../../components/ui/alert-dialog';
+import { useBlueMountainWicks } from '../../context/BlueMountainWicksContext';
+import { LazyImage } from '../../../../components/ui/lazy-image';
+import {
+  Search,
+  Filter,
+  Edit,
+  Trash2,
+  Eye,
+  Plus,
   MoreVertical,
   ChevronLeft,
   ChevronRight,
   XCircle,
   Loader2,
-  RefreshCw
-} from "lucide-react";
+  RefreshCw,
+} from 'lucide-react';
 
-import { Product, ProductStatus, CandleCategory } from "../../models/types";
+import { Product, ProductStatus, CandleCategory } from '../../models/types';
 
 interface ProductListProps {
   products: Product[];
@@ -30,37 +47,37 @@ interface ProductListProps {
   onDeleteProduct: (productId: string) => void;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ 
-  products, 
-  onViewProduct, 
-  onAddProduct, 
-  onDeleteProduct 
+const ProductList: React.FC<ProductListProps> = ({
+  products,
+  onViewProduct,
+  onAddProduct,
+  onDeleteProduct,
 }) => {
-  const { 
-    state, 
-    dispatch, 
+  const {
+    state,
+    dispatch,
     deleteProduct,
     getFilteredProducts,
     getPaginatedProducts,
     getTotalPages,
-    clearFilters
+    clearFilters,
   } = useBlueMountainWicks();
-  
-  const [searchTerm, setSearchTerm] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("all");
-  const [statusFilter, setStatusFilter] = useState("all");
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [productToDelete, setProductToDelete] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   // Update the global state with local filters
   useEffect(() => {
-    dispatch({ type: "SET_SEARCH_TERM", payload: searchTerm });
-    dispatch({ type: "SET_CATEGORY_FILTER", payload: categoryFilter });
-    dispatch({ type: "SET_STATUS_FILTER", payload: statusFilter });
-    dispatch({ type: "SET_CURRENT_PAGE", payload: currentPage });
-    dispatch({ type: "SET_ITEMS_PER_PAGE", payload: itemsPerPage });
+    dispatch({ type: 'SET_SEARCH_TERM', payload: searchTerm });
+    dispatch({ type: 'SET_CATEGORY_FILTER', payload: categoryFilter });
+    dispatch({ type: 'SET_STATUS_FILTER', payload: statusFilter });
+    dispatch({ type: 'SET_CURRENT_PAGE', payload: currentPage });
+    dispatch({ type: 'SET_ITEMS_PER_PAGE', payload: itemsPerPage });
   }, [searchTerm, categoryFilter, statusFilter, currentPage, itemsPerPage, dispatch]);
 
   // Local filter handlers
@@ -80,9 +97,9 @@ const ProductList: React.FC<ProductListProps> = ({
   };
 
   const handleClearFilters = () => {
-    setSearchTerm("");
-    setCategoryFilter("all");
-    setStatusFilter("all");
+    setSearchTerm('');
+    setCategoryFilter('all');
+    setStatusFilter('all');
     setCurrentPage(1);
     clearFilters();
   };
@@ -99,14 +116,14 @@ const ProductList: React.FC<ProductListProps> = ({
 
   const handleDelete = async () => {
     if (!productToDelete) return;
-    
+
     setIsLoading(true);
     try {
       await deleteProduct(productToDelete.id);
       onDeleteProduct(productToDelete.id);
       setProductToDelete(null);
     } catch (error) {
-      console.error("Error deleting product:", error);
+      console.error('Error deleting product:', error);
     } finally {
       setIsLoading(false);
     }
@@ -122,7 +139,7 @@ const ProductList: React.FC<ProductListProps> = ({
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-      minimumFractionDigits: 2
+      minimumFractionDigits: 2,
     }).format(price);
   };
 
@@ -130,15 +147,15 @@ const ProductList: React.FC<ProductListProps> = ({
   const getStatusBadgeClass = (status: ProductStatus) => {
     switch (status) {
       case ProductStatus.ACTIVE:
-        return "bg-actionsuccess-light text-actionsuccess";
+        return 'bg-actionsuccess-light text-actionsuccess';
       case ProductStatus.DRAFT:
-        return "bg-blackblack-10 text-blackblack-100";
+        return 'bg-blackblack-10 text-blackblack-100';
       case ProductStatus.OUT_OF_STOCK:
-        return "bg-actionwarning-light text-actionwarning";
+        return 'bg-actionwarning-light text-actionwarning';
       case ProductStatus.DISCONTINUED:
-        return "bg-blackblack-40 text-blackblack-100";
+        return 'bg-blackblack-40 text-blackblack-100';
       default:
-        return "bg-blackblack-10 text-blackblack-100";
+        return 'bg-blackblack-10 text-blackblack-100';
     }
   };
 
@@ -166,20 +183,14 @@ const ProductList: React.FC<ProductListProps> = ({
               onChange={handleSearchChange}
             />
             {searchTerm && (
-              <button 
-                className="absolute right-3 top-2.5"
-                onClick={() => setSearchTerm("")}
-              >
+              <button className="absolute right-3 top-2.5" onClick={() => setSearchTerm('')}>
                 <XCircle className="h-4 w-4 text-blackblack-60" />
               </button>
             )}
           </div>
-          
+
           <div className="flex gap-2 w-full md:w-auto">
-            <Select 
-              value={categoryFilter}
-              onValueChange={handleCategoryFilterChange}
-            >
+            <Select value={categoryFilter} onValueChange={handleCategoryFilterChange}>
               <SelectTrigger className="w-[180px]">
                 <Filter className="mr-2 h-4 w-4" />
                 <SelectValue placeholder="Filter by category" />
@@ -193,11 +204,8 @@ const ProductList: React.FC<ProductListProps> = ({
                 <SelectItem value={CandleCategory.SALE}>Sale</SelectItem>
               </SelectContent>
             </Select>
-            
-            <Select
-              value={statusFilter}
-              onValueChange={handleStatusFilterChange}
-            >
+
+            <Select value={statusFilter} onValueChange={handleStatusFilterChange}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
@@ -209,9 +217,9 @@ const ProductList: React.FC<ProductListProps> = ({
                 <SelectItem value={ProductStatus.DISCONTINUED}>Discontinued</SelectItem>
               </SelectContent>
             </Select>
-            
-            {(searchTerm || categoryFilter !== "all" || statusFilter !== "all") && (
-              <Button 
+
+            {(searchTerm || categoryFilter !== 'all' || statusFilter !== 'all') && (
+              <Button
                 variant="outline"
                 onClick={handleClearFilters}
                 className="flex items-center gap-1"
@@ -222,36 +230,54 @@ const ProductList: React.FC<ProductListProps> = ({
             )}
           </div>
         </div>
-        
+
         <div className="overflow-x-auto rounded-lg border border-[#111c2d1a]">
           <table className="w-full">
             <thead className="bg-surfaceslightgray-10 border-b border-[#111c2d1a]">
               <tr>
-                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Product</th>
+                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                  Product
+                </th>
                 <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">SKU</th>
-                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Category</th>
-                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Price</th>
-                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Stock</th>
-                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">Status</th>
-                <th className="py-3 px-4 text-right text-sm font-medium text-blackblack-60">Actions</th>
+                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                  Category
+                </th>
+                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                  Price
+                </th>
+                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                  Stock
+                </th>
+                <th className="py-3 px-4 text-left text-sm font-medium text-blackblack-60">
+                  Status
+                </th>
+                <th className="py-3 px-4 text-right text-sm font-medium text-blackblack-60">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               {displayedProducts.length > 0 ? (
-                displayedProducts.map((product) => (
-                  <tr key={product.id} className="border-b border-[#111c2d1a] last:border-b-0 hover:bg-surfaceslightgray-10">
+                displayedProducts.map(product => (
+                  <tr
+                    key={product.id}
+                    className="border-b border-[#111c2d1a] last:border-b-0 hover:bg-surfaceslightgray-10"
+                  >
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-md bg-surfaceslightgray-10 flex-shrink-0">
-                          <img 
-                            src={product.featuredImage} 
+                          <LazyImage
+                            src={product.featuredImage}
                             alt={product.name}
                             className="w-full h-full object-cover rounded-md"
+                            placeholderSrc="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%23f3f4f6%22%2F%3E%3C%2Fsvg%3E"
                           />
                         </div>
                         <div>
                           <p className="font-medium">{product.name}</p>
-                          <p className="text-xs text-blackblack-60 truncate max-w-[200px]">{product.shortDescription}</p>
+                          <p className="text-xs text-blackblack-60 truncate max-w-[200px]">
+                            {product.shortDescription}
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -261,7 +287,9 @@ const ProductList: React.FC<ProductListProps> = ({
                       {product.salePrice ? (
                         <div>
                           <span>{formatPrice(product.salePrice)}</span>
-                          <span className="text-xs text-blackblack-60 line-through ml-2">{formatPrice(product.price)}</span>
+                          <span className="text-xs text-blackblack-60 line-through ml-2">
+                            {formatPrice(product.price)}
+                          </span>
                         </div>
                       ) : (
                         formatPrice(product.price)
@@ -281,17 +309,17 @@ const ProductList: React.FC<ProductListProps> = ({
                     </td>
                     <td className="py-3 px-4 text-right">
                       <div className="flex justify-end gap-2">
-                        <Button 
-                          variant="ghost" 
-                          size="icon" 
+                        <Button
+                          variant="ghost"
+                          size="icon"
                           className="h-8 w-8"
                           onClick={() => onViewProduct(product.id)}
                         >
                           <Eye className="h-4 w-4" />
                         </Button>
-                        <Button 
-                          variant="ghost" 
-                          size="icon" 
+                        <Button
+                          variant="ghost"
+                          size="icon"
                           className="h-8 w-8"
                           onClick={() => onViewProduct(product.id)}
                         >
@@ -299,9 +327,9 @@ const ProductList: React.FC<ProductListProps> = ({
                         </Button>
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
-                            <Button 
-                              variant="ghost" 
-                              size="icon" 
+                            <Button
+                              variant="ghost"
+                              size="icon"
                               className="h-8 w-8 text-actionwarning"
                             >
                               <Trash2 className="h-4 w-4" />
@@ -311,7 +339,8 @@ const ProductList: React.FC<ProductListProps> = ({
                             <AlertDialogHeader>
                               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                               <AlertDialogDescription>
-                                This action cannot be undone. This will permanently delete the product
+                                This action cannot be undone. This will permanently delete the
+                                product
                                 <strong> {product.name}</strong> and remove it from the database.
                               </AlertDialogDescription>
                             </AlertDialogHeader>
@@ -333,15 +362,11 @@ const ProductList: React.FC<ProductListProps> = ({
               ) : (
                 <tr>
                   <td colSpan={7} className="py-8 text-center text-blackblack-60">
-                    {searchTerm || categoryFilter !== "all" || statusFilter !== "all" ? (
+                    {searchTerm || categoryFilter !== 'all' || statusFilter !== 'all' ? (
                       <div className="flex flex-col items-center">
                         <XCircle className="h-8 w-8 mb-2 text-blackblack-40" />
                         <p>No products found with the current filters.</p>
-                        <Button 
-                          variant="outline" 
-                          className="mt-3"
-                          onClick={handleClearFilters}
-                        >
+                        <Button variant="outline" className="mt-3" onClick={handleClearFilters}>
                           Clear Filters
                         </Button>
                       </div>
@@ -349,10 +374,7 @@ const ProductList: React.FC<ProductListProps> = ({
                       <div className="flex flex-col items-center">
                         <Package className="h-8 w-8 mb-2 text-blackblack-40" />
                         <p>No products available.</p>
-                        <Button 
-                          className="mt-3"
-                          onClick={onAddProduct}
-                        >
+                        <Button className="mt-3" onClick={onAddProduct}>
                           <Plus className="h-4 w-4 mr-1" />
                           Add New Product
                         </Button>
@@ -364,96 +386,97 @@ const ProductList: React.FC<ProductListProps> = ({
             </tbody>
           </table>
         </div>
-        
+
         <div className="flex justify-between items-center mt-4">
           <div className="text-sm text-blackblack-60">
             {filteredProducts.length > 0 ? (
               <>
-                Showing {((currentPage - 1) * itemsPerPage) + 1}-
-                {Math.min(currentPage * itemsPerPage, filteredProducts.length)} of {filteredProducts.length} products
+                Showing {(currentPage - 1) * itemsPerPage + 1}-
+                {Math.min(currentPage * itemsPerPage, filteredProducts.length)} of{' '}
+                {filteredProducts.length} products
               </>
             ) : (
-              "No products to display"
+              'No products to display'
             )}
           </div>
           {totalPages > 1 && (
             <div className="flex items-center gap-2">
-              <Button 
-                variant="outline" 
-                size="icon" 
-                className="h-8 w-8" 
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-8 w-8"
                 disabled={currentPage === 1}
                 onClick={() => handlePageChange(currentPage - 1)}
               >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              
+
               {/* First page */}
               {currentPage > 3 && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   className="h-8 w-8"
                   onClick={() => handlePageChange(1)}
                 >
                   1
                 </Button>
               )}
-              
+
               {/* Ellipsis for many pages */}
               {currentPage > 4 && <span className="mx-1">...</span>}
-              
+
               {/* Page before current (if not first page) */}
               {currentPage > 1 && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   className="h-8 w-8"
                   onClick={() => handlePageChange(currentPage - 1)}
                 >
                   {currentPage - 1}
                 </Button>
               )}
-              
+
               {/* Current page */}
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 className="h-8 w-8 bg-light-themeprimarylight-blue text-light-themeprimaryblue"
               >
                 {currentPage}
               </Button>
-              
+
               {/* Page after current (if not last page) */}
               {currentPage < totalPages && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   className="h-8 w-8"
                   onClick={() => handlePageChange(currentPage + 1)}
                 >
                   {currentPage + 1}
                 </Button>
               )}
-              
+
               {/* Ellipsis for many pages */}
               {currentPage < totalPages - 3 && <span className="mx-1">...</span>}
-              
+
               {/* Last page */}
               {currentPage < totalPages - 2 && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   className="h-8 w-8"
                   onClick={() => handlePageChange(totalPages)}
                 >
                   {totalPages}
                 </Button>
               )}
-              
-              <Button 
-                variant="outline" 
-                size="icon" 
+
+              <Button
+                variant="outline"
+                size="icon"
                 className="h-8 w-8"
                 disabled={currentPage === totalPages}
                 onClick={() => handlePageChange(currentPage + 1)}

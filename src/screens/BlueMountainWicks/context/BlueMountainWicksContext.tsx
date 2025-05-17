@@ -1,11 +1,5 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-import { 
-  Product, 
-  Order, 
-  Customer, 
-  SalesSummary,
-  ProductStatus
-} from '../models/types';
+import { Product, Order, Customer, SalesSummary, ProductStatus } from '../models/types';
 import { mockProducts, mockOrders, mockCustomers, mockSalesSummary } from '../data/mockData';
 import { useToast } from '../../../hooks/use-toast';
 
@@ -101,9 +95,7 @@ const BlueMountainWicksReducer = (
     case 'DELETE_PRODUCT':
       return {
         ...state,
-        products: state.products.filter(
-          product => product.id !== action.payload
-        ),
+        products: state.products.filter(product => product.id !== action.payload),
       };
     case 'SET_ACTIVE_PRODUCT':
       return { ...state, activeProduct: action.payload };
@@ -147,7 +139,9 @@ interface BlueMountainWicksProviderProps {
   children: ReactNode;
 }
 
-export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps> = ({ children }) => {
+export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(BlueMountainWicksReducer, initialState);
   const { toast } = useToast();
 
@@ -166,12 +160,12 @@ export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps>
     } as Product;
 
     dispatch({ type: 'ADD_PRODUCT', payload: newProduct });
-    
+
     toast({
       title: 'Product Added',
       description: `"${newProduct.name}" has been added successfully.`,
     });
-    
+
     return newProduct.id;
   };
 
@@ -183,7 +177,7 @@ export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps>
     };
 
     dispatch({ type: 'UPDATE_PRODUCT', payload: updatedProduct });
-    
+
     toast({
       title: 'Product Updated',
       description: `"${updatedProduct.name}" has been updated successfully.`,
@@ -193,7 +187,7 @@ export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps>
   // Delete a product
   const deleteProduct = (productId: string) => {
     const product = state.products.find(p => p.id === productId);
-    
+
     if (!product) {
       toast({
         title: 'Error',
@@ -202,9 +196,9 @@ export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps>
       });
       return;
     }
-    
+
     dispatch({ type: 'DELETE_PRODUCT', payload: productId });
-    
+
     toast({
       title: 'Product Deleted',
       description: `"${product.name}" has been deleted successfully.`,
@@ -217,7 +211,7 @@ export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps>
       type: 'UPDATE_ORDER_STATUS',
       payload: { orderId, status },
     });
-    
+
     toast({
       title: 'Order Updated',
       description: `Order status has been updated to ${status}.`,
@@ -236,13 +230,10 @@ export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps>
 
       // Category filter
       const matchesCategory =
-        state.categoryFilter === 'all' ||
-        product.category === state.categoryFilter;
+        state.categoryFilter === 'all' || product.category === state.categoryFilter;
 
       // Status filter
-      const matchesStatus =
-        state.statusFilter === 'all' ||
-        product.status === state.statusFilter;
+      const matchesStatus = state.statusFilter === 'all' || product.status === state.statusFilter;
 
       return matchesSearch && matchesCategory && matchesStatus;
     });
@@ -298,10 +289,10 @@ export const BlueMountainWicksProvider: React.FC<BlueMountainWicksProviderProps>
 // Custom hook to use the context
 export const useBlueMountainWicks = (): BlueMountainWicksContextType => {
   const context = useContext(BlueMountainWicksContext);
-  
+
   if (context === undefined) {
     throw new Error('useBlueMountainWicks must be used within a BlueMountainWicksProvider');
   }
-  
+
   return context;
 };

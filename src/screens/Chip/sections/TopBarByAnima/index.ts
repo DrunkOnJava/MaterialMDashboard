@@ -1,1 +1,1 @@
-export { TopBarByAnima } from "./TopBarByAnima";
+export { TopBarByAnima } from './TopBarByAnima';

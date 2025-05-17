@@ -1,6 +1,6 @@
-import React from "react";
-import { Card, CardContent } from "../../../components/ui/card";
-import { ArrowDown, ArrowUp } from "lucide-react";
+import React from 'react';
+import { Card, CardContent } from '../../../components/ui/card';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 
 interface StatCardProps {
   title: string;
@@ -15,7 +15,7 @@ export const StatCard = ({
   value,
   changePercentage,
   icon,
-  bgColor = "bg-light-themeprimarylight-blue",
+  bgColor = 'bg-light-themeprimarylight-blue',
 }: StatCardProps): JSX.Element => {
   const isPositive = changePercentage >= 0;
 
@@ -26,21 +26,23 @@ export const StatCard = ({
           <p className="text-blackblack-60 text-sm font-medium mb-2">{title}</p>
           <p className="text-blackblack-100 text-2xl font-semibold">{value}</p>
           <div className="flex items-center mt-2">
-            <div className={`rounded-full p-1 mr-1 ${isPositive ? 'bg-actionsuccess-light' : 'bg-actionwarning-light'}`}>
+            <div
+              className={`rounded-full p-1 mr-1 ${isPositive ? 'bg-actionsuccess-light' : 'bg-actionwarning-light'}`}
+            >
               {isPositive ? (
                 <ArrowUp className="w-3 h-3 text-actionsuccess" />
               ) : (
                 <ArrowDown className="w-3 h-3 text-actionwarning" />
               )}
             </div>
-            <span className={`text-xs font-medium ${isPositive ? 'text-actionsuccess' : 'text-actionwarning'}`}>
+            <span
+              className={`text-xs font-medium ${isPositive ? 'text-actionsuccess' : 'text-actionwarning'}`}
+            >
               {Math.abs(changePercentage)}% from last period
             </span>
           </div>
         </div>
-        <div className={`${bgColor} p-3 rounded-lg`}>
-          {icon}
-        </div>
+        <div className={`${bgColor} p-3 rounded-lg`}>{icon}</div>
       </CardContent>
     </Card>
   );

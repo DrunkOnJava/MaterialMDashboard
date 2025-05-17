@@ -1,1 +1,1 @@
-export { SidebarByAnima } from "./SidebarByAnima";
+export { SidebarByAnima } from './SidebarByAnima';
