@@ -1,0 +1,25 @@
+name: Workflow Permissions
+
+# This workflow ensures all other workflows have appropriate permissions
+
+on:
+  workflow_call:
+    inputs:
+      permissions:
+        required: false
+        type: string
+        default: 'read'
+
+permissions:
+  actions: read
+  checks: write
+  contents: read
+  deployments: write
+  id-token: write
+  issues: write
+  packages: write
+  pages: write
+  pull-requests: write
+  repository-projects: write
+  security-events: write
+  statuses: write
