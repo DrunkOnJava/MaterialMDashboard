@@ -65,6 +65,7 @@ eslint.config.js
 fix_component_structures.sh
 memory_manager.py
 scripts/
+!scripts/setup-github-actions.sh
 testImages/
 tests/
 website-analysis-report.json
