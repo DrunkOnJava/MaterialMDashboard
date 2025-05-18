@@ -3,6 +3,10 @@ name: Deploy to Production
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'scripts/**'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 env:
@@ -32,24 +36,29 @@ jobs:
         VITE_API_URL: ${{ secrets.PRODUCTION_API_URL }}
         VITE_GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
     
-    - name: Deploy to Vercel
-      uses: amondnet/vercel-action@v25
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        vercel-args: '--prod'
-        working-directory: ./dist
+    # Deployment step - uncomment one of the following:
     
-    # Alternative: Deploy to Netlify
-    # - name: Deploy to Netlify
-    #   uses: nwtgck/actions-netlify@v2.0
+    # Deploy to Netlify (preferred)
+    - name: Deploy to Netlify
+      if: ${{ secrets.NETLIFY_AUTH_TOKEN != '' && secrets.NETLIFY_SITE_ID != '' }}
+      uses: nwtgck/actions-netlify@v2.0
+      with:
+        publish-dir: './dist'
+        production-deploy: true
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        
+    # Alternative: Deploy to Vercel
+    # - name: Deploy to Vercel
+    #   if: ${{ secrets.VERCEL_TOKEN != '' }}
+    #   uses: amondnet/vercel-action@v25
     #   with:
-    #     publish-dir: './dist'
-    #     production-deploy: true
-    #   env:
-    #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-    #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+    #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+    #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+    #     vercel-args: '--prod'
+    #     working-directory: ./dist
     
     # Alternative: Deploy to GitHub Pages
     # - name: Deploy to GitHub Pages
