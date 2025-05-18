@@ -1,3 +1,4 @@
+# Temporarily disabled - rename back to deploy.yml when secrets are configured
 name: Deploy to Production
 
 on:
