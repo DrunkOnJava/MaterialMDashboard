@@ -13,6 +13,7 @@ interface NavItem {
   isActive?: boolean;
   hasSubmenu?: boolean;
   submenuItems?: SubNavItem[];
+  isExternal?: boolean;
 }
 
 interface SubNavItem {
@@ -118,6 +119,7 @@ const appItems: NavItem[] = [
   { icon: "/group-26.png", label: "Contact Table", path: "/contact-table" },
   { icon: "/group-27.png", label: "Contact List", path: "/contact-list" },
   { icon: "/group-28.png", label: "Invoice", path: "/invoice" },
+  { icon: "/group-19.png", label: "Component Downloads", path: "/component-downloads" },
 ];
 
 // Define icon sidebar items with navigation paths

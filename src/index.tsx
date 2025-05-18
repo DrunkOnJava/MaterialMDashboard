@@ -48,6 +48,7 @@ import { IconsGallery } from "./screens/UI/IconsGallery";
 import { GridSystem } from "./screens/UI/GridSystem";
 import { Kanban } from "./screens/Kanban/Kanban";
 import { Chat } from "./screens/Chat/Chat";
+import { ComponentDownloads } from "./screens/ComponentDownloads/ComponentDownloads";
 import { Notes } from "./screens/Notes/Notes";
 import { ContactTable } from "./screens/Contact/ContactTable";
 import { ContactList } from "./screens/Contact/ContactList";
@@ -126,6 +127,7 @@ createRoot(document.getElementById("app") as HTMLElement).render(
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/crm" element={<CRM />} />
         <Route path="/calendar" element={<CalendarMain />} />
+        <Route path="/component-downloads" element={<ComponentDownloads />} />
       </Routes>
       <Toaster />
     </Router>
