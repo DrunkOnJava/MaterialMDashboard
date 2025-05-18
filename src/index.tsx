@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./styles.css";
 import { Chip } from "./screens/Chip/Chip";
 import { Dashboard } from "./screens/Dashboard/Dashboard";
 import { Toaster } from "./components/ui/toaster";
