@@ -73,7 +73,7 @@ const appItems: NavItem[] = [
       { label: "Input Fields", path: "/forms/input-fields" },
       { label: "Select Fields", path: "/forms/select-fields" },
       { label: "Checkbox & Radio", path: "/forms/checkbox-radio" },
-      { label: "Form Validation", path: "/forms/validation" },
+      { label: "Form Validation", path: "/forms/form-validation" },
     ]
   },
   { 
@@ -120,21 +120,21 @@ const appItems: NavItem[] = [
   { icon: "/group-28.png", label: "Invoice", path: "/invoice" },
 ];
 
-// Define icon sidebar items
+// Define icon sidebar items with navigation paths
 const iconSidebarItems = [
-  { icon: "/group-5.png", isActive: true },
-  { icon: "/group-6.png" },
-  { icon: "/group-7.png" },
-  { icon: "/group-8.png" },
+  { icon: "/group-5.png", path: "/charts/bar-charts", label: "Charts" },
+  { icon: "/group-6.png", path: "/analytics", label: "Analytics" },
+  { icon: "/group-7.png", path: "/crm", label: "CRM" },
+  { icon: "/group-8.png", path: "/calendar", label: "Calendar" },
 ];
 
 const iconSidebarItems2 = [
-  { icon: "/group-9.png" },
-  { icon: "/group-10.png" },
-  { icon: "/group-11.png" },
-  { icon: "/group-12.png" },
-  { icon: "/group-13.png" },
-  { icon: "/group-14.png" },
+  { icon: "/group-9.png", path: "/kanban", label: "Kanban" },
+  { icon: "/group-10.png", path: "/ui/typography", label: "UI" },
+  { icon: "/group-11.png", path: "/chat", label: "Chat" },
+  { icon: "/group-12.png", path: "/notes", label: "Notes" },
+  { icon: "/group-13.png", path: "/examples/user-profile", label: "Examples" },
+  { icon: "/group-14.png", path: "/invoice", label: "Invoice" },
 ];
 
 export const SidebarByAnima = (): JSX.Element => {
@@ -167,34 +167,48 @@ export const SidebarByAnima = (): JSX.Element => {
           {/* First icon group */}
           <div className="gap-1 py-3 border-b-2 border-dashed border-[#e4ebf0] inline-flex flex-col items-start">
             {iconSidebarItems.map((item, index) => (
-              <div
+              <Link
                 key={index}
-                className={`w-12 h-12 flex items-center justify-center rounded-[999px] ${
-                  item.isActive ? "bg-light-themeprimarylight-blue" : ""
+                to={item.path}
+                className={`w-12 h-12 flex items-center justify-center rounded-[999px] hover:bg-surfaceslightgray-10 transition-colors relative group ${
+                  isActive(item.path) ? "bg-light-themeprimarylight-blue" : ""
                 }`}
+                title={item.label}
               >
                 <img
                   className="w-[21.5px] h-[17.5px]"
-                  alt="Navigation icon"
+                  alt={item.label}
                   src={item.icon}
                 />
-              </div>
+                {/* Tooltip */}
+                <div className="absolute left-full ml-2 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                  {item.label}
+                </div>
+              </Link>
             ))}
           </div>
 
           {/* Second icon group */}
           <div className="gap-1 py-3 border-b-2 border-dashed border-[#e4ebf0] inline-flex flex-col items-start">
             {iconSidebarItems2.map((item, index) => (
-              <div
+              <Link
                 key={index}
-                className="w-12 h-12 flex items-center justify-center rounded-[999px]"
+                to={item.path}
+                className={`w-12 h-12 flex items-center justify-center rounded-[999px] hover:bg-surfaceslightgray-10 transition-colors relative group ${
+                  isActive(item.path) ? "bg-light-themeprimarylight-blue" : ""
+                }`}
+                title={item.label}
               >
                 <img
                   className="w-5 h-5"
-                  alt="Navigation icon"
+                  alt={item.label}
                   src={item.icon}
                 />
-              </div>
+                {/* Tooltip */}
+                <div className="absolute left-full ml-2 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                  {item.label}
+                </div>
+              </Link>
             ))}
           </div>
         </div>

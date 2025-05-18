@@ -33,6 +33,25 @@ import { PaginationPage } from "./screens/Components/Pagination";
 import { FileUpload } from "./screens/Examples/FileUpload";
 import { Ecommerce } from "./screens/Ecommerce/Ecommerce";
 import { BlueMountainWicks } from "./screens/BlueMountainWicks/BlueMountainWicks";
+import { UserProfile } from "./screens/Examples/UserProfile";
+import { Calendar } from "./screens/Examples/Calendar";
+import { Timeline } from "./screens/Examples/Timeline";
+import { NotificationsCenter } from "./screens/Examples/NotificationsCenter";
+import { BarCharts } from "./screens/Charts/BarCharts";
+import { LineCharts } from "./screens/Charts/LineCharts";
+import { PieCharts } from "./screens/Charts/PieCharts";
+import { AreaCharts } from "./screens/Charts/AreaCharts";
+import { ScatterCharts } from "./screens/Charts/ScatterCharts";
+import { Typography } from "./screens/UI/Typography";
+import { Colors } from "./screens/UI/Colors";
+import { IconsGallery } from "./screens/UI/IconsGallery";
+import { GridSystem } from "./screens/UI/GridSystem";
+import { Kanban } from "./screens/Kanban/Kanban";
+import { Chat } from "./screens/Chat/Chat";
+import { Notes } from "./screens/Notes/Notes";
+import { ContactTable } from "./screens/Contact/ContactTable";
+import { ContactList } from "./screens/Contact/ContactList";
+import { Invoice } from "./screens/Invoice/Invoice";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
@@ -76,6 +95,31 @@ createRoot(document.getElementById("app") as HTMLElement).render(
         
         {/* Example Routes */}
         <Route path="/examples/file-upload" element={<FileUpload />} />
+        <Route path="/examples/user-profile" element={<UserProfile />} />
+        <Route path="/examples/calendar" element={<Calendar />} />
+        <Route path="/examples/timeline" element={<Timeline />} />
+        <Route path="/examples/notifications" element={<NotificationsCenter />} />
+        
+        {/* Chart Routes */}
+        <Route path="/charts/bar-charts" element={<BarCharts />} />
+        <Route path="/charts/line-charts" element={<LineCharts />} />
+        <Route path="/charts/pie-charts" element={<PieCharts />} />
+        <Route path="/charts/area-charts" element={<AreaCharts />} />
+        <Route path="/charts/scatter-charts" element={<ScatterCharts />} />
+        
+        {/* UI Routes */}
+        <Route path="/ui/typography" element={<Typography />} />
+        <Route path="/ui/colors" element={<Colors />} />
+        <Route path="/ui/icons" element={<IconsGallery />} />
+        <Route path="/ui/grid-system" element={<GridSystem />} />
+        
+        {/* App Routes */}
+        <Route path="/kanban" element={<Kanban />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/notes" element={<Notes />} />
+        <Route path="/contact-table" element={<ContactTable />} />
+        <Route path="/contact-list" element={<ContactList />} />
+        <Route path="/invoice" element={<Invoice />} />
       </Routes>
       <Toaster />
     </Router>
