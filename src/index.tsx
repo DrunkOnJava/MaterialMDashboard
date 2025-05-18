@@ -52,6 +52,9 @@ import { Notes } from "./screens/Notes/Notes";
 import { ContactTable } from "./screens/Contact/ContactTable";
 import { ContactList } from "./screens/Contact/ContactList";
 import { Invoice } from "./screens/Invoice/Invoice";
+import { Analytics } from "./screens/Analytics/Analytics";
+import { CRM } from "./screens/CRM/CRM";
+import { CalendarMain } from "./screens/Calendar/CalendarMain";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
@@ -120,6 +123,9 @@ createRoot(document.getElementById("app") as HTMLElement).render(
         <Route path="/contact-table" element={<ContactTable />} />
         <Route path="/contact-list" element={<ContactList />} />
         <Route path="/invoice" element={<Invoice />} />
+        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/crm" element={<CRM />} />
+        <Route path="/calendar" element={<CalendarMain />} />
       </Routes>
       <Toaster />
     </Router>
